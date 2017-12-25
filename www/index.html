@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="theme-color" content="#2196f3">
+<title>بسم الله الرحمن الرحیم</title>
+<!-- Font embedding link goes here -->
+<!-- <link href="http://fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet" type="text/css"> -->
+<!-- <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'> -->
+
+<!-- CSS link goes here -->
+<link rel="stylesheet" href="css/framework7.material.css">
+<link rel="stylesheet" href="css/framework7.material.colors.css">
+<link rel="stylesheet" href="css/framework7.material.rtl.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/swipebox.min.css">
+<link rel="stylesheet" href="css/maxframes.css">
+<link rel="stylesheet" href="css/roboto.css">
+<link rel="stylesheet" href="css/fontiran.css">
+<link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="theme-pink">
+<!-- <div class="statusbar-overlay"></div> -->
+<div class="panel-overlay"></div>
+<div class="panel panel-left panel-cover sidebar">
+  <div class="view navbar-fixed">
+    <div class="pages ">
+      <div data-page="panel-left" class="page sidemenu leftmenusmall gradient">
+		<!--
+        <div class="navbar header userprofile">
+          <div class="list-block media-list ">
+            <ul>
+              <li class="item-content">
+                <div class="item-media"><img src="img/pic1.png" width="44"/></div>
+                <div class="item-inner">
+                  <div class="item-title-row">
+                    <div class="item-title">Max Smith</div>
+                  </div>
+                  <div class="item-subtitle">New Jursey</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+		-->
+        <div class="page-content">
+          <ul class="menu">
+				<li><a href="map.html" class="item-link close-panel"><i class="fa fa-map"></i><span>نقشه</span></a></li>
+				<li><a href="taxi_yar.html" class="item-link close-panel"><i class="fa fa-shopping-cart"></i><span>تاکسی برگ</span></a></li>
+				<li><a href="#" onclick="myApp.alert('این بخش از نرم افزار در بروزرسانی های آتی فعال خواهد شد.','توجه', function () {});" class="item-link close-panel"><i class="fa fa-credit-card-alt"></i><span>تاکسی پرداز</span></a></li>
+				<li><a href="emergency.html" class="item-link close-panel"><i class="fa fa-phone-square"></i><span>لیست تماس</span></a></li>
+				<li><a href="#" onclick="myApp.alert('این بخش از نرم افزار در بروزرسانی های آتی فعال خواهد شد.','توجه', function () {});" class="item-link close-panel"><i class="fa fa-check-square-o"></i><span>لیست کارها</span></a></li>
+				<li><a href="#" onclick="myApp.alert('این بخش از نرم افزار در بروزرسانی های آتی فعال خواهد شد.','توجه', function () {});" class="item-link close-panel"><i class="fa fa-file-text-o"></i><span>یاداشت</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="views" >
+	<div class="view view-main">
+		<div class="pages navbar-fixed">
+			<div data-page="index" class="page gradient">
+				<div class="page-content landingpage">
+					<div class="logo main col12"> <img src="img/icon.png" alt=""> </div>
+		  
+		  
+					<!-- <a href="#" class="open-panel">start navigating</a>  -->
+					<!-- <a href="#" data-popup=".login-screen" class="open-popup">login-screen</a> -->
+		  
+					<img src="img/restaurant0.jpg" alt="" class="landingimg">
+					<a href="#" onclick="check_net_home_page();" class="nextlink"><span class="fa fa-refresh "></span></a>
+					<a href="#" onclick="check_net_home_page();" class="nextlink_text">بررسی مجدد</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="login-screen">
+  <div class="view">
+    <div class="page">
+      <div class="page-content login-screen-content gradient">
+        <div class="login-screen-title" style="margin-top: 70px;">
+          <div class="logo main col12"> <img src="img/logo_2.png" alt=""> </div>
+        </div>
+        <form style="margin-top: 50px;">
+          <div class="list-block inputs-list">
+            <ul>
+              <li class="item-content">
+                <div class="item-inner">
+                  <div class="item-title label login_page_input_title">شماره موبایل</div>
+                  <div class="item-input">
+                    <input type="text" name="login_page_mobile" placeholder="0915 --- ----" pattern="\d*" class="login_page_mobile" id="login_page_mobile" style="letter-spacing: 3px;background-color: rgba(256,256,256,0.1);">
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="content-block"><a href="#" onclick="check_mobile_number();" class="button button-big button-raised">ورود</a></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="popup login-screen-verify-number">
+  <div class="content-block">
+    <div class="page">
+      <div class="page-content login-screen-content gradient">
+        <div class="login-screen-title" style="margin-top: 70px;">
+          <div class="logo main col12"> <img src="img/logo_2.png" alt=""> </div>
+        </div>
+        <form style="margin-top: 50px;">
+          <div class="list-block inputs-list">
+            <ul>
+              <li class="item-content">
+                <div class="item-inner">
+                  <div class="item-title label login_page_input_title">کد فعال سازی</div>
+                  <div class="item-input">
+                    <input type="text" name="mobile_verify_code" id="mobile_verify_code" pattern="\d*" placeholder="----" class="login_page_mobile" style="letter-spacing: 4px;text-align:center !important;background-color: rgba(256,256,256,0.1);">
+                  </div>
+                </div>
+				
+              </li>
+            </ul>
+          </div>
+          <div class="content-block"><a href="#" onclick="check_verify_number();" class="button button-big button-raised">بررسی کد</a></div>
+          <div class="content-block"><a href="#" onclick="resend_verify_number();" id="resend_verify_code">ارسال مجدد کد فعال سازی</a></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JS link goes here -->
+<script>
+var server_url = "http://127.0.0.1/check_net.php";
+</script>
+<script src="phonegap.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script> 
+<script type="text/javascript" src="js/framework7.min.js"></script> 
+<script type="text/javascript" src="js/jquery.swipebox.js"></script> 
+<!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> -->
+<!-- <script type="text/javascript" src="https://www.google.com/jsapi"></script> -->
+<script type="text/javascript" src="js/masonry.pkgd.min.js"></script>
+<script type="text/javascript" src="contactform/validator.js"></script>
+<script type="text/javascript" src="contactform/contact.js"></script>
+<script type="text/javascript" src="js/persian_number_to_english.js"></script>
+<script type="text/javascript" src="js/custom.js"></script>
+<script type="text/javascript" src="js/maxframes.js"></script>
+</body>
+</html>
