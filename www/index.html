@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="css/fontiran.css">
 <link rel="stylesheet" href="css/custom.css">
 </head>
-<body class="theme-pink">
+<body class="theme-pink" onload="init();">
 <!-- <div class="statusbar-overlay"></div> -->
 <div class="panel-overlay"></div>
 <div class="panel panel-left panel-cover sidebar">
@@ -55,7 +55,7 @@
 				<li><a href="#" onclick="myApp.alert('این بخش از نرم افزار در بروزرسانی های آتی فعال خواهد شد.','توجه', function () {});" class="item-link close-panel"><i class="fa fa-credit-card-alt"></i><span>تاکسی پرداز</span></a></li>
 				<li><a href="emergency.html" class="item-link close-panel"><i class="fa fa-phone-square"></i><span>لیست تماس</span></a></li>
 				<li><a href="#" onclick="myApp.alert('این بخش از نرم افزار در بروزرسانی های آتی فعال خواهد شد.','توجه', function () {});" class="item-link close-panel"><i class="fa fa-check-square-o"></i><span>لیست کارها</span></a></li>
-				<li><a href="#" onclick="myApp.alert('این بخش از نرم افزار در بروزرسانی های آتی فعال خواهد شد.','توجه', function () {});" class="item-link close-panel"><i class="fa fa-file-text-o"></i><span>یاداشت</span></a></li>
+				<li><a href="support.html" class="item-link close-panel"><i class="fa fa-question-circle"></i><span>پشتیبانی تاکسی یار</span></a></li>
           </ul>
         </div>
       </div>
@@ -139,10 +139,21 @@
 </div>
 
 <!-- JS link goes here -->
+<script src="phonegap.js"></script>
 <script>
 var server_url = "http://127.0.0.1/check_net.php";
+function init() {		
+	document.addEventListener("deviceready", onDeviceReady, false);
+}
+function onDeviceReady() {
+	if(window.localStorage.getItem('uuid') == null)
+		window.plugins.uniqueDeviceID.get(uniqueDeviceIDsuccess_index, uniqueDeviceIDfail_index);
+	function uniqueDeviceIDsuccess_index(uuid){window.localStorage.setItem('uuid',uuid);};
+	function uniqueDeviceIDfail_index(uuid){};
+	
+	register_notification();
+}
 </script>
-<script src="phonegap.js"></script>
 <script type="text/javascript" src="js/jquery.min.js"></script> 
 <script type="text/javascript" src="js/framework7.min.js"></script> 
 <script type="text/javascript" src="js/jquery.swipebox.js"></script> 

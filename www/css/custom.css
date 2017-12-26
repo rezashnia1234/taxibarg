@@ -1,4 +1,7 @@
-﻿.nextlink {
+﻿/*// صفحه ورود کاربر  //////////////////////////////////////////////////////////////////////// */
+/*// صفحه ورود کاربر  //////////////////////////////////////////////////////////////////////// */
+/*// صفحه ورود کاربر  //////////////////////////////////////////////////////////////////////// */
+.nextlink {
     line-height: 57px;
 	bottom: 63px
 }
@@ -42,6 +45,9 @@ input.login_page_mobile {
     border-bottom:  1px solid #ffffff;
     margin: 0px auto 0px auto;
 }
+/*// صفحه لیست خدمات  //////////////////////////////////////////////////////////////////////// */
+/*// صفحه لیست خدمات  //////////////////////////////////////////////////////////////////////// */
+/*// صفحه لیست خدمات  //////////////////////////////////////////////////////////////////////// */
 .header .logo {
     font-size: 20px;
 }
@@ -85,6 +91,9 @@ table tr td, table tr th {
     line-height: 30px;
     text-align: right;
 }
+/*// صفحه تاکسی یار //////////////////////////////////////////////////////////////////////// */
+/*// صفحه تاکسی یار //////////////////////////////////////////////////////////////////////// */
+/*// صفحه تاکسی یار //////////////////////////////////////////////////////////////////////// */
 .toolbar-fixed .toolbar-bottom, .tabbar-fixed .toolbar-bottom, .tabbar-labels-fixed .toolbar-bottom, .toolbar-bottom {
     /* box-shadow: 0px -2px 4px -1px rgba(0, 0, 0, 0.2), 0px -4px 5px 0px rgba(0, 0, 0, 0.14), 0px -1px 10px 0px rgba(0, 0, 0, 0.12); */
     box-shadow: 0px -1px 0px -2px rgba(0, 0, 0, 0.2), 0px 0px 1px 0px rgba(0, 0, 0, 0.14), 0px -1px 10px 0px rgba(0, 0, 0, 0.12);
@@ -92,24 +101,282 @@ table tr td, table tr th {
 .tabs {
     border: 0px solid #d5dbe4;
 }
+.taxi_yar_home_slider {
+    min-height: 100px;
+    background-repeat: no-repeat !important;
+    background-position: top center !important;
+    background-size: cover !important;
+}
+.taxi_yar_home_menu{
+	position:  absolute;
+	left:  0;
+	right:  0;
+	width:  100%;
+	bottom: 73px;
+	z-index: 5;
+	/* padding-bottom:15px; */
+}
+#taxi_yar_home_menu ul.menu a{color:#696969}
+/*// صفحه لیست فاکتورها //////////////////////////////////////////////////////////////////////// */
+/*// صفحه لیست فاکتورها //////////////////////////////////////////////////////////////////////// */
+/*// صفحه لیست فاکتورها //////////////////////////////////////////////////////////////////////// */
+.list_of_invoices ul{height:auto !important;}
+.list_of_invoices .item-content {
+    display: block;
+    width: 100%;
+    min-height: 90px;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    padding: 5px;
+    box-sizing: border-box;
+	border-radius: 5px;
+}
+.list_of_invoices .item-content.s1 {
+    border-right: 10px solid #4caf50;/*green*/
+}
+.list_of_invoices .item-content.s2 {
+    border-right: 10px solid #f44336;/*red*/
+}
+.list_of_invoices .item-content.s3 {
+    border-right: 10px solid #ff9800;/*orange*/
+}
+.list_of_invoices .item-content.s4 {
+    border-right: 10px solid #9e9e9e;/*gray*/
+}
+.list_of_invoices .item-id {
+    position: absolute;
+    right: 6px;
+    font-size: 12px;
+    top: 4px;
+    letter-spacing: 2px;
+}
+.list_of_invoices .item-date {
+    position: absolute;
+    left: 8px;
+    width: 81px;
+    text-align: center;
+    top: 24px;
+}
+.list_of_invoices .item-time {
+    position: absolute;
+    left: 8px;
+    width: 81px;
+    text-align: center;
+    top: 50px;
+}
+.list_of_invoices .item-title {
+    position: absolute;
+    top: 29px;
+}
+.item-status-text.s1 {
+    position: absolute;
+    right: 10px;
+    top: 14px;
+}
+.list_of_invoices .item-price {
+    position: absolute;
+    top: 62px;
+    right: 5px;
+	font-size: 13px;
+}
+.list_of_invoices .item-content.s3 .item-price{color:transparent;font-size: 0px;}
+.list_of_invoices .item-content.s2 .item-price{color:transparent;font-size: 0px;}
+.list_of_invoices .item-content.s1 .item-price{color:#4caf50;}
+.list_of_invoices .item-content.s1 .item-price::before{
+	content:'\f00c  استفاده شده';
+	display:inline-block;
+	color:#888888;
+	font-family: IRANSans,FontAwesome;
+	font-size: 13px;
+	margin-left: 11px;
+}
+.list_of_invoices .item-content.s2 .item-price::before{
+	content:'\f00d  تائید نشده';
+	display:inline-block;
+	color:#888888;
+	font-family: IRANSans,FontAwesome;
+	font-size: 13px;
+	margin-left: 11px;
+}
+.list_of_invoices .item-content.s3 .item-price::before{
+	content:'\f017  در حال انتظار';
+	display:inline-block;
+	color:#888888;
+	font-family: IRANSans,FontAwesome;
+	font-size: 13px;
+	margin-left: 11px;
+}
+.list_of_invoices .item-content.s4 .item-price::before{
+	content:'\f0d6  تسویه شده';
+	display:inline-block;
+	color:#888888;
+	font-family: IRANSans,FontAwesome;
+	font-size: 13px;
+	margin-left: 11px;
+}
+/*// صفحه لیست نوتیفیکیشن ها //////////////////////////////////////////////////////////////////////// */
+/*// صفحه لیست نوتیفیکیشن ها //////////////////////////////////////////////////////////////////////// */
+/*// صفحه لیست نوتیفیکیشن ها //////////////////////////////////////////////////////////////////////// */
+.list_of_notifications ul{height:auto !important;}
+.list_of_notifications .item-content {
+    display: block;
+    width: 100%;
+    min-height: 90px;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    padding: 5px;
+    box-sizing: border-box;
+	border-radius: 5px;
+}
+.list_of_notifications .item-content.s0 {
+    border-right: 10px solid #2196f3;/*blue*/
+}
+.list_of_notifications .item-content.s1 {
+    border-right: 10px solid #9e9e9e;/*gray*/
+}
+.list_of_notifications .item-title {
+    white-space: initial !important;
+	font-weight:bold;
+	margin-bottom:5px;
+}
+.list_of_notifications .item-text {
+    white-space: initial !important;
+	margin-bottom:5px;
+}
+.list_of_notifications .item-date {
+    font-size: 13px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+.list_of_notifications .item-status-icon::before {
+    display: block;
+    color: #888888;
+    font-family: IRANSans,FontAwesome;
+    font-size: 13px;
+    margin-top: 6px;
+    margin-bottom: 8px;
+}
+.list_of_notifications .item-status-icon.s1::before{
+	content:'\f0c0  عمومی';
+}
+.list_of_notifications .item-status-icon.s0::before{
+	content:'\f007  خصوصی';
+}
+/*// صفحه پرداخت ها //////////////////////////////////////////////////////////////////////// */
+/*// صفحه پرداخت ها //////////////////////////////////////////////////////////////////////// */
+/*// صفحه پرداخت ها //////////////////////////////////////////////////////////////////////// */
+#payment_info{
+    display: block;
+    width: 100%;
+    min-height: 90px;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    padding: 19px 13px 15px 13px;
+    box-sizing: border-box;
+	border-radius: 5px;
+	float: right;
+}
+.paymentable {
+    clear: both;
+    width: 100%;
+    float: right;
+	margin-bottom:14px;
+	font-size:15px;
+}
+.paymentable.green_text {
+	color:#4caf50;
+}
+.paymentable_title {
+    float: right;
+}
+.paymentable_value {
+    float: left;
+}
+.account_number{
+    clear: both;
+    width: 100%;
+    float: right;
+	margin-top:6px;
+	margin-bottom:10px;
+	font-size:13px;
+}
+.account_name{
+    clear: both;
+    width: 100%;
+    float: right;
+	margin-bottom:2px;
+	font-size:13px;
+}
+
+.list_of_payments ul{height:auto !important;}
+.list_of_payments .item-content {
+    display: block;
+    width: 100%;
+    min-height: 49px;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    padding: 12px;
+    box-sizing: border-box;
+	border-radius: 5px;
+	float: right;
+}
+.list_of_payments .item-price {
+    float: right;
+}
+.list_of_payments .item-date {
+    float: left;
+}
+/*// صفحه لیست یک مجموعه //////////////////////////////////////////////////////////////////////// */
+/*// صفحه لیست یک مجموعه //////////////////////////////////////////////////////////////////////// */
+/*// صفحه لیست یک مجموعه //////////////////////////////////////////////////////////////////////// */
+.location_list ul{height:auto !important;}
+.location_list .item-content {
+    display: block;
+    width: 100%;
+    min-height: 50px;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    padding: 5px;
+    box-sizing: border-box;
+	border-radius: 5px;
+}
+.location_list .item-content {
+    border-right: 10px solid #2196f3;/*blue*/
+}
+.location_list .item-title {
+    white-space: initial !important;
+	/* font-weight:bold; */
+	margin-top: 9px;
+}
+
+/*// صفحه اطلاعات یک موقعیت //////////////////////////////////////////////////////////////////////// */
+/*// صفحه اطلاعات یک موقعیت //////////////////////////////////////////////////////////////////////// */
+/*// صفحه اطلاعات یک موقعیت //////////////////////////////////////////////////////////////////////// */
+.location_view_slider {
+    max-height: 200px;
+    background-repeat: no-repeat !important;
+    background-position: top center !important;
+    background-size: cover !important;
+}
+.location_view .swiper-container{
+	height:200px;
+}
+.location_view .box-content {
+    display: block;
+    width: 100%;
+    min-height: 50px;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    padding: 10px;
+    box-sizing: border-box;
+	border-radius: 5px;
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*// صفحه یییییییییی //////////////////////////////////////////////////////////////////////// */
+/*// صفحه یییییییییی //////////////////////////////////////////////////////////////////////// */
+/*// صفحه یییییییییی //////////////////////////////////////////////////////////////////////// */
 
 
 

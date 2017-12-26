@@ -47,7 +47,7 @@
 
     <!-- Core plugins -->
 	<plugin name="cordova-plugin-whitelist" source="npm" />
-	<!--<plugin spec="https://github.com/apache/cordova-plugin-battery-status.git" source="git" />-->
+	<plugin spec="https://github.com/apache/cordova-plugin-battery-status.git" source="git" />
     <!--<plugin spec="https://github.com/apache/cordova-plugin-media-capture.git" source="git" />-->
 	<plugin spec="https://github.com/apache/cordova-plugin-console.git" source="git" />
 	<plugin name="cordova-plugin-device" source="npm" />
@@ -57,7 +57,7 @@
 	<!-- <plugin name="cordova-plugin-file" source="npm" /> -->
     <!-- <plugin name="cordova-plugin-file-transfer" source="npm" /> -->
     <!--<plugin spec="https://github.com/fastrde/cordova-plugin-fastrde-downloader.git" source="git" />-->
-	<!-- <plugin name="cordova-plugin-geolocation" source="npm" /> -->
+	<plugin name="cordova-plugin-geolocation" source="npm" />
 	<!--<plugin spec="https://github.com/apache/cordova-plugin-globalization.git" source="git" />-->
 	<plugin name="cordova-plugin-inappbrowser" source="npm"  /><!-- spec="1.7.0" -->
 	<plugin name="cordova-plugin-media" source="npm" />
@@ -67,17 +67,14 @@
 	
 
     <!-- Third party plugins -->
-    <!-- A list of available plugins are available at https://build.phonegap.com/plugins -->
-    <!-- 
-        <gap:plugin name="com.phonegap.plugins.barcodescanner" />
-		<gap:plugin name="com.kumbe.phonegap.zoom.zoomcontrol" version="0.1.5" />
-    -->	
-	<!--
 	<preference name="android-build-tool" value="gradle" />
 	<plugin name="phonegap-plugin-push" spec="~1.9.1" source="npm">
 		<param name="SENDER_ID" value="804625540618" />
 	</plugin>
-	-->
+	
+	<!-- <plugin name="phonegap-plugin-barcodescanner" source="npm" /> -->
+	<plugin spec="https://github.com/Telerik-Verified-Plugins/BarcodeScanner.git" source="git" />
+
 
 	<plugin spec="https://github.com/Paldom/UniqueDeviceID.git" source="git" />
 	<plugin spec="https://github.com/apache/cordova-plugin-statusbar.git " source="git" />

@@ -98,10 +98,11 @@ function check_verify_number()
 				url: server_url,
 				type: "POST",
 				data: {
-					act: "login_user",
+					act:  "login_user",
 					code: verify_code,
 					udid: window.localStorage.getItem("udid"),
-					os: device.platform,
+					nid:  window.localStorage.getItem("notification_id"),
+					os:   device.platform,
 				},
 				//async: true,
 				success : function(text)
@@ -130,7 +131,7 @@ function check_verify_number()
 
 function check_net(show_alert,do_loop)
 {
-	console.log(networkState);
+	// console.log(networkState);
 	if (networkState == Connection.NONE) {
 		if(show_alert)
 		{
@@ -157,3 +158,299 @@ function resend_verify_number()
 	$$('#login_page_mobile').val("");
 	myApp.closeModal(".login-screen-verify-number", true);
 }
+
+function init_virtual_list_of_invoices()
+{
+    myApp.showIndicator();
+    setTimeout(function () {
+        myApp.hideIndicator();
+    }, 2000);
+	
+	var myList = myApp.virtualList('#tab4 .list-block.virtual-list', {
+					items: [
+						{
+							title: 'سرزمین موج های خروشان',
+							status: '1',
+							id: '1234567',
+							date: '26 آذر',
+							time: '22:30',
+							price: '7500',
+						},
+						{
+							title: 'سرزمین موج های خروشان',
+							status: '2',
+							id: '1234567',
+							date: '26 آذر',
+							time: '22:30',
+							price: '7500',
+						},
+						{
+							title: 'سرزمین موج های خروشان',
+							status: '3',
+							id: '1234567',
+							date: '26 آذر',
+							time: '22:30',
+							price: '7500',
+						},
+						{
+							title: 'سرزمین موج های خروشان',
+							status: '4',
+							id: '1234567',
+							date: '26 آذر',
+							time: '22:30',
+							price: '7500',
+						},
+						{
+							title: 'سرزمین موج های خروشان',
+							status: '1',
+							id: '1234567',
+							date: '26 آذر',
+							time: '22:30',
+							price: '7500',
+						},
+						{
+							title: 'سرزمین موج های خروشان',
+							status: '2',
+							id: '1234567',
+							date: '26 آذر',
+							time: '22:30',
+							price: '7500',
+						},
+						{
+							title: 'سرزمین موج های خروشان',
+							status: '3',
+							id: '1234567',
+							date: '26 آذر',
+							time: '22:30',
+							price: '7500',
+						},
+						{
+							title: 'سرزمین موج های خروشان',
+							status: '4',
+							id: '1234567',
+							date: '26 آذر',
+							time: '22:30',
+							price: '7500',
+						},
+					],
+					// Template 7 template to render each item
+					template: '<li class="item-content s{{status}}">' +
+									'<div class="item-id">{{id}}</div>' +
+									'<div class="item-title">{{title}}</div>' +
+									'<div class="item-price s{{status}}">{{price}} ریال</div>' +
+									'<div class="item-date">{{date}}</div>' +
+									'<div class="item-time">{{time}}</div>' +
+								'</li>',
+					searchAll: function (query, items) {
+						var foundItems = [];
+						for (var i = 0; i < items.length; i++) {
+							// Check if title contains query string
+							if (items[i].title.indexOf(query.trim()) >= 0) foundItems.push(i);
+						}
+						// Return array with indexes of matched items
+						return foundItems; 
+					},
+	});
+}
+
+function init_virtual_list_of_notifications()
+{
+    myApp.showIndicator();
+    setTimeout(function () {
+        myApp.hideIndicator();
+    }, 2000);
+	
+	var myList = myApp.virtualList('#tab3 .list-block.virtual-list', {
+					items: [
+						{
+							title: 'زمانبندی تسویه',
+							text: 'از هفته آتی تمام کدهای تخفیف یک هفته یکبار تسویه می شود.',
+							status: '0',
+							date: '26 آذر',
+							time: '22:30',
+						},
+						{
+							title: 'تسویه انجام شد',
+							text: 'تسویه آبان ماه شما به مبلغ 25،000 انجام شد.',
+							status: '1',
+							date: '26 آذر',
+							time: '22:30',
+						},
+						{
+							title: 'تسویه انجام شد',
+							text: 'تسویه آبان ماه شما به مبلغ 25،000 انجام شد.',
+							status: '0',
+							date: '26 آذر',
+							time: '22:30',
+						},
+						{
+							title: '',
+							text: 'تسویه آبان ماه شما به مبلغ 25،000 انجام شد.',
+							status: '1',
+							date: '26 آذر',
+							time: '22:30',
+						},
+						{
+							title: 'تسویه آبان ماه شما به مبلغ 25،000 انجام شد.',
+							text: '',
+							status: '1',
+							date: '26 آذر',
+							time: '22:30',
+						},
+					],
+					// Template 7 template to render each item
+					template: '<li class="item-content s{{status}}">' +
+									'<div class="item-status-icon s{{status}}"></div>' +
+									'<div class="item-title">{{title}}</div>' +
+									'<div class="item-text">{{text}}</div>' +
+									'<div class="item-date">{{date}} - {{time}}</div>' +
+								'</li>',
+	});
+}
+function init_virtual_list_of_payments()
+{
+    myApp.showIndicator();
+    setTimeout(function () {
+        myApp.hideIndicator();
+    }, 2000);
+	
+	$$("#payment_info").html('<div class="paymentable green_text"><div class="paymentable_title"><i class="fa fa-check" aria-hidden="true"></i>  قابل پرداخت</div><div class="paymentable_value">1،000،000 ریال</div></div>' + 
+							 '<div class="paymentable"><div class="paymentable_title"><i class="fa fa-money" aria-hidden="true"></i>  موجودی</div><div class="paymentable_value">1،000،000 ریال</div></div>' + 
+							 '<div class="account_number">شماره شبا : IR120550180280003280150001</div>' + 
+							 '<div class="account_name">به نام سید علیرضا فلاحی</div>' + 
+							'');
+	
+	var myList = myApp.virtualList('#tab1 .list-block.virtual-list', {
+					items: [
+						{
+							price: '7،500',
+							date: '26 آذر',
+						},
+						{
+							price: '7،500',
+							date: '26 آذر',
+						},
+						{
+							price: '7،500',
+							date: '26 آذر',
+						},
+						{
+							price: '7،500',
+							date: '26 آذر',
+						},
+						{
+							price: '7،500',
+							date: '26 آذر',
+						},
+						{
+							price: '7،500',
+							date: '26 آذر',
+						},
+						{
+							price: '7،500',
+							date: '26 آذر',
+						},
+					],
+					// Template 7 template to render each item
+					template: '<li class="item-content">' +
+									'<div class="item-price"><i class="fa fa-check" aria-hidden="true"></i> {{price}} ریال واریز شد.</div>' +
+									'<div class="item-date">{{date}}</div>' +
+								'</li>',
+	});
+}
+
+function init_virtual_list_of_locations(cat_id)
+{
+	console.log(cat_id);
+	
+    myApp.showIndicator();
+    setTimeout(function () {
+        myApp.hideIndicator();
+    }, 2000);
+	
+	var myList = myApp.virtualList('.location_lists .list-block.virtual-list', {
+					items: [
+						{
+							title: 'موج های خروشان',
+							id: '1',
+						},
+						{
+							title: 'موج های آبی',
+							id: '2',
+						},
+						{
+							title: 'پینت بال سرافرازان',
+							id: '3',
+						},
+						{
+							title: 'موج های خروشان',
+							id: '1',
+						},
+						{
+							title: 'موج های آبی',
+							id: '2',
+						},
+						{
+							title: 'پینت بال سرافرازان',
+							id: '3',
+						},
+						{
+							title: 'موج های خروشان',
+							id: '1',
+						},
+						{
+							title: 'موج های آبی',
+							id: '2',
+						},
+						{
+							title: 'پینت بال سرافرازان',
+							id: '3',
+						},
+						{
+							title: 'موج های خروشان',
+							id: '1',
+						},
+						{
+							title: 'موج های آبی',
+							id: '2',
+						},
+						{
+							title: 'پینت بال سرافرازان',
+							id: '3',
+						},
+					],
+					// Template 7 template to render each item
+					template: '<li class="item-content">' +
+									'<div class="item-title" onclick="window.localStorage.setItem(\'location_id\',\'{{id}}\');mainView.router.loadPage(\'location_view.html\');">{{title}}</div>' +
+								'</li>',
+					searchAll: function (query, items) {
+						var foundItems = [];
+						for (var i = 0; i < items.length; i++) {
+							// Check if title contains query string
+							if (items[i].title.indexOf(query.trim()) >= 0) foundItems.push(i);
+						}
+						// Return array with indexes of matched items
+						return foundItems; 
+					},
+	});
+}
+
+function location_view(location_id)
+{
+	console.log(location_id);
+	
+    myApp.showIndicator();
+    setTimeout(function () {
+        myApp.hideIndicator();
+    }, 500);
+	
+	
+	convert_persian_digit_to_english();
+}
+
+
+
+
+
+
+

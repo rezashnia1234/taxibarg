@@ -30,6 +30,15 @@ myApp.onPageInit('index', function (page) {
 myApp.onPageInit('landing', function (page) {
 	$$('#map_bg').css("height",$$('body').height() - $$('#landing_menu').height() - 50 + "px");
 });
+myApp.onPageInit('taxi_yar_home', function (page) {
+	$$('.taxi_yar_home_slider').css("height",$$('body').height() - $$('#taxi_yar_home_menu').height() - $$('#taxi_yar_home_bottom_bar').height() - $$('#taxi_yar_home_navbar').height() - 3 + "px");
+});
+myApp.onPageInit('location_list', function (page) {
+	init_virtual_list_of_locations(window.localStorage.getItem('cat_id'));
+});
+myApp.onPageInit('location_view', function (page) {
+	location_view(window.localStorage.getItem('location_id'));
+});
 myApp.init();
 
 // Show/hide preloader for remote ajax loaded pages

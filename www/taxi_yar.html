@@ -1,17 +1,17 @@
 <div data-page="taxi_yar_home" class="page tabbar-labels-fixed">
-	<div class="navbar">
+	<div class="navbar" id="taxi_yar_home_navbar">
 		<div class="navbar-inner">
 			<div class="left"><a href="landing.html" class="back link icon-only"><i class="icon icon-back"></i></a></div>
 			<div class="center ">تاکسی برگ</div>
 			<div class="right"><a href="#" class="open-panel link icon-only"><i class="icon icon-bars"></i></a></div>
 		</div>
 	</div>
-	<div class="toolbar toolbar-bottom tabbar tabbar-labels">
+	<div class="toolbar toolbar-bottom tabbar tabbar-labels" id="taxi_yar_home_bottom_bar">
 		<div class="toolbar-inner">
-			<a href="#tab1" class="tab-link"><i class="fa fa-money"></i><span class="tabbar-label">حساب</span></a>
-			<a href="#tab2" class="tab-link active"><i class="fa fa-map-marker"></i><span class="tabbar-label">اماکن</span></a>
-			<a href="#tab3" class="tab-link"><i class="fa fa-bell"></i><span>اعلان ها</span class="tabbar-label"></a>
-			<a href="#tab4" class="tab-link"><i class="fa fa-file-text-o"></i><span class="tabbar-label">فاکتورها</span></a>
+			<a href="#tab1" onclick="$$('#taxi_yar_home_navbar .center').html('پرداخت ها');$$('#taxi_yar_home_page-content').css('background-color','#eeeeee');init_virtual_list_of_payments();" class="tab-link"><i class="fa fa-money"></i><span class="tabbar-label">پرداخت ها</span></a>
+			<a href="#tab2" onclick="$$('#taxi_yar_home_navbar .center').html('تاکسی برگ');$$('#taxi_yar_home_page-content').css('background-color','#ffffff');" class="tab-link active"><i class="fa fa-map-marker"></i><span class="tabbar-label">اماکن</span></a>
+			<a href="#tab3" onclick="$$('#taxi_yar_home_navbar .center').html('اعلان ها');$$('#taxi_yar_home_page-content').css('background-color','#eeeeee');init_virtual_list_of_notifications();" class="tab-link"><i class="fa fa-bell"></i><span>اعلان ها</span class="tabbar-label"></a>
+			<a href="#tab4" onclick="$$('#taxi_yar_home_navbar .center').html('فاکتورها');$$('#taxi_yar_home_page-content').css('background-color','#eeeeee');init_virtual_list_of_invoices();" class="tab-link"><i class="fa fa-file-text-o"></i><span class="tabbar-label">فاکتورها</span></a>
 		</div>
 	</div>
 	<!--
@@ -24,41 +24,62 @@
 		</div>
 	</div>
 	-->
-	<div class="page-content">
+	<div class="page-content" id="taxi_yar_home_page-content">
 			<div class="tabs">
-				<div id="tab1" class="tab">
-					<div class="content-block">
-						<p>Tab 1</p>
+				<div id="tab1" class="tab" style="background-color:#eeeeee;">
+					<div class="content-block" >
+						<div id="payment_info"></div>
+						<div class="list-block virtual-list list_of_payments"></div>
 					</div>
 				</div>
 				<div id="tab2" class="tab active">
 					<div data-pagination=".swiper-pagination" data-paginationHide="true" class="swiper-container swiper-init ks-demo-slider">
 						<div class="swiper-pagination"></div>
 						<div class="swiper-wrapper">
-							<div class="swiper-slide">Slide 1</div>
-							<div class="swiper-slide">Slide 2</div>
-							<div class="swiper-slide">Slide 3</div>
-							<div class="swiper-slide">Slide 4</div>
-							<div class="swiper-slide">Slide 5</div>
-							<div class="swiper-slide">Slide 6</div>
-							<div class="swiper-slide">Slide 7</div>
-							<div class="swiper-slide">Slide 8</div>
-							<div class="swiper-slide">Slide 9</div>
-							<div class="swiper-slide">Slide 10</div>
+							<div class="swiper-slide taxi_yar_home_slider" style="background-image:url('img/food1.jpg');"></div>
+							<div class="swiper-slide taxi_yar_home_slider" style="background-image:url('img/food2.jpg');"></div>
+							<div class="swiper-slide taxi_yar_home_slider" style="background-image:url('img/food3.jpg');"></div>
+						</div>
+						<div class="swiper-button-prev"></div>
+						<div class="swiper-button-next"></div>
+					</div>
+						
+					<div class="taxi_yar_home_menu" id="taxi_yar_home_menu">
+						<div class="content-block2" style="float: left;width:100%;padding: 15px 15px 0 15px;box-sizing: border-box;">
+							<ul class="menu" style="background-color: #eeeeee;float: left;width:100%;border-radius: 9px 9px 0px 0;">
+								<li><a href="#" onclick="window.localStorage.setItem('cat_id','1');mainView.router.loadPage('location_list.html');" class="item-link close-panel"><i class="fa fa-cutlery"></i><span>رستوران</span></a></li>
+								<li><a href="#" onclick="window.localStorage.setItem('cat_id','2');mainView.router.loadPage('location_list.html');" class="item-link close-panel"><i class="fa fa-gamepad"></i><span>تفریحی</span></a></li>
+								<li><a href="#" onclick="window.localStorage.setItem('cat_id','3');mainView.router.loadPage('location_list.html');" class="item-link close-panel"><i class="fa fa-star"></i><span>ویژه ها</span></a></li>
+								<li><a href="#" onclick="window.localStorage.setItem('cat_id','4');mainView.router.loadPage('location_list.html');" class="item-link close-panel"><i class="fa fa-university"></i><span>فرهنگی</span></a></li>
+								<li><a href="#" onclick="window.localStorage.setItem('cat_id','5');mainView.router.loadPage('location_list.html');" class="item-link close-panel"><i class="fa fa-bed"></i><span>اقامتی</span></a></li>
+								<li><a href="#" onclick="window.localStorage.setItem('cat_id','6');mainView.router.loadPage('location_list.html');" class="item-link close-panel"><i class="fa fa-shopping-cart"></i><span>فروشگاه</span></a></li>
+							</ul>
 						</div>
 					</div>
-					<div class="content-block">
-						<p>Tab 2</p>
+				</div>
+				<div id="tab3" class="tab" style="background-color:#eeeeee;">
+					<div class="content-block" >
+						<div class="list-block virtual-list list_of_notifications"></div>
 					</div>
 				</div>
-				<div id="tab3" class="tab">
-					<div class="content-block">
-						<p>Tab 3</p>
-					</div>
-				</div>
-				<div id="tab4" class="tab">
-					<div class="content-block">
-						<p>Tab 4</p>
+				<div id="tab4" class="tab" style="background-color:#eeeeee;">
+					<form data-search-list=".search-here" data-search-in=".item-title" class="searchbar searchbar-init">
+						<div class="searchbar-input">
+							<input type="search" placeholder="جستجو..."/><a href="#" class="searchbar-clear"></a>
+						</div>
+					</form>
+					<div class="searchbar-overlay"></div>
+					<div class="content-block" >
+						<div class="list-block searchbar-not-found">
+							<ul>
+								<li class="item-content">
+									<div class="item-inner">
+										<div class="item-title">هیچ گزینه ای یافت نشد</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="list-block virtual-list search-here searchbar-found list_of_invoices"></div>
 					</div>
 				</div>
 			</div>
