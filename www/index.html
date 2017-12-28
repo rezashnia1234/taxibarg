@@ -145,7 +145,6 @@
 </div>
 
 <!-- JS link goes here -->
-<script src="phonegap.js"></script>
 <script>
 var server_url = "http://previsit.ir/api/driver/";
 function init() {
@@ -159,29 +158,28 @@ function onDeviceReady() {
 
 	register_notification();
 
-  (function(){
-  console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    start getCurrentPosition()');
-  navigator.geolocation.getCurrentPosition(onSuccess, onError);
-  //console.log("11");
-  setTimeout(arguments.callee, 10000);
-})();
+	(function(){
+		console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    start getCurrentPosition()');
+		navigator.geolocation.getCurrentPosition(onSuccess, onError);
+		//console.log("11");
+		setTimeout(arguments.callee, 10000);
+	})();
 
 
+	function onSuccess(position) {
+	  var position = {lat:  parseFloat(position.coords.latitude), lng: parseFloat(position.coords.longitude),time:new Date().getTime()/1000};
+	  window.localStorage.setItem('driver_location',JSON.stringify(position));
+	}
+	function onError(error) {
 
-function onSuccess(position) {
-  var position = {lat:  parseFloat(position.coords.latitude), lng: parseFloat(position.coords.longitude),time:new Date().getTime()/1000};
-  window.localStorage.setItem('driver_location',JSON.stringify(position));
-}
-
-function onError(error) {
-
-}
+	}
 
 
 }
 </script>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/console.log.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/console.log.js"></script>
+<script src="cordova.js"></script>
 <script type="text/javascript" src="js/framework7.min.js"></script>
 <script type="text/javascript" src="js/jquery.swipebox.js"></script>
 <!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> -->
