@@ -152,49 +152,47 @@ function init() {
 	document.addEventListener("deviceready", onDeviceReady, false);
 }
 function onDeviceReady() {
-	return false;
-	/*
-	if(window.localStorage.getItem('uuid') == null)
+	if(window.localStorage.getItem('udid') == null)
 		window.plugins.uniqueDeviceID.get(uniqueDeviceIDsuccess_index, uniqueDeviceIDfail_index);
-	function uniqueDeviceIDsuccess_index(uuid){window.localStorage.setItem('uuid',uuid);};
-	function uniqueDeviceIDfail_index(uuid){};
+	function uniqueDeviceIDsuccess_index(udid){window.localStorage.setItem('udid',udid);};
+	function uniqueDeviceIDfail_index(udid){};
 
 	register_notification();
 
-	  (function(){
-	  console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    start getCurrentPosition()');
-	  navigator.geolocation.getCurrentPosition(onSuccess, onError);
-	  //console.log("11");
-	  setTimeout(arguments.callee, 10000);
-	})();
+  (function(){
+  console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    start getCurrentPosition()');
+  navigator.geolocation.getCurrentPosition(onSuccess, onError);
+  //console.log("11");
+  setTimeout(arguments.callee, 10000);
+})();
 
 
 
-	function onSuccess(position) {
-	  var position = {lat:  parseFloat(position.coords.latitude), lng: parseFloat(position.coords.longitude),time:new Date().getTime()/1000};
-	  window.localStorage.setItem('driver_location',JSON.stringify(position));
-	}
+function onSuccess(position) {
+  var position = {lat:  parseFloat(position.coords.latitude), lng: parseFloat(position.coords.longitude),time:new Date().getTime()/1000};
+  window.localStorage.setItem('driver_location',JSON.stringify(position));
+}
 
-	function onError(error) {
+function onError(error) {
 
-	}
+}
 
-	*/
+
 }
 </script>
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/console.log.js"></script>
-<!-- <script type="text/javascript" src="js/framework7.min.js"></script> -->
-<!-- <script type="text/javascript" src="js/jquery.swipebox.js"></script> -->
+<script type="text/javascript" src="js/framework7.min.js"></script>
+<script type="text/javascript" src="js/jquery.swipebox.js"></script>
 <!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> -->
 <!-- <script type="text/javascript" src="https://www.google.com/jsapi"></script> -->
-<!-- <script type="text/javascript" src="js/masonry.pkgd.min.js"></script> -->
-<!-- <script type="text/javascript" src="contactform/validator.js"></script> -->
-<!-- <!-- <script type="text/javascript" src="contactform/contact.js"></script> --> -->
-<!-- <script type="text/javascript" src="js/persian_number_to_english.js"></script> -->
-<!-- <script type="text/javascript" src="js/custom.js"></script> -->
-<!-- <script type="text/javascript" src="js/maxframes.js"></script> -->
-<!-- <script type="text/javascript" src="js/persian-date.min.js"></script> -->
+<script type="text/javascript" src="js/masonry.pkgd.min.js"></script>
+<script type="text/javascript" src="contactform/validator.js"></script>
+<script type="text/javascript" src="contactform/contact.js"></script>
+<script type="text/javascript" src="js/persian_number_to_english.js"></script>
+<script type="text/javascript" src="js/custom.js"></script>
+<script type="text/javascript" src="js/maxframes.js"></script>
+<script type="text/javascript" src="js/persian-date.min.js"></script>
 
 </body>
 </html>
