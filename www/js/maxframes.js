@@ -9,7 +9,8 @@ var myApp = new Framework7({
 	swipeBackPage: true,
 	pushState: true,
 	template7Pages: true,
-	init: false
+	init: false,
+	statusbarOverlay: false
 });
 
 // Expose Internal DOM library

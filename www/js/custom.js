@@ -1,9 +1,9 @@
-setTimeout(function(){
-	if(navigator.connection.type)
+	// if(navigator.connection.type)
 		networkState = navigator.connection.type;
-	else
-		networkState = navigator.connection.effectiveType;
-
+	// else
+		// networkState = navigator.connection.effectiveType;
+/*
+setTimeout(function(){
 	if(!window.cordova)
 	{
 		Connection = {};
@@ -23,7 +23,7 @@ setTimeout(function(){
 		//document.querySelector('#myNavigator').pushPage('zaer_service_I_Lost_Something.html', {animation: "none"});
 	}
 }, 500);
-
+*/
 
 $( document ).ready(function(){
 
