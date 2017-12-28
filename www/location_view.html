@@ -3,51 +3,55 @@
 		<div class="navbar-inner">
 			<div class="left"><a href="location_list.html" class="back link icon-only"><i class="icon icon-back"></i></a></div>
 			<div class="center ">مشاهده اطلاعات</div>
-			<div class="right"><a href="#" class="open-panel link icon-only"><i class="fa fa-bars"></i></a></div>
+			<div class="right"><a href="#" class="open-panel link icon-only"><i class="fa fa-bars"></i></a>
+			</div>
 		</div>
 	</div>
 
 	<div class="page-content location_view" >
 		<div data-pagination=".swiper-pagination" data-paginationHide="true" class="swiper-container swiper-init ks-demo-slider">
 			<div class="swiper-pagination"></div>
-			<div class="swiper-wrapper">
-				<div class="swiper-slide location_view_slider" style="background-image:url('img/food1.jpg');"></div>
-				<div class="swiper-slide location_view_slider" style="background-image:url('img/food2.jpg');"></div>
-				<div class="swiper-slide location_view_slider" style="background-image:url('img/food3.jpg');"></div>
+			<div class="swiper-wrapper" id="slideshow-container">
 			</div>
 			<div class="swiper-button-prev"></div>
 			<div class="swiper-button-next"></div>
 		</div>
 		<div class="content-block">
+
+			<div class="box-content">
+				<span>ساعت شروع کار:</span><span class="pull-left" id="daily-on-time"></span>
+				<br>
+				<br>
+				<span>ساعت پایان کار:</span><span class="pull-left" id="daily-off-time"></span>
+			</div>
+			<a href="#" class="button button-raised button-fill color-blue" style="width:100%;display:inline-block;margin-bottom:5px" onclick="navigateToLocation();">ناوبری تا محل</a>
 			<div class="box-content" style="text-align:justify;">
-				<h3 style="margin-bottom:5px;;">سرزمین موجب های خروشان</h3>
-				سرزمین موج های خروشان بزرگ ترین مجموعه آبی سرپوشیده در جهان در مساحتی بالغ بر 60,000 متر مربع در یکی از بهترین و استراتژیک ترین مراکز تفریحی و گردشگری ایران واقع در مشهد - کیلومتر 2 جاده شاندیز قرار گرفته و به عنوان نگین گردشگری مشهد شناخته می شود.
-				<br/>
-				این مجموعه تنها پارک آبی در ایران بوده که توانایی پذیرایی همزمان از بانوان و آقایان گرامی را داراست.
-				<br/>
-				در حال حاضر بیش از 63 سرسره مدرن و هیجان انگیز با به روزترین نقشه ها و طرح های جهانی در مجموعه نصب می باشد. 11,000 کمد تک آماده تجربه لذت روزی فراموش نشدنی را برای آقایان و 7,000 کمد تک مجزا آماده پذیرایی از بانوان گرامی بصورت همزمان می باشد.
-				<br/>
-				ارتفاع سقف هر کدام از پارک های آبی آقایان و بانوان 40 متر بوده و هر کدام از پارک ها دارای سرسره های سقوط آزاد و سرعتی متعددی می باشند که شما می توانید برای اولین بار در ایران تجربه ی هیجان و سقوطی متفاوت از ارتفاعی منحصربفرد را داشته باشید.
-				<br/>
-				همچنین بازی بسیار مهیج زیپ لاین به عنوان اولین زیپ لاین سرپوشیده در جهان ، لیزرتگ (جنگ لیزری) ، فیش اسپا (دکتر ماهی) و سالن بسیار لوکس و مجهز ایروبیک بانوان از جاذبه های بی همتای این مجموعه عظیم می باشد.
+				<h3 style="margin-bottom:5px;;" id="location-name"></h3><br>
+				<div id="location-description">
+				</div>
 			</div>
-			<div class="box-content">
-				<input id="mobile" type="text" name="mobile" style="padding:10px;width:50%;display:inline-block;position:  relative;height:  36px;box-sizing:  border-box;" pattern="\d*" class="form-control" placeholder="تلفن همراه مسافر" >
-				<a href="#" class="button button-raised button-fill color-green" style="float: left;overflow:initial;width:40%;display:inline-block;">ارسال کد تخفیف</a>
+
+			<div class="box-content" id="entry_form_1">
+				<input id="passenger_phone_number" type="text" name="mobile" style="padding:10px;width:50%;display:inline-block;position:  relative;height:  36px;box-sizing:  border-box;" pattern="\d*" class="form-control" placeholder="تلفن همراه مسافر" >
+				<a href="#" class="button button-raised button-fill color-green" style="float: left;overflow:initial;width:40%;display:inline-block;" onclick="issueDiscountCode();">ارسال کد تخفیف</a>
 			</div>
-			<div class="box-content">
+			<div class="box-content" id="entry_form_2">
 				<select id="person_count" name="person_count" style="width:50%;display:inline-block;position:  relative;height:  36px;box-sizing:  border-box;" class="form-control" placeholder="تعداد مسافرها">
 					<option value="1">1 نفر</option>
 					<option value="2">2 نفر</option>
 					<option value="3">3 نفر</option>
 					<option value="4">4 نفر</option>
 					<option value="5">5 نفر</option>
+					<option value="6">6 نفر</option>
+					<option value="7">7 نفر</option>
+					<option value="8">8 نفر</option>
+					<option value="9">9 نفر</option>
 				</select>
-				<a href="#" class="button button-raised button-fill color-green" style="float: left;overflow:initial;width:40%;display:inline-block;">ثبت ورود مسافر</a>
+				<a href="#" class="button button-raised button-fill color-green" style="float: left;overflow:initial;width:40%;display:inline-block;" onclick="submitarrival()">ثبت ورود مسافر</a>
 			</div>
 			<div class="box-content">
 				<h3 style="margin-bottom:5px;;">الگوی محاسبه مالی</h3>
-				به ازای هر نفر 10 هزارتومان
+				<span id="price-mode-details"></span>
 			</div>
 		</div>
 	</div>

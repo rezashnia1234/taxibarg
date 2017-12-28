@@ -3,7 +3,7 @@ var myApp = new Framework7({
 	modalTitle: "Maxsolfoo",
 	// Enable Material theme
 	material: true,
-	
+
 	animateNavBackIcon: true,
 	precompileTemplates: true,
 	swipeBackPage: true,
@@ -30,7 +30,40 @@ myApp.onPageInit('index', function (page) {
 myApp.onPageInit('landing', function (page) {
 	$$('#map_bg').css("height",$$('body').height() - $$('#landing_menu').height() - 50 + "px");
 });
-myApp.onPageInit('taxi_yar_home', function (page) {
+myApp.onPageInit('taxi_yar_home', function (page)
+{
+	function shuffle(a)
+	{
+	  var j, x, i;
+    for (i = a.length - 1; i > 0; i--)
+		{
+      j = Math.floor(Math.random() * (i + 1));
+      x = a[i];
+      a[i] = a[j];
+      a[j] = x;
+    }
+	}
+	var app_data = JSON.parse(window.localStorage.getItem('app_data'));
+	var medias = [];
+	for(var i=0;i<app_data.providers.length;i++)
+	{
+		for(var j=0;j<app_data.providers[i].medias.length;j++)
+		{
+			medias.push(app_data.providers[i].medias[j]);
+		}
+	}
+	shuffle(medias);
+	var count = Math.min(5,medias.length);
+	for(var i=0;i<count;i++)
+	{
+		$$('#slideshow-container').append('<div class="swiper-slide taxi_yar_home_slider" style="background-image:url(\''+medias[i]+'\');"></div>');
+	}
+	var mySwiper = myApp.swiper('.swiper-container', {
+		speed: 400,
+		spaceBetween: 100,
+		pagination:'.swiper-pagination'
+	});
+
 	$$('.taxi_yar_home_slider').css("height",$$('body').height() - $$('#taxi_yar_home_menu').height() - $$('#taxi_yar_home_bottom_bar').height() - $$('#taxi_yar_home_navbar').height() - 3 + "px");
 });
 myApp.onPageInit('location_list', function (page) {
@@ -38,6 +71,28 @@ myApp.onPageInit('location_list', function (page) {
 });
 myApp.onPageInit('location_view', function (page) {
 	location_view(window.localStorage.getItem('location_id'));
+
+	var app_data = JSON.parse(window.localStorage.getItem('app_data'));
+	var medias = [];
+	for(var i=0;i<app_data.providers.length;i++)
+	{
+		for(var j=0;j<app_data.providers[i].medias.length;j++)
+		{
+			medias.push(app_data.providers[i].medias[j]);
+		}
+	}
+	var count = Math.min(5,medias.length);
+	for(var i=0;i<count;i++)
+	{
+		$$('#slideshow-container').append('<div class="swiper-slide location_view_slider" style="background-image:url(\''+medias[i]+'\');"></div>');
+	}
+	var mySwiper = myApp.swiper('.swiper-container', {
+		speed: 400,
+		spaceBetween: 100,
+		pagination:'.swiper-pagination'
+	});
+	
+
 });
 myApp.init();
 
@@ -51,11 +106,7 @@ $$(document).on('ajaxComplete', function () {
 });
 
 
-var mySwiper = myApp.swiper('.swiper-container', {
-	speed: 400,
-	spaceBetween: 100,
-	pagination:'.swiper-pagination'
-});
+
 
 
 /* ===== Swipe to delete events callback demo ===== */
@@ -124,16 +175,16 @@ myApp.onPageInit('swipe-delete modals media-lists', function (page) {
 		// We need to pass additional target parameter (this) for popover
 		myApp.actions(this, actionSheetButtons);
 	});
-	
+
 });
-		
+
 /* ===== Swipebox Gallery Page ===== */
-		
+
 myApp.onPageInit('gallery', function (page) {
 		$('.swipebox' ).swipebox();
 });
-		
-		
+
+
 /* ===== Messages Page ===== */
 myApp.onPageInit('messages', function (page) {
 
@@ -161,7 +212,7 @@ myApp.onPageInit('messages', function (page) {
 			name: 'Stereo Doe',
 			avatar: 'img/pic1.png'
 		},
-		
+
 	];
 	var answerTimeout, isFocused;
 
@@ -170,7 +221,7 @@ myApp.onPageInit('messages', function (page) {
 
 	// Initialize Messagebar
 	var myMessagebar = myApp.messagebar('.messagebar');
-	
+
 	$$('.messagebar a.send-message').on('touchstart mousedown', function () {
 		isFocused = document.activeElement && document.activeElement === myMessagebar.textarea[0];
 	});
@@ -258,14 +309,14 @@ myApp.onPageInit('color-themes', function (page) {
 		for (var i = 0; i < classList.length; i++) {
 			if (classList[i].indexOf('layout-') === 0) classList.remove(classList[i]);
 		}
-		classList.add('layout-' + $$(this).attr('data-theme')); 
+		classList.add('layout-' + $$(this).attr('data-theme'));
 	});
 });
 
 /* ===== contact us  ===== */
 myApp.onPageInit('contactus', function (page) {
-	
-	
+
+
 	$(function () {
 
 	$('#contact-form').validator();
@@ -279,7 +330,7 @@ myApp.onPageInit('contactus', function (page) {
 				url: url,
 				data: $(this).serialize(),
 				success: function (data)
-				{				  
+				{
 					var messageAlert = 'alert-' + data.type;
 					var messageText = data.message;
 
@@ -295,8 +346,8 @@ myApp.onPageInit('contactus', function (page) {
 		}
 	})
 });
-  
-	
+
+
 });
 /* ===== Calendar ===== */
 myApp.onPageInit('register', function (page) {
@@ -309,7 +360,7 @@ myApp.onPageInit('register', function (page) {
 		input: '#ks-calendar-date-format2',
 		dateFormat: 'DD, MM dd, yyyy'
 	});
-});	
+});
 myApp.onPageInit('calendar todo', function (page) {
 	// Default
 	var calendarDefault = myApp.calendar({
@@ -334,7 +385,7 @@ myApp.onPageInit('calendar todo', function (page) {
 		weekHeader: false,
 		header: false,
 		footer: false,
-		toolbarTemplate: 
+		toolbarTemplate:
 			'<div class="toolbar calendar-custom-toolbar">' +
 				'<div class="toolbar-inner">' +
 					'<div class="left">' +
@@ -425,7 +476,7 @@ myApp.onPageInit('pickers', function (page) {
 	var pickerCustomToolbar = myApp.picker({
 		input: '#ks-picker-custom-toolbar',
 		rotateEffect: true,
-		toolbarTemplate: 
+		toolbarTemplate:
 			'<div class="toolbar">' +
 				'<div class="toolbar-inner">' +
 					'<div class="left">' +
@@ -458,7 +509,7 @@ myApp.onPageInit('pickers', function (page) {
 
 				var col2Values = picker.cols[2].values;
 				var col2Random = col2Values[Math.floor(Math.random() * col2Values.length)];
-				
+
 				picker.setValue([col0Random, col1Random, col2Random]);
 			});
 		}
@@ -567,14 +618,14 @@ myApp.onPageInit('dashboard', function (page) {
 		};
 
 		var chart = new google.visualization.Histogram(document.getElementById('chart_div'));
-		
-		  
+
+
 		chart.draw(data, options);
-		  
+
 		   var data = google.visualization.arrayToDataTable([
 		  ['Task', 'Hours per Day'],
 		  ['Work',	 11],
-		  ['Eat',	  2],			   
+		  ['Eat',	  2],
 		  ['Sleep',	7]
 		]);
 
@@ -584,8 +635,8 @@ myApp.onPageInit('dashboard', function (page) {
 
 		var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
 		chart.draw(data, options);
-		  
-		  
+
+
 	  }
 });
 
@@ -596,7 +647,7 @@ myApp.onPageInit('masonry', function (page) {
 		  itemSelector: '.grid-item'
 		});
 	});
-		
+
 	$('.swipebox' ).swipebox();
 	 $(".galleryone").click(function(){
 		$(".grid").addClass("one");
@@ -605,7 +656,7 @@ myApp.onPageInit('masonry', function (page) {
 		  itemSelector: '.grid-item'
 		});
 	});
-	
+
 	$(".gallerytwo").click(function(){
 		$(".grid").addClass("two");
 		$(".grid").removeClass("one  three");
@@ -613,7 +664,7 @@ myApp.onPageInit('masonry', function (page) {
 		  itemSelector: '.grid-item'
 		});
 	});
-	
+
 	$(".gallerythree").click(function(){
 		$(".grid").addClass("three");
 		$(".grid").removeClass("two one");
@@ -621,7 +672,7 @@ myApp.onPageInit('masonry', function (page) {
 		  itemSelector: '.grid-item'
 		});
 	});
-	
+
 });
 
 /*
@@ -629,13 +680,13 @@ google.charts.load('current', {'packages':['corechart','geochart','bar','table']
 
 myApp.onPageInit('chart', function (page) {
 	// Load the Visualization API and the corechart package.
-	 
+
 
 	$(document).ready( function(){
 			  google.charts.setOnLoadCallback(drawChart);
 					function drawChart() {
-						
-						// Donut chart 
+
+						// Donut chart
 						var data = google.visualization.arrayToDataTable([
 						  ['Task', 'Hours per Day'],
 						  ['Work',	 11],
@@ -652,7 +703,7 @@ myApp.onPageInit('chart', function (page) {
 
 					  var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
 					  chart.draw(data, options);
-								 
+
 					 // Pie chart //
 					  var data2 = google.visualization.arrayToDataTable([
 						['Task', 'Hours per Day'],
@@ -669,11 +720,11 @@ myApp.onPageInit('chart', function (page) {
 					  var chart2 = new google.visualization.PieChart(document.getElementById('piechart'));
 
 					  chart2.draw(data2, options2);
-					
-						  
-					  
-						
-						// bar chart //					  
+
+
+
+
+						// bar chart //
 						var data3 = google.visualization.arrayToDataTable([
 						  ['Year', 'Sales', 'Expenses', 'Profit'],
 						  ['2014', 1000, 400, 200],
@@ -690,9 +741,9 @@ myApp.onPageInit('chart', function (page) {
 						};
 						var chart3 = new google.charts.Bar(document.getElementById('columnchart_material'));
 						chart3.draw(data3, options3);
-	  
-						
-						
+
+
+
 						// tabel chart //
 						var data4 = new google.visualization.DataTable();
 						data4.addColumn('string', 'Name');
@@ -708,11 +759,11 @@ myApp.onPageInit('chart', function (page) {
 						var table = new google.visualization.Table(document.getElementById('table_div'));
 
 						table.draw(data4, {showRowNumber: true, width: '100%', height: '100%'});
-						
-						
-						
+
+
+
 						// Area chart //
-					  
+
 						var data5 = google.visualization.arrayToDataTable([
 						  ['Year', 'Sales', 'Expenses'],
 						  ['2013',  1000,	  400],
@@ -729,12 +780,12 @@ myApp.onPageInit('chart', function (page) {
 
 						var chart5 = new google.visualization.AreaChart(document.getElementById('areachart_div'));
 						chart5.draw(data5, options5);
-					  
-					
-					
+
+
+
 				};
-					
-			
+
+
 
 			  google.charts.setOnLoadCallback(drawRegionsMap);
 
@@ -757,15 +808,15 @@ myApp.onPageInit('chart', function (page) {
 
 				chart.draw(data, options);
 			  }
-  
-	
-	
-	
-	
+
+
+
+
+
 		});
-	
-	
-	
+
+
+
 });
 */
 

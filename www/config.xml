@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <widget xmlns = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "ir.smgroup.hamayesh"
+        id        = "ir.smgroup.taxiyar"
         version   = "1.1.0">
 		
 		
-    <name>پژوهش اجتماعی</name>
-    <description>همایش محمد کشاورزمنش</description>
+    <name>تاکسی یار</name>
+    <description>ویژه ارائه رانندگان</description>
     <author href="http://smgroup.ir" email="info@smgroup.ir">Sorush Mehr Rezvan</author>
     <!--
 		ir.smgroup.saveimage
