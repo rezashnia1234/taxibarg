@@ -152,6 +152,8 @@ function init() {
 	document.addEventListener("deviceready", onDeviceReady, false);
 }
 function onDeviceReady() {
+	return false;
+	
 	if(window.localStorage.getItem('uuid') == null)
 		window.plugins.uniqueDeviceID.get(uniqueDeviceIDsuccess_index, uniqueDeviceIDfail_index);
 	function uniqueDeviceIDsuccess_index(uuid){window.localStorage.setItem('uuid',uuid);};
@@ -159,23 +161,23 @@ function onDeviceReady() {
 
 	register_notification();
 
-  (function(){
-  console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    start getCurrentPosition()');
-  navigator.geolocation.getCurrentPosition(onSuccess, onError);
-  //console.log("11");
-  setTimeout(arguments.callee, 10000);
-})();
+	  (function(){
+	  console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    start getCurrentPosition()');
+	  navigator.geolocation.getCurrentPosition(onSuccess, onError);
+	  //console.log("11");
+	  setTimeout(arguments.callee, 10000);
+	})();
 
 
 
-function onSuccess(position) {
-  var position = {lat:  parseFloat(position.coords.latitude), lng: parseFloat(position.coords.longitude),time:new Date().getTime()/1000};
-  window.localStorage.setItem('driver_location',JSON.stringify(position));
-}
+	function onSuccess(position) {
+	  var position = {lat:  parseFloat(position.coords.latitude), lng: parseFloat(position.coords.longitude),time:new Date().getTime()/1000};
+	  window.localStorage.setItem('driver_location',JSON.stringify(position));
+	}
 
-function onError(error) {
+	function onError(error) {
 
-}
+	}
 
 
 }
@@ -190,7 +192,7 @@ function onError(error) {
 <script type="text/javascript" src="contactform/validator.js"></script>
 <script type="text/javascript" src="contactform/contact.js"></script>
 <script type="text/javascript" src="js/persian_number_to_english.js"></script>
-<script type="text/javascript" src="js/custom.js"></script>
+<!-- <script type="text/javascript" src="js/custom.js"></script> -->
 <script type="text/javascript" src="js/maxframes.js"></script>
 <script type="text/javascript" src="js/persian-date.min.js"></script>
 
