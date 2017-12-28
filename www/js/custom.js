@@ -1,4 +1,4 @@
-// setTimeout(function(){
+setTimeout(function(){
 	if(navigator.connection.type)
 		networkState = navigator.connection.type;
 	else
@@ -22,7 +22,7 @@
 		device.platform = "iOS";
 		//document.querySelector('#myNavigator').pushPage('zaer_service_I_Lost_Something.html', {animation: "none"});
 	}
-// }, 500);
+}, 500);
 
 
 $( document ).ready(function(){
