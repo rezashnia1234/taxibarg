@@ -23,10 +23,10 @@ var mainView = myApp.addView('.view-main', {
 
 
 myApp.onPageInit('index', function (page) {
-	if(check_net(true,false))
+	/*if(check_net(true,false))
 	{
 		check_net_home_page();
-	}
+	}*/
 });
 myApp.onPageInit('landing', function (page) {
 	$$('#map_bg').css("height",$$('body').height() - $$('#landing_menu').height() - 50 + "px");

@@ -1,9 +1,10 @@
-	// if(navigator.connection.type)
+var client_version = 0.9;
+/*// setTimeout(function(){
+	if(navigator.connection.type)
 		networkState = navigator.connection.type;
-	// else
-		// networkState = navigator.connection.effectiveType;
-/*
-setTimeout(function(){
+	else
+		networkState = navigator.connection.effectiveType;
+
 	if(!window.cordova)
 	{
 		Connection = {};
@@ -22,8 +23,8 @@ setTimeout(function(){
 		device.platform = "iOS";
 		//document.querySelector('#myNavigator').pushPage('zaer_service_I_Lost_Something.html', {animation: "none"});
 	}
-}, 500);
-*/
+// }, 500);*/
+
 
 $( document ).ready(function(){
 
@@ -68,12 +69,7 @@ function check_mobile_number()
 		$.ajax({
 				url: server_url+'authwithphonenumber',
 				type: "POST",
-				headers:
-				{
-					'Content-Type': 'application/json',
-				},
 				data: JSON.stringify({ "phone_number":mobile_number }),
-
 				success : function(text)
 				{
 					myApp.hideIndicator();
@@ -110,10 +106,6 @@ function check_verify_number()
 		$.ajax({
 				url: server_url+'confirmphone',
 				type: "POST",
-				headers:
-				{
-					'Content-Type': 'application/json',
-				},
 				data: JSON.stringify
 				({
 					"phone_number":window.localStorage.getItem("driver_phone_number"),
@@ -150,13 +142,11 @@ function login_and_get_data()
 	$.ajax({
 			url: server_url+'loginwithauthtoken',
 			type: "POST",
-			headers:
-			{
-				'Content-Type': 'application/json',
-			},
 			data: JSON.stringify
 			({
-				"auth_token":window.localStorage.getItem("auth_token")
+				"auth_token":window.localStorage.getItem("auth_token"),
+				"client_version":client_version,
+				"os":device.platform
 			}),
 			//async: true,
 			success : function(text)
@@ -174,8 +164,18 @@ function login_and_get_data()
 				}
 				else
 				{
-					myApp.popup(".login-screen", true, true);
-					convert_persian_digit_to_english();
+					if(text.data.message != undefined)
+					{
+						$$('#force-update-message').text(text.data.message);
+						myApp.popup(".force-update-popup", true, true);
+						window.sessionStorage.setItem('update_url',text.data.update_url);
+					}
+					else
+					{
+						myApp.popup(".login-screen", true, true);
+						convert_persian_digit_to_english();
+					}
+
 				}
 			},
 			error: function(jqXHR, exception) {
@@ -224,11 +224,10 @@ function init_virtual_list_of_invoices()
 	$.ajax({
 			url: server_url+'getinvoicehistory',
 			type: "POST",
-			headers:
-			{
-				'Content-Type': 'application/json',
-				'access-token': window.sessionStorage.getItem('access_token')
-			},
+			data: JSON.stringify
+			({
+					'access-token': window.sessionStorage.getItem('access_token')
+			}),
 			//async: true,
 			success : function(text)
 			{
@@ -288,77 +287,6 @@ function init_virtual_list_of_invoices()
 				myApp.alert('در پروسه اتصال به سرور مشکلی به وجود آماده است ، لطفا وضعیت اینترنت را بررسی نمایید.','توجه', function () {});
 			},
 	});
-
-	/*var myList = myApp.virtualList('#tab4 .list-block.virtual-list', {
-					items: [
-						{
-							title: 'سرزمین موج های خروشان',
-							status: '1',
-							id: '1234567',
-							date: '26 آذر',
-							time: '22:30',
-							price: '7500',
-						},
-						{
-							title: 'سرزمین موج های خروشان',
-							status: '2',
-							id: '1234567',
-							date: '26 آذر',
-							time: '22:30',
-							price: '7500',
-						},
-						{
-							title: 'سرزمین موج های خروشان',
-							status: '3',
-							id: '1234567',
-							date: '26 آذر',
-							time: '22:30',
-							price: '7500',
-						},
-						{
-							title: 'سرزمین موج های خروشان',
-							status: '4',
-							id: '1234567',
-							date: '26 آذر',
-							time: '22:30',
-							price: '7500',
-						},
-						{
-							title: 'سرزمین موج های خروشان',
-							status: '1',
-							id: '1234567',
-							date: '26 آذر',
-							time: '22:30',
-							price: '7500',
-						},
-						{
-							title: 'سرزمین موج های خروشان',
-							status: '2',
-							id: '1234567',
-							date: '26 آذر',
-							time: '22:30',
-							price: '7500',
-						},
-						{
-							title: 'سرزمین موج های خروشان',
-							status: '3',
-							id: '1234567',
-							date: '26 آذر',
-							time: '22:30',
-							price: '7500',
-						},
-						{
-							title: 'سرزمین موج های خروشان',
-							status: '4',
-							id: '1234567',
-							date: '26 آذر',
-							time: '22:30',
-							price: '7500',
-						},
-					],
-					// Template 7 template to render each item
-
-	});*/
 }
 
 function init_virtual_list_of_notifications()
@@ -367,11 +295,10 @@ function init_virtual_list_of_notifications()
 	$.ajax({
 			url: server_url+'getnotifications',
 			type: "POST",
-			headers:
-			{
-				'Content-Type': 'application/json',
-				'access-token': window.sessionStorage.getItem('access_token')
-			},
+			data: JSON.stringify
+			({
+					'access-token': window.sessionStorage.getItem('access_token')
+			}),
 			//async: true,
 			success : function(text)
 			{
@@ -437,11 +364,10 @@ function init_virtual_list_of_payments()
 	$.ajax({
 			url: server_url+'getpaymentshistory',
 			type: "POST",
-			headers:
-			{
-				'Content-Type': 'application/json',
-				'access-token': window.sessionStorage.getItem('access_token')
-			},
+			data: JSON.stringify
+			({
+					'access-token': window.sessionStorage.getItem('access_token')
+			}),
 			//async: true,
 			success : function(text)
 			{
@@ -570,15 +496,11 @@ function issueDiscountCode()
 		$.ajax({
 				url: server_url+'issuediscountcode',
 				type: "POST",
-				headers:
-				{
-					'Content-Type': 'application/json',
-					'access-token': window.sessionStorage.getItem('access_token')
-				},
 				data: JSON.stringify
 				({
 					"client_phone_number":mobile_number,
 					"provider_id":window.localStorage.getItem('location_id'),
+					'access-token': window.sessionStorage.getItem('access_token')
 				}),
 				//async: true,
 				success : function(text)
@@ -646,15 +568,11 @@ function submitarrival()
 	$.ajax({
 			url: server_url+'submitarrival',
 			type: "POST",
-			headers:
-			{
-				'Content-Type': 'application/json',
-				'access-token': window.sessionStorage.getItem('access_token')
-			},
 			data: JSON.stringify
 			({
 				"number_of_persons":val,
 				"provider_id":window.localStorage.getItem('location_id'),
+				'access-token': window.sessionStorage.getItem('access_token')
 			}),
 			//async: true,
 			success : function(text)
@@ -686,4 +604,8 @@ function navigateToLocation()
 	var provider = providers.filter(filter_func)[0];
 	var url = 'https://www.google.com/maps/dir/Current+Location/'+provider.lat.toString()+','+provider.lng.toString();
 	window.open(url, '_system', 'location=yes');
+}
+function goToUpdate()
+{
+	window.open(window.sessionStorage.getItem('update_url'),'_system');
 }

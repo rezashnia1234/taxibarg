@@ -1,5 +1,5 @@
 if(true)
-{
+{ 
 	is_document_ready = false;
 	var originallog		= console.log;
 	var originalwarn	= console.warn;

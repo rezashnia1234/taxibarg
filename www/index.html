@@ -52,8 +52,8 @@
           <div stype="text-align:center">
             <img id="sidebar-driver-profile-pic" src="" style="display:block;margin:0 auto;whith:100px;height:100px;border-radius:50%">
           </div>
-          <div style="color:white;text-align:center;margin-top:15px;margin-bottom:10px;" id="sidebar-driver-name">محمد گوشه گیر</div>
-          <div style="color:white;text-align:center" id="sidebar-driver-car">پراید نوک مدادی - ایران11 22 ه 234</div>
+          <div style="color:white;text-align:center;margin-top:15px;margin-bottom:10px;" id="sidebar-driver-name"></div>
+          <div style="color:white;text-align:center" id="sidebar-driver-car"></div>
           <hr>
           <ul class="menu">
 				<li><a href="map.html" class="item-link close-panel"><i class="fa fa-map"></i><span>نقشه</span></a></li>
@@ -144,27 +144,55 @@
   </div>
 </div>
 
+<div class="popup force-update-popup">
+  <div class="view">
+    <div class="page">
+      <div class="page-content login-screen-content gradient">
+        <div class="login-screen-title" style="margin-top: 70px;">
+          <div class="logo main col12"> <img src="img/logo_2.png" alt=""> </div>
+        </div>
+        <form style="margin-top: 50px;">
+          <div class="list-block inputs-list">
+            <h4 style="text-align:center;color:white" id="force-update-message"></h4>
+          </div>
+          <div class="content-block"><a href="#" onclick="goToUpdate();" class="button button-big button-raised">به روز رسانی</a></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- JS link goes here -->
+
 <script>
 var server_url = "http://previsit.ir/api/driver/";
+var networkState;
+
 function init() {
 	document.addEventListener("deviceready", onDeviceReady, false);
 }
 function onDeviceReady() {
+	console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    start onDeviceReady()');
+
+	if(navigator.connection.type)
+		networkState = navigator.connection.type;
+	else
+		networkState = navigator.connection.effectiveType;
+
 	if(window.localStorage.getItem('udid') == null)
 		window.plugins.uniqueDeviceID.get(uniqueDeviceIDsuccess_index, uniqueDeviceIDfail_index);
 	function uniqueDeviceIDsuccess_index(udid){window.localStorage.setItem('udid',udid);};
 	function uniqueDeviceIDfail_index(udid){};
 
 	register_notification();
-
+	/*
+	*/
 	(function(){
 		console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    start getCurrentPosition()');
 		navigator.geolocation.getCurrentPosition(onSuccess, onError);
 		//console.log("11");
 		setTimeout(arguments.callee, 10000);
 	})();
-
 
 	function onSuccess(position) {
 	  var position = {lat:  parseFloat(position.coords.latitude), lng: parseFloat(position.coords.longitude),time:new Date().getTime()/1000};
@@ -174,19 +202,53 @@ function onDeviceReady() {
 
 	}
 
-
+	setTimeout(function(){
+		if(check_net(true,false))
+			check_net_home_page();
+	}, 500);
+	//myApp.init();
 }
+setTimeout(function(){
+	if(!window.cordova)
+	{
+		if(navigator.connection.type)
+			networkState = navigator.connection.type;
+		else
+			networkState = navigator.connection.effectiveType;
+
+		Connection = {};
+		Connection.NONE = "0000";
+		// Connection.NONE = "4g";
+		setTimeout(function(){
+			if(window.localStorage.getItem("udid")==null)
+				window.localStorage.setItem("udid","test");
+		}, 1500);
+
+		setTimeout(function(){
+			if(window.localStorage.getItem("notification_id")==null)
+				window.localStorage.setItem("notification_id","test");
+		}, 1500);
+		device = {};
+		device.platform = "iOS";
+		//document.querySelector('#myNavigator').pushPage('zaer_service_I_Lost_Something.html', {animation: "none"});
+
+		//myApp.init();
+		if(check_net(true,false))
+			check_net_home_page();
+	}
+}, 2500);
 </script>
 <script src="js/jquery.min.js"></script>
-<script src="js/console.log.js"></script>
+<!-- <script src="js/console.log.js"></script> -->
 <script src="cordova.js"></script>
 <script type="text/javascript" src="js/framework7.min.js"></script>
 <script type="text/javascript" src="js/jquery.swipebox.js"></script>
 <!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> -->
 <!-- <script type="text/javascript" src="https://www.google.com/jsapi"></script> -->
 <script type="text/javascript" src="js/masonry.pkgd.min.js"></script>
-<script type="text/javascript" src="contactform/validator.js"></script>
-<script type="text/javascript" src="contactform/contact.js"></script>
+<!-- <script type="text/javascript" src="contactform/validator.js"></script> -->
+<!-- <script type="text/javascript" src="contactform/contact.js"></script> -->
+<script type="text/javascript" src="js/notification.js"></script>
 <script type="text/javascript" src="js/persian_number_to_english.js"></script>
 <script type="text/javascript" src="js/custom.js"></script>
 <script type="text/javascript" src="js/maxframes.js"></script>
