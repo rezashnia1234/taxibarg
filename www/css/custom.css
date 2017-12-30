@@ -168,6 +168,7 @@ ul#landing_menu li:hover a{background-color:transparent;color:#696969;}
 .list_of_invoices .item-title {
     position: absolute;
     top: 29px;
+	text-overflow: initial;
 }
 .item-status-text.s1 {
     position: absolute;
@@ -179,13 +180,15 @@ ul#landing_menu li:hover a{background-color:transparent;color:#696969;}
     top: 62px;
     right: 5px;
 	font-size: 13px;
+	width: 100%;
+	display: inline-block;
 }
 .list_of_invoices .item-content.s3 .item-price{color:transparent;font-size: 0px;}
 .list_of_invoices .item-content.s2 .item-price{color:transparent;font-size: 0px;}
 .list_of_invoices .item-content.s1 .item-price{color:#4caf50;}
 .list_of_invoices .item-content.s1 .item-price::before{
 	content:'\f00c  استفاده شده';
-	display:inline-block;
+	/* display:inline-block; */
 	color:#888888;
 	font-family: IRANSans,FontAwesome;
 	font-size: 13px;
@@ -193,7 +196,7 @@ ul#landing_menu li:hover a{background-color:transparent;color:#696969;}
 }
 .list_of_invoices .item-content.s2 .item-price::before{
 	content:'\f00d  تائید نشده';
-	display:inline-block;
+	/* display:inline-block; */
 	color:#888888;
 	font-family: IRANSans,FontAwesome;
 	font-size: 13px;
@@ -201,7 +204,7 @@ ul#landing_menu li:hover a{background-color:transparent;color:#696969;}
 }
 .list_of_invoices .item-content.s3 .item-price::before{
 	content:'\f017  در حال انتظار';
-	display:inline-block;
+	/* display:inline-block; */
 	color:#888888;
 	font-family: IRANSans,FontAwesome;
 	font-size: 13px;
@@ -209,7 +212,7 @@ ul#landing_menu li:hover a{background-color:transparent;color:#696969;}
 }
 .list_of_invoices .item-content.s4 .item-price::before{
 	content:'\f0d6  تسویه شده';
-	display:inline-block;
+	/* display:inline-block; */
 	color:#888888;
 	font-family: IRANSans,FontAwesome;
 	font-size: 13px;
