@@ -553,8 +553,9 @@ function submitarrival()
 	if(window.localStorage.getItem('driver_location'))
 	{
 		var loc = JSON.parse(window.localStorage.getItem('driver_location'));
-		var current_timestamp = new Date().getTime();
-		if(current_timestamp-loc<3*30)//if location record is newer than 3 mins_to_readable_time
+		var current_timestamp = (new Date().getTime()/1000);
+		console.log((current_timestamp-loc.time)/60);
+		if(current_timestamp-loc.time<10*60)//if location record is newer than 3 mins_to_readable_time
 		{
 			if(getDistance({lat:provider.lat,lng:provider.lng},{lat:loc.lat,lng:loc.lng})>2000)//if driver is further than 2 km
 			{
@@ -572,7 +573,8 @@ function submitarrival()
 			({
 				"number_of_persons":val,
 				"provider_id":window.localStorage.getItem('location_id'),
-				'access-token': window.sessionStorage.getItem('access_token')
+				'access-token': window.sessionStorage.getItem('access_token'),
+				"passenger_phone_number":$$("#passenger_phone_number_2").val()
 			}),
 			//async: true,
 			success : function(text)
@@ -581,6 +583,7 @@ function submitarrival()
 				if(text.success == true)
 				{
 					myApp.alert('اعلام شما ذخیره شد.','توجه', function () {});
+					$$("#passenger_phone_number_2").val('');
 				}
 				else
 					myApp.alert(text.data,'توجه', function () {});

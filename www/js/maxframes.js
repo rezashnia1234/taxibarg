@@ -48,9 +48,12 @@ myApp.onPageInit('taxi_yar_home', function (page)
 	var medias = [];
 	for(var i=0;i<app_data.providers.length;i++)
 	{
-		for(var j=0;j<app_data.providers[i].medias.length;j++)
+		if(app_data.providers[i].selected_for_slideshow)
 		{
-			medias.push(app_data.providers[i].medias[j]);
+			for(var j=0;j<app_data.providers[i].medias.length;j++)
+			{
+				medias.push(app_data.providers[i].medias[j]);
+			}
 		}
 	}
 	shuffle(medias);
@@ -92,7 +95,7 @@ myApp.onPageInit('location_view', function (page) {
 		spaceBetween: 100,
 		pagination:'.swiper-pagination'
 	});
-	
+
 
 });
 myApp.init();
