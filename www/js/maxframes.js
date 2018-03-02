@@ -835,3 +835,37 @@ $$('.panel-left').on('open', function () {
 $$('.panel-left, .panel-right').on('close', function () {
 	$$('.statusbar-overlay').removeClass('with-panel-left with-panel-right');
 });
+
+
+
+myApp.onPageInit('support', function (page) {
+
+	var app_data = JSON.parse(window.localStorage.getItem('app_data'));
+	$$("#support_phone_a").attr("href", 'tel:'+app_data['support_phone'])
+	$$('#support_phone_a').text(app_data['support_phone']);
+});
+
+
+myApp.onPageInit('map', function (page)
+{
+	var app_data = JSON.parse(window.localStorage.getItem('app_data'));
+	$$("#map_iframe").attr("src","https://maps.google.com/maps?ll="+app_data['driver_app_map_center']+"&hl=fa&z=13&output=embed");
+});
+
+myApp.onPageInit('emergency', function (page)
+{
+	var app_data = JSON.parse(window.localStorage.getItem('app_data'));
+
+	console.log("awdwdawawd");
+	function add(html)
+	{
+		$$('#phones_table').html($$('#phones_table').html()+html);
+	}
+	for(var k in app_data['useful_phone_numbers'])
+	{
+		add("<tr><td>"+k+"</td><td>"+app_data['useful_phone_numbers'][k]+"</td></tr>");
+	}
+
+
+
+});

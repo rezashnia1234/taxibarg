@@ -254,30 +254,30 @@ function init_virtual_list_of_invoices()
 							time: time,
 							price: arr[i].driver_share
 						});
-
-						myApp.virtualList('#tab4 .list-block.virtual-list',
-				 	 	{
-					 		items:data,
-					 		// Template 7 template to render each item
-							template: '<li class="item-content s{{status}}">' +
-											'<div class="item-id">{{id}}</div>' +
-											'<div class="item-title">{{title}}</div>' +
-											'<div class="item-price s{{status}}">{{price}} ریال</div>' +
-											'<div class="item-date">{{date}}</div>' +
-											'<div class="item-time">{{time}}</div>' +
-										'</li>',
-							searchAll: function (query, items) {
-								var foundItems = [];
-								for (var i = 0; i < items.length; i++) {
-									// Check if title contains query string
-									if (items[i].title.indexOf(query.trim()) >= 0) foundItems.push(i);
-								}
-								// Return array with indexes of matched items
-								return foundItems;
-							},
-				 		});
-
 					}
+
+					myApp.virtualList('#tab4 .list-block.virtual-list',
+					{
+						items:data,
+						// Template 7 template to render each item
+						template: '<li class="item-content s{{status}}">' +
+										'<div class="item-id">{{id}}</div>' +
+										'<div class="item-title">{{title}}</div>' +
+										'<div class="item-price s{{status}}">{{price}} ریال</div>' +
+										'<div class="item-date">{{date}}</div>' +
+										'<div class="item-time">{{time}}</div>' +
+									'</li>',
+						searchAll: function (query, items) {
+							var foundItems = [];
+							for (var i = 0; i < items.length; i++) {
+								// Check if title contains query string
+								if (items[i].title.indexOf(query.trim()) >= 0) foundItems.push(i);
+							}
+							// Return array with indexes of matched items
+							return foundItems;
+						},
+					});
+
 				}
 				else
 					myApp.alert(text.data,'توجه', function () {});
@@ -321,19 +321,19 @@ function init_virtual_list_of_notifications()
 							date: date,
 							time: time,
 						});
-
-						myApp.virtualList('#tab3 .list-block.virtual-list',
-				 	 	{
-					 		items:data,
-					 		// Template 7 template to render each item
-					 		template: '<li class="item-content s{{status}}">' +
-					 						'<div class="item-status-icon s{{status}}"></div>' +
-					 						'<div class="item-text">{{text}}</div>' +
-					 						'<div class="item-date">{{date}} - {{time}}</div>' +
-					 					'</li>'
-				 		});
-
 					}
+
+					myApp.virtualList('#tab3 .list-block.virtual-list',
+					{
+						items:data,
+						// Template 7 template to render each item
+						template: '<li class="item-content s{{status}}">' +
+										'<div class="item-status-icon s{{status}}"></div>' +
+										'<div class="item-text">{{text}}</div>' +
+										'<div class="item-date">{{date}} - {{time}}</div>' +
+									'</li>'
+					});
+
 				}
 				else
 					myApp.alert(text.data,'توجه', function () {});
@@ -598,15 +598,24 @@ function submitarrival()
 
 function navigateToLocation()
 {
-	var data = JSON.parse(window.localStorage.getItem('app_data'));
-	var providers = data.providers;
-	function filter_func(obj)
+	if(window.localStorage.getItem('driver_location'))
 	{
-		return obj.id == window.localStorage.getItem('location_id');
+		var loc = JSON.parse(window.localStorage.getItem('driver_location'));
+		var data = JSON.parse(window.localStorage.getItem('app_data'));
+		var providers = data.providers;
+		function filter_func(obj)
+		{
+			return obj.id == window.localStorage.getItem('location_id');
+		}
+		var provider = providers.filter(filter_func)[0];
+		var url = 'https://maps.google.com/?saddr='+loc.lat.toString()+','+loc.lng.toString()+'&daddr='+provider.lat.toString()+','+provider.lng.toString();
+		window.open(url, '_system', 'location=yes');
 	}
-	var provider = providers.filter(filter_func)[0];
-	var url = 'https://www.google.com/maps/dir/Current+Location/'+provider.lat.toString()+','+provider.lng.toString();
-	window.open(url, '_system', 'location=yes');
+	else
+	{
+		myApp.alert('برنامه از موقعیت مکانی شما مطلع نیست، لطفا تنظیمات موقعیت یاب خود را بررسی کنید.','توجه', function () {});
+	}
+
 }
 function goToUpdate()
 {
