@@ -348,6 +348,10 @@ ul#landing_menu li:hover a{background-color:transparent;color:#696969;}
 .location_list .item-content {
     border-right: 10px solid #2196f3;/*blue*/
 }
+.location_list .item-content.disabled {
+    border-right: 10px solid #bbbbbb;/*gray*/
+    color:#454545
+}
 .location_list .item-title {
     white-space: initial !important;
 	/* font-weight:bold; */

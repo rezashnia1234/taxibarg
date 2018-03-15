@@ -110,6 +110,7 @@
           </div>
           <div class="content-block"><a href="#" onclick="check_mobile_number();" class="button button-big button-raised">ورود</a></div>
         </form>
+        <div class="content-block"><a href="#" onclick="show_register_popup();" id="resend_verify_code">ثبت نام</a></div>
       </div>
     </div>
   </div>
@@ -162,10 +163,83 @@
   </div>
 </div>
 
+<div class="popup message-popup">
+  <div class="view">
+    <div class="page">
+      <div class="page-content login-screen-content gradient">
+        <div class="login-screen-title" style="margin-top: 70px;">
+          <div class="logo main col12"> <img src="img/logo_2.png" alt=""> </div>
+        </div>
+        <form style="margin-top: 50px;">
+          <div class="list-block inputs-list">
+            <h4 style="text-align:center;color:white;margin:20pt;" id="popup-message-text"></h4>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="popup register-popup">
+  <div class="view">
+    <div class="page">
+      <div class="page-content login-screen-content gradient">
+        <div class="login-screen-title" style="margin-top: 70px;">
+          <div class="logo main col12"> <img src="img/logo_2.png" alt=""> </div>
+        </div>
+        <form style="margin-top: 50px;">
+          <div class="list-block inputs-list">
+            <ul>
+              <li class="item-content">
+                <div class="item-inner">
+                  <div class="item-title label login_page_input_title">نام و نام خانوادگی</div>
+                  <div class="item-input">
+                    <input type="text" name="register_name" id="register_name" placeholder="" class="" style="text-align:center !important;background-color: rgba(256,256,256,0.1);">
+                  </div>
+                </div>
+              </li>
+              <li class="item-content">
+                <div class="item-inner">
+                  <div class="item-title label login_page_input_title">شماره تلفن</div>
+                  <div class="item-input">
+                    <input type="text" name="register_phone_number" id="register_phone_number" placeholder="0915 --- ----" pattern="\d*" class="login_page_mobile"style="letter-spacing: 3px;background-color: rgba(256,256,256,0.1);">
+                  </div>
+                </div>
+              </li>
+              <li class="item-content">
+                <div class="item-inner">
+                  <div class="item-title label login_page_input_title">کد ملی</div>
+                  <div class="item-input">
+                    <input type="text" name="register_national_id" id="register_national_id" placeholder="--- ------ -" pattern="\d*" class="login_page_mobile"  style="text-align:center;letter-spacing: 3px;background-color: rgba(256,256,256,0.1);">
+                  </div>
+                </div>
+              </li>
+              <li class="item-content">
+                <div class="item-inner">
+                  <div class="item-title label login_page_input_title">نوع خودرو</div>
+                  <div class="item-input">
+                  <select style="color:white;background-color: rgba(256,256,256,0.1);" id="register_car_type_2">
+                    <option value="private">شخصی</option>
+                    <option value="taxi">تاکسی</option>
+                  </select>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="content-block"><a href="#" onclick="do_register();" class="button button-big button-raised">ثبت نام</a></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- JS link goes here -->
 
 <script>
-var server_url = "http://kashan.taxiyar.net/api/driver/";
+var server_url = "http://previsit.ir/api/driver/";
 var networkState;
 
 function init() {

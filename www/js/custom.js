@@ -164,11 +164,17 @@ function login_and_get_data()
 				}
 				else
 				{
-					if(text.data.message != undefined)
+					var error = text.error;
+					if(error=="app_not_updated")
 					{
 						$$('#force-update-message').text(text.data.message);
 						myApp.popup(".force-update-popup", true, true);
 						window.sessionStorage.setItem('update_url',text.data.update_url);
+					}
+					if(error=="user_banned" || error == "registration_not_verified")
+					{
+							$$('#popup-message-text').text(text.data);
+							myApp.popup(".message-popup", true, true);
 					}
 					else
 					{
@@ -255,11 +261,10 @@ function init_virtual_list_of_invoices()
 							price: arr[i].driver_share
 						});
 					}
-
 					myApp.virtualList('#tab4 .list-block.virtual-list',
-					{
-						items:data,
-						// Template 7 template to render each item
+			 	 	{
+				 		items:data,
+				 		// Template 7 template to render each item
 						template: '<li class="item-content s{{status}}">' +
 										'<div class="item-id">{{id}}</div>' +
 										'<div class="item-title">{{title}}</div>' +
@@ -276,7 +281,7 @@ function init_virtual_list_of_invoices()
 							// Return array with indexes of matched items
 							return foundItems;
 						},
-					});
+			 		});
 
 				}
 				else
@@ -321,19 +326,19 @@ function init_virtual_list_of_notifications()
 							date: date,
 							time: time,
 						});
+
+						myApp.virtualList('#tab3 .list-block.virtual-list',
+				 	 	{
+					 		items:data,
+					 		// Template 7 template to render each item
+					 		template: '<li class="item-content s{{status}}">' +
+					 						'<div class="item-status-icon s{{status}}"></div>' +
+					 						'<div class="item-text">{{text}}</div>' +
+					 						'<div class="item-date">{{date}} - {{time}}</div>' +
+					 					'</li>'
+				 		});
+
 					}
-
-					myApp.virtualList('#tab3 .list-block.virtual-list',
-					{
-						items:data,
-						// Template 7 template to render each item
-						template: '<li class="item-content s{{status}}">' +
-										'<div class="item-status-icon s{{status}}"></div>' +
-										'<div class="item-text">{{text}}</div>' +
-										'<div class="item-date">{{date}} - {{time}}</div>' +
-									'</li>'
-					});
-
 				}
 				else
 					myApp.alert(text.data,'توجه', function () {});
@@ -421,13 +426,17 @@ function init_virtual_list_of_locations(cat_id)
 	data = [];
 	for(var i =0;i<providers.length;i++)
 	{
-		data.push({title:providers[i].name,id:providers[i].id})
+		console.log(providers[i].manual_offline_since);
+		var active = true;
+		if(providers[i].manual_offline_since!=null && new Date(providers[i].manual_offline_since)< new Date())
+			active = false;
+		data.push({title:providers[i].name,id:providers[i].id,active:active})
 	}
 	var myList = myApp.virtualList('.location_lists .list-block.virtual-list', {
 					items:data,
 					// Template 7 template to render each item
-					template: '<li class="item-content">' +
-									'<div class="item-title" onclick="window.localStorage.setItem(\'location_id\',\'{{id}}\');mainView.router.loadPage(\'location_view.html\');">{{title}}</div>' +
+					template: '<li class="item-content {{#if active}}{{else}}disabled{{/if}}">' +
+									'<div class="item-title" {{#if active}}onclick="window.localStorage.setItem(\'location_id\',\'{{id}}\');mainView.router.loadPage(\'location_view.html\');"{{/if}}>{{title}}{{#unless active}}<span class="pull-left">خارج از سرویس</span>{{/unless}}</div>' +
 								'</li>',
 					searchAll: function (query, items) {
 						var foundItems = [];
@@ -466,15 +475,20 @@ function location_view(location_id)
 	$$('#location-description').html(provider.description);
 	if(provider.priceMode=='free')
 	{
-		$$('#entry_form_2').css('display','none');
+		$$('#btn-submit-arrival').css('display','none');
 		var s = Math.floor(provider.driver_share*100).toString();
 		$$('#price-mode-details').text(s + ' درصد از خرید مشتری');
 	}
 	else
 	{
-		$$('#entry_form_1').css('display','none');
+		$$('#btn-issue-code').css('display','none');
 		var s = Math.floor(provider.driver_share).toString();
-		$$('#price-mode-details').text(s + ' ریال به ازای هر نفر');
+		$$('#price-mode-details').text(s + ' ریال به ازای هر '+provider.per_person_mode_unit_name);
+
+		$$('.passenger_count_option').each(function(index, element)
+		{
+   			$$(this).text($$(this).text().replace("نفر", provider.per_person_mode_unit_name));
+		});
 	}
 
 
@@ -499,6 +513,7 @@ function issueDiscountCode()
 				data: JSON.stringify
 				({
 					"client_phone_number":mobile_number,
+					"passenger_count":$$('#person_count').val(),
 					"provider_id":window.localStorage.getItem('location_id'),
 					'access-token': window.sessionStorage.getItem('access_token')
 				}),
@@ -574,7 +589,7 @@ function submitarrival()
 				"number_of_persons":val,
 				"provider_id":window.localStorage.getItem('location_id'),
 				'access-token': window.sessionStorage.getItem('access_token'),
-				"passenger_phone_number":$$("#passenger_phone_number_2").val()
+				"passenger_phone_number":$$("#passenger_phone_number").val()
 			}),
 			//async: true,
 			success : function(text)
@@ -583,7 +598,7 @@ function submitarrival()
 				if(text.success == true)
 				{
 					myApp.alert('اعلام شما ذخیره شد.','توجه', function () {});
-					$$("#passenger_phone_number_2").val('');
+					$$("#passenger_phone_number").val('');
 				}
 				else
 					myApp.alert(text.data,'توجه', function () {});
@@ -616,6 +631,88 @@ function navigateToLocation()
 		myApp.alert('برنامه از موقعیت مکانی شما مطلع نیست، لطفا تنظیمات موقعیت یاب خود را بررسی کنید.','توجه', function () {});
 	}
 
+}
+function send_support_message()
+{
+	var val = $$("#support_message_text").val();
+	myApp.showIndicator();
+	$.ajax({
+			url: server_url+'send_support_message',
+			type: "POST",
+			data: JSON.stringify
+			({
+				'text':val,
+				'access-token': window.sessionStorage.getItem('access_token')
+			}),
+			//async: true,
+			success : function(text)
+			{
+				myApp.hideIndicator();
+				if(text.success == true)
+				{
+					myApp.alert(text.data,'توجه', function () {});
+					$$("#support_message_text").val('');
+				}
+				else
+					myApp.alert(text.data,'توجه', function () {});
+			},
+			error: function(jqXHR, exception) {
+				myApp.hideIndicator();
+				myApp.alert('در پروسه اتصال به سرور مشکلی به وجود آماده است ، لطفا وضعیت اینترنت را بررسی نمایید.','توجه', function () {});
+			},
+	});
+
+
+}
+function show_register_popup()
+{
+	myApp.popup(".register-popup", true, true);
+	convert_persian_digit_to_english();
+
+}
+function do_register()
+{
+	var mobile_number = $$('#register_phone_number').val();
+	var mobile_RegExp =  /(\0)?9\d{9}/ ;
+
+	var name = $$('#register_name').val();
+	var national_id = $$('#register_national_id').val();
+	var car_type_2 = $$('#register_car_type_2').val();
+	console.log(car_type_2);
+
+	if(mobile_number=="" || !mobile_RegExp.test(mobile_number))
+		myApp.alert('لطفا شماره موبایل را با دقت وارد نمایید','توجه', function () {});
+	else
+	{
+		myApp.showIndicator();
+		$.ajax({
+				url: server_url+'register',
+				type: "POST",
+				data: JSON.stringify
+				({
+					'phone_number':mobile_number,
+					'name':name,
+					'national_code': national_id,
+					'car_type_2': car_type_2,
+				}),
+				//async: true,
+				success : function(text)
+				{
+					myApp.hideIndicator();
+					myApp.alert(text.data,'توجه', function () {});
+					if(text.success == true)
+					{
+						myApp.closeModal(".register-popup", true);
+						myApp.popup(".login-screen-verify-number", true, true);
+						window.localStorage.setItem("driver_phone_number",mobile_number);
+					}
+				},
+				error: function(jqXHR, exception) {
+					myApp.hideIndicator();
+					myApp.alert('در پروسه اتصال به سرور مشکلی به وجود آماده است ، لطفا وضعیت اینترنت را بررسی نمایید.','توجه', function () {});
+				},
+		});
+	}
 }
 function goToUpdate()
 {
