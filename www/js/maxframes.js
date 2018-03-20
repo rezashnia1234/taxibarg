@@ -74,18 +74,22 @@ myApp.onPageInit('location_list', function (page) {
 	init_virtual_list_of_locations(window.localStorage.getItem('cat_id'));
 });
 myApp.onPageInit('location_view', function (page) {
-	location_view(window.localStorage.getItem('location_id'));
-
+	var location_id = window.localStorage.getItem('location_id');
+	location_view(location_id);
 	var app_data = JSON.parse(window.localStorage.getItem('app_data'));
-	var medias = [];
-	for(var i=0;i<app_data.providers.length;i++)
+	var providers = app_data.providers;
+	function filter_func(obj)
 	{
-		for(var j=0;j<app_data.providers[i].medias.length;j++)
-		{
-			medias.push(app_data.providers[i].medias[j]);
-		}
+		return obj.id == location_id;
 	}
-	var count = Math.min(5,medias.length);
+	var provider = providers.filter(filter_func)[0];
+
+	var medias = [];
+	for(var j=0;j<provider.medias.length;j++)
+	{
+		medias.push(provider.medias[j]);
+	}
+	var count = medias.length;
 	for(var i=0;i<count;i++)
 	{
 		$$('#slideshow-container').append('<div class="swiper-slide location_view_slider" style="background-image:url(\''+medias[i]+'\');"></div>');
