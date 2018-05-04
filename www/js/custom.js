@@ -1,4 +1,4 @@
-var client_version = 0.9;
+var client_version = 0.91;
 /*// setTimeout(function(){
 	if(navigator.connection.type)
 		networkState = navigator.connection.type;
@@ -468,7 +468,8 @@ function location_view(location_id)
 		var m = (mins%60);
 		return ((h<10)?'0':'')+h.toString()+':'+((m<10)?'0':'')+m.toString();
 	}
-
+	if(provider.require_passenger_number==false)
+		$$('input#passenger_phone_number').css('display','none');
 	$$('#location-name').text(provider.name);
 	$$('#daily-on-time').text(mins_to_readable_time(provider.daily_on_time));
 	$$('#daily-off-time').text(mins_to_readable_time(provider.daily_off_time));
@@ -499,31 +500,48 @@ function location_view(location_id)
 }
 function issueDiscountCode()
 {
+	var data = JSON.parse(window.localStorage.getItem('app_data'));
+	var providers = data.providers;
+
+	function filter_func(obj)
+	{
+		return obj.id == window.localStorage.getItem('location_id');
+	}
+	var provider = providers.filter(filter_func)[0];
+
 	var mobile_number = $$('#passenger_phone_number').val();
 	var mobile_RegExp =  /(\0)?9\d{9}/ ;
 
-	if(mobile_number=="" || !mobile_RegExp.test(mobile_number))
+	if(provider.require_passenger_number && (mobile_number=="" || !mobile_RegExp.test(mobile_number)))
 		myApp.alert('لطفا شماره موبایل را با دقت وارد نمایید','توجه', function () {});
 	else
 	{
+		var _ddata =
+		{
+			"passenger_count":$$('#person_count').val(),
+			"provider_id":window.localStorage.getItem('location_id'),
+			'access-token': window.sessionStorage.getItem('access_token')
+		};
+		if(provider.require_passenger_number)
+			_ddata["client_phone_number"] = mobile_number;
+
 		myApp.showIndicator();
 		$.ajax({
 				url: server_url+'issuediscountcode',
 				type: "POST",
-				data: JSON.stringify
-				({
-					"client_phone_number":mobile_number,
-					"passenger_count":$$('#person_count').val(),
-					"provider_id":window.localStorage.getItem('location_id'),
-					'access-token': window.sessionStorage.getItem('access_token')
-				}),
+				data: JSON.stringify(_ddata),
 				//async: true,
 				success : function(text)
 				{
 					myApp.hideIndicator();
 					if(text.success == true)
 					{
-						myApp.alert('کد تخفیف برای مشتری ارسال شد.','توجه', function () {});
+						if(provider.require_passenger_number)
+							myApp.alert('کد تخفیف برای مشتری ارسال شد.','توجه', function () {});
+						else
+							myApp.alert('اعلام شما ثبت شد.','توجه', function () {});
+
+
 						$$('#passenger_phone_number').val('');
 					}
 					else
@@ -580,17 +598,22 @@ function submitarrival()
 		}
 	}
 	var val = $$('#person_count').val();
+	var _ddata =
+	{
+		"number_of_persons":val,
+		"provider_id":window.localStorage.getItem('location_id'),
+		'access-token': window.sessionStorage.getItem('access_token'),
+	};
+	if(provider.require_passenger_number)
+	{
+		_ddata["passenger_phone_number"] = $$("#passenger_phone_number").val()
+
+	}
 	myApp.showIndicator();
 	$.ajax({
 			url: server_url+'submitarrival',
 			type: "POST",
-			data: JSON.stringify
-			({
-				"number_of_persons":val,
-				"provider_id":window.localStorage.getItem('location_id'),
-				'access-token': window.sessionStorage.getItem('access_token'),
-				"passenger_phone_number":$$("#passenger_phone_number").val()
-			}),
+			data: JSON.stringify(_ddata),
 			//async: true,
 			success : function(text)
 			{
@@ -678,10 +701,13 @@ function do_register()
 	var name = $$('#register_name').val();
 	var national_id = $$('#register_national_id').val();
 	var car_type_2 = $$('#register_car_type_2').val();
+	var license_plate = $$("#register_license_plate").val();
 	console.log(car_type_2);
 
 	if(mobile_number=="" || !mobile_RegExp.test(mobile_number))
 		myApp.alert('لطفا شماره موبایل را با دقت وارد نمایید','توجه', function () {});
+	else if(license_plate.length<8)
+		myApp.alert('لطفا پلاک خودرو را با دقت وارد نمایید','توجه', function () {});
 	else
 	{
 		myApp.showIndicator();
@@ -694,6 +720,7 @@ function do_register()
 					'name':name,
 					'national_code': national_id,
 					'car_type_2': car_type_2,
+					'license_plate':license_plate
 				}),
 				//async: true,
 				success : function(text)
