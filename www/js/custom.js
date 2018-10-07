@@ -745,3 +745,65 @@ function goToUpdate()
 {
 	window.open(window.sessionStorage.getItem('update_url'),'_system');
 }
+
+function showProfile()
+{
+    $.ajax({
+        url: server_url+'showprofile',
+        type: "POST",
+        data: JSON.stringify
+        ({
+            "auth_token":window.localStorage.getItem("auth_token"),
+            "client_version":client_version,
+            "device_id":window.localStorage.getItem("udid")
+        }),
+        //async: true,
+        success : function(text)
+        {
+            myApp.hideIndicator();
+            mainView.router.loadPage('profile.html');
+            if(text.success == true)
+            {
+                window.sessionStorage.setItem("access_token",text.data.access_token);
+                window.localStorage.setItem("app_data",JSON.stringify(text.data));
+                mainView.router.loadPage('profile.html');
+                $$('#sidebar-driver-name').text(text.data.name);
+                $$('#sidebar-driver-phone-number').text(text.data.phone_number);
+                $$('#sidebar-driver-national-code').text(text.data.national_code);
+                $$('#sidebar-driver-iban-number').text(text.data.iban_number);
+                $$('#sidebar-driver-bank-name').text(text.data.bank_name);
+                $$('#sidebar-driver-car').text(text.data.car_type + ' ' + text.data.car_color + ' - ' + text.data.license_plate);
+                $$("#sidebar-driver-profile-pic").attr("src",text.data.profile_pic_url);
+                $$("#sidebar-driver-profile-qrcode_img").attr("src",text.data.qrcode_img);
+            }
+            else
+            {
+                var error = text.error;
+                if(error=="app_not_updated")
+                {
+                    $$('#force-update-message').text(text.data.message);
+                    myApp.popup(".force-update-popup", true, true);
+                    window.sessionStorage.setItem('update_url',text.data.update_url);
+                }
+                if(error=="user_banned" || error == "registration_not_verified")
+                {
+                    $$('#popup-message-text').text(text.data);
+                    myApp.popup(".message-popup", true, true);
+                }
+                else
+                {
+                    myApp.popup(".login-screen", true, true);
+                    convert_persian_digit_to_english();
+                }
+
+            }
+        },
+        error: function(jqXHR, exception) {
+            myApp.hideIndicator();
+            myApp.alert('در پروسه اتصال به سرور مشکلی به وجود آماده است ، لطفا وضعیت اینترنت را بررسی نمایید.','توجه', function () {});
+        },
+    });
+
+
+
+}

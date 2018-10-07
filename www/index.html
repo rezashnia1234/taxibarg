@@ -62,6 +62,7 @@
 				<li><a href="emergency.html" class="item-link close-panel"><i class="fa fa-phone-square"></i><span>لیست تماس</span></a></li>
 				<li><a href="#" onclick="myApp.alert('این بخش از نرم افزار در بروزرسانی های آتی فعال خواهد شد.','توجه', function () {});" class="item-link close-panel"><i class="fa fa-check-square-o"></i><span>لیست کارها</span></a></li>
 				<li><a href="support.html" class="item-link close-panel"><i class="fa fa-question-circle"></i><span>پشتیبانی تاکسی یار</span></a></li>
+				<li><a href="#" onclick="showProfile()" class="item-link close-panel"><i class="fa fa-user"></i><span>پروفایل</span></a></li>
           </ul>
         </div>
       </div>
@@ -204,7 +205,7 @@
                 <div class="item-inner">
                   <div class="item-title label login_page_input_title">شماره تلفن</div>
                   <div class="item-input">
-                    <input type="text" name="register_phone_number" id="register_phone_number" placeholder="0915 --- ----" pattern="\d*" class="login_page_mobile"style="letter-spacing: 3px;background-color: rgba(256,256,256,0.1);">
+                    <input type="number" name="register_phone_number" id="register_phone_number" placeholder="0915 --- ----" pattern="\d*" class="login_page_mobile"style="letter-spacing: 3px;background-color: rgba(256,256,256,0.1);">
                   </div>
                 </div>
               </li>
@@ -212,7 +213,7 @@
                 <div class="item-inner">
                   <div class="item-title label login_page_input_title">کد ملی</div>
                   <div class="item-input">
-                    <input type="text" name="register_national_id" id="register_national_id" placeholder="--- ------ -" pattern="\d*" class="login_page_mobile"  style="text-align:center;letter-spacing: 3px;background-color: rgba(256,256,256,0.1);">
+                    <input type="number" name="register_national_id" id="register_national_id" placeholder="--- ------ -" pattern="\d*" class="login_page_mobile"  style="text-align:center;letter-spacing: 3px;background-color: rgba(256,256,256,0.1);">
                   </div>
                 </div>
               </li>
@@ -321,8 +322,8 @@ setTimeout(function(){
 }, 2500);
 </script>
 <script src="js/jquery.min.js"></script>
-<!-- <script src="js/console.log.js"></script> -->
-<script src="cordova.js"></script>
+<!-- <script src="js/console.log.js"></script>
+<script src="cordova.js"></script>-->
 <script type="text/javascript" src="js/framework7.min.js"></script>
 <!-- <script type="text/javascript" src="js/jquery.swipebox.js"></script> -->
 <!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> -->
