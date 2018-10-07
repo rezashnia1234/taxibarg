@@ -748,15 +748,12 @@ function goToUpdate()
 
 function showProfile()
 {
-
     $.ajax({
         url: server_url+'showprofile',
         type: "POST",
         data: JSON.stringify
         ({
-            "auth_token":window.localStorage.getItem("auth_token"),
-            "client_version":client_version,
-            "device_id":window.localStorage.getItem("udid")
+            'access-token': window.sessionStorage.getItem('access_token'),
         }),
         //async: true,
         success : function(text)
@@ -771,7 +768,7 @@ function showProfile()
                 $$('#sidebar-driver-name').text(text.data.name);
                 $$('#sidebar-driver-phone-number').text(text.data.phone_number);
                 $$('#sidebar-driver-national-code').text(text.data.national_code);
-                $$('#sidebar-driver-iban-number').text(text.data.iban_number);
+                $$('#sidebar-driver-iban-number').text(text.data.iban);
                 $$('#sidebar-driver-bank-name').text(text.data.bank_name);
                 $$('#sidebar-driver-car').text(text.data.car_type + ' ' + text.data.car_color + ' - ' + text.data.license_plate);
                 $$("#sidebar-driver-profile-pic").attr("src",text.data.profile_pic_url);
