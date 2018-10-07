@@ -748,6 +748,7 @@ function goToUpdate()
 
 function showProfile()
 {
+
     $.ajax({
         url: server_url+'showprofile',
         type: "POST",
