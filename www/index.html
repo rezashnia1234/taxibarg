@@ -40,13 +40,15 @@
           <div style="color:white;text-align:center" id="sidebar-driver-car"></div>
           <hr>
           <ul class="menu">
-				<li><a href="map.html" class="item-link close-panel"><i class="fa fa-map"></i><span>نقشه</span></a></li>
+				<!--<li><a href="map.html" class="item-link close-panel"><i class="fa fa-map"></i><span>نقشه</span></a></li>-->
 				<li><a href="taxi_yar.html" class="item-link close-panel"><i class="fa fa-shopping-cart"></i><span>تاکسی برگ</span></a></li>
 				<li><a href="#"  onclick="showTaxiPardaz()" class="item-link close-panel"><i class="fa fa-credit-card-alt"></i><span>تاکسی پرداز</span></a></li>
-				<li><a href="emergency.html" class="item-link close-panel"><i class="fa fa-phone-square"></i><span>لیست تماس</span></a></li>
-				<li><a href="#" onclick="myApp.alert('این بخش از نرم افزار در بروزرسانی های آتی فعال خواهد شد.','توجه', function () {});" class="item-link close-panel"><i class="fa fa-check-square-o"></i><span>لیست کارها</span></a></li>
+				<!--<li><a href="emergency.html" class="item-link close-panel"><i class="fa fa-phone-square"></i><span>لیست تماس</span></a></li>-->
+				<!--<li><a href="#" onclick="myApp.alert('این بخش از نرم افزار در بروزرسانی های آتی فعال خواهد شد.','توجه', function () {});" class="item-link close-panel"><i class="fa fa-check-square-o"></i><span>لیست کارها</span></a></li>-->
 				<li><a href="support.html" class="item-link close-panel"><i class="fa fa-question-circle"></i><span>پشتیبانی تاکسی یار</span></a></li>
 				<li><a href="#" onclick="showProfile()" class="item-link close-panel"><i class="fa fa-user"></i><span>پروفایل</span></a></li>
+            <li><a href="#" onclick="$$('#taxi_yar_home_navbar .center').html('پرداخت ها');$$('#taxi_yar_home_page-content').css('background-color','#eeeeee');init_virtual_list_of_payments();" class="tab-link"><i class="fa fa-money"></i><span class="tabbar-label">پرداخت ها</span></a></li>
+            <li><a href="#" onclick="$$('#taxi_yar_home_navbar .center').html('اعلان ها');$$('#taxi_yar_home_page-content').css('background-color','#eeeeee');init_virtual_list_of_notifications();" class="tab-link"><i class="fa fa-bell"></i><span class="tabbar-label">اعلان ها</span ></a></li>
           </ul>
         </div>
       </div>
@@ -87,7 +89,7 @@
                 <div class="item-inner">
                   <div class="item-title label login_page_input_title">شماره موبایل</div>
                   <div class="item-input">
-                    <input type="number" name="login_page_mobile" placeholder="0915 --- ----" pattern="\d*" class="login_page_mobile" id="login_page_mobile" style="letter-spacing: 3px;background-color: rgba(256,256,256,0.1);">
+                    <input type="number" name="login_page_mobile" placeholder="09-- --- ----" pattern="\d*" class="login_page_mobile" id="login_page_mobile" style="letter-spacing: 3px;background-color: rgba(256,256,256,0.1);">
                   </div>
                 </div>
               </li>
@@ -189,7 +191,7 @@
                 <div class="item-inner">
                   <div class="item-title label login_page_input_title">شماره تلفن</div>
                   <div class="item-input">
-                    <input type="number" name="register_phone_number" id="register_phone_number" placeholder="0915 --- ----" pattern="\d*" class="login_page_mobile"style="letter-spacing: 3px;background-color: rgba(256,256,256,0.1);">
+                    <input type="number" name="register_phone_number" id="register_phone_number" placeholder="09-- --- ----" pattern="\d*" class="login_page_mobile"style="letter-spacing: 3px;background-color: rgba(256,256,256,0.1);">
                   </div>
                 </div>
               </li>
