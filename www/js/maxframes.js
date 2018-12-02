@@ -845,7 +845,7 @@ $$('.panel-left, .panel-right').on('close', function () {
 myApp.onPageInit('support', function (page) {
 
 	var app_data = JSON.parse(window.localStorage.getItem('app_data'));
-	$$("#support_phone_a").attr("href", 'tel:'+app_data['support_phone'])
+	$$("#support_phone_a").attr("href", 'tel:'+app_data['support_phone']);
 	$$('#support_phone_a').text(app_data['support_phone']);
 });
 
@@ -872,4 +872,27 @@ myApp.onPageInit('emergency', function (page)
 
 
 
+});
+myApp.onPageInit('profile', function (page) {
+    var app_data = JSON.parse(window.localStorage.getItem('app_data'));
+    $$('#sidebar-driver-profile-name').val(app_data['name']);
+    $$('#sidebar-driver-phone-number').val(app_data['phone_number']);
+    $$('#sidebar-driver-national-code').val(app_data['national_code']);
+    $$('#sidebar-driver-iban-number').val(app_data['iban']);
+    $$('#sidebar-driver-bank-name').val(app_data['bank_name']);
+   // $$('#sidebar-driver-profile-car').val(text.data.car_type + ' ' + text.data.car_color + ' - ' + text.data.license_plate);
+    $$("#sidebar-driver-profile-img").attr("src",app_data['profile_pic_url']);
+    // $$("#sidebar-driver-profile-qrcode_img").text(text.data.qrcode_img);
+   // $$("#sidebar-driver-profile-qrcode_img").attr("src", text.data.qrcode_img);
+    //showProfile();
+});
+
+myApp.onPageInit('taxi_padrdaz', function (page) {
+    showTaxiPardaz();
+});
+myApp.onPageInit('updateProfile', function (page) {
+    var app_data = JSON.parse(window.localStorage.getItem('app_data'));
+    $$('#register_name').val(app_data['name']);
+    $$('#register_phone_number').val(app_data['phone_number']);
+     getSate();
 });

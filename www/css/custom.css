@@ -392,6 +392,21 @@ text-overflow: initial;
 text-overflow: initial;
 }
 
+.label_checkbox{
+    width: 25%;
+    color: #fff !important;
+    font-size: 14px;
+    display: inline-block;
+    padding-right: 13px;
+}
+.label_checkbox_rull{
+    width:75%;
+    color: #fff !important;
+    font-size: 14px;
+    display: inline-block;
+    padding-right: 13px;
+}
+
 
 
 

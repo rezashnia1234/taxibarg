@@ -49,6 +49,7 @@
 				<li><a href="#" onclick="showProfile()" class="item-link close-panel"><i class="fa fa-user"></i><span>پروفایل</span></a></li>
             <li><a href="#" onclick="$$('#taxi_yar_home_navbar .center').html('پرداخت ها');$$('#taxi_yar_home_page-content').css('background-color','#eeeeee');init_virtual_list_of_payments();" class="tab-link"><i class="fa fa-money"></i><span class="tabbar-label">پرداخت ها</span></a></li>
             <li><a href="#" onclick="$$('#taxi_yar_home_navbar .center').html('اعلان ها');$$('#taxi_yar_home_page-content').css('background-color','#eeeeee');init_virtual_list_of_notifications();" class="tab-link"><i class="fa fa-bell"></i><span class="tabbar-label">اعلان ها</span ></a></li>
+          <!--  <li><a href="updateProfile.html"  class="item-link close-panel"><i class="fa fa-bell"></i><span class="tabbar-label">به روز رسانی پروفایل</span ></a></li>-->
           </ul>
         </div>
       </div>
@@ -56,6 +57,7 @@
   </div>
 </div>
 <div class="views" >
+  <div class="page">
 	<div class="view view-main">
 		<div class="pages navbar-fixed">
 			<div data-page="index" class="page gradient">
@@ -73,6 +75,7 @@
 			</div>
 		</div>
 	</div>
+  </div>
 </div>
 
 <div class="login-screen">
@@ -197,31 +200,48 @@
               </li>
               <li class="item-content">
                 <div class="item-inner">
-                  <div class="item-title label login_page_input_title">کد ملی</div>
+                  <div class="item-title label login_page_input_title">جنسیت</div>
                   <div class="item-input">
-                    <input type="number" name="register_national_id" id="register_national_id" placeholder="--- ------ -" pattern="\d*" class="login_page_mobile"  style="text-align:center;letter-spacing: 3px;background-color: rgba(256,256,256,0.1);">
+                    <input type="checkbox" name="register_sex" id="register_sex" value="1"  class="login_page_mobile"style="letter-spacing: 3px;background-color: rgba(256,256,256,0.1);"><div class="label_checkbox">مرد</div>
+                    <input type="checkbox" name="register_sex" id="register_sex" value="0"  class="login_page_mobile"style="letter-spacing: 3px;background-color: rgba(256,256,256,0.1);"><div class="label_checkbox">زن</div>
                   </div>
                 </div>
               </li>
-              <li class="item-content">
-                <div class="item-inner">
-                  <div class="item-title label login_page_input_title">نوع خودرو</div>
-                  <div class="item-input">
-                  <select style="color:white;background-color: rgba(256,256,256,0.1);" id="register_car_type_2">
-                    <option value="private">شخصی</option>
-                    <option value="taxi">تاکسی</option>
-                  </select>
-                  </div>
-                </div>
-              </li>
-              <li class="item-content">
-                <div class="item-inner">
-                  <div class="item-title label login_page_input_title">پلاک خودرو</div>
-                  <div class="item-input">
-                    <input type="text" name="register_license_plate" id="register_license_plate" placeholder="ایران -- --- - --" pattern="\d*" class="" style="text-align:center !important;background-color: rgba(256,256,256,0.1);">
-                  </div>
-                </div>
-              </li>
+              <!--<li class="item-content">-->
+                <!--<div class="item-inner">-->
+                  <!--<div class="item-input">-->
+                    <!--<input type="checkbox" name="register_phone_number_rull" id="register_sex_rull" value="1"  class="login_page_mobile"style="letter-spacing: 3px;background-color: rgba(256,256,256,0.1);"><div class="label_checkbox_rull">با قوانین تاکسی یار موافق ام</div>-->
+                    <!--<div class="content-block"><a href="#" onclick="do_register();" class="button-rull">مطالعه قوانین</a></div>-->
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</li>-->
+              <!--<li class="item-content">-->
+                <!--<div class="item-inner">-->
+                  <!--<div class="item-title label login_page_input_title">کد ملی</div>-->
+                  <!--<div class="item-input">-->
+                    <!--<input type="number" name="register_national_id" id="register_national_id" placeholder="-&#45;&#45; &#45;&#45;&#45;&#45;&#45;&#45; -" pattern="\d*" class="login_page_mobile"  style="text-align:center;letter-spacing: 3px;background-color: rgba(256,256,256,0.1);">-->
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</li>-->
+              <!--<li class="item-content">-->
+                <!--<div class="item-inner">-->
+                  <!--<div class="item-title label login_page_input_title">نوع خودرو</div>-->
+                  <!--<div class="item-input">-->
+                  <!--<select style="color:white;background-color: rgba(256,256,256,0.1);" id="register_car_type_2">-->
+                    <!--<option value="private">شخصی</option>-->
+                    <!--<option value="taxi">تاکسی</option>-->
+                  <!--</select>-->
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</li>-->
+              <!--<li class="item-content">-->
+                <!--<div class="item-inner">-->
+                  <!--<div class="item-title label login_page_input_title">پلاک خودرو</div>-->
+                  <!--<div class="item-input">-->
+                    <!--<input type="text" name="register_license_plate" id="register_license_plate" placeholder="ایران &#45;&#45; -&#45;&#45; - &#45;&#45;" pattern="\d*" class="" style="text-align:center !important;background-color: rgba(256,256,256,0.1);">-->
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</li>-->
             </ul>
           </div>
           <div class="content-block"><a href="#" onclick="do_register();" class="button button-big button-raised">ثبت نام</a></div>
@@ -231,8 +251,26 @@
   </div>
 </div>
 
+<!--</div>-->
+
 <!-- JS link goes here -->
 
+
+<script src="js/jquery.min.js"></script>
+<!-- <script src="js/console.log.js"></script>
+<script src="cordova.js"></script>-->
+<script type="text/javascript" src="js/framework7.min.js"></script>
+<!-- <script type="text/javascript" src="js/jquery.swipebox.js"></script> -->
+<!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> -->
+<!-- <script type="text/javascript" src="https://www.google.com/jsapi"></script> -->
+<script type="text/javascript" src="js/masonry.pkgd.min.js"></script>
+<!-- <script type="text/javascript" src="contactform/validator.js"></script> -->
+<!-- <script type="text/javascript" src="contactform/contact.js"></script> -->
+<script type="text/javascript" src="js/notification.js"></script>
+<script type="text/javascript" src="js/persian_number_to_english.js"></script>
+<script type="text/javascript" src="js/custom.js"></script>
+<script type="text/javascript" src="js/maxframes.js"></script>
+<script type="text/javascript" src="js/persian-date.min.js"></script>
 <script>
 var server_url = "http://taxiyar.net/api/driver/";
 var networkState;
@@ -307,21 +345,5 @@ setTimeout(function(){
 	}
 }, 2500);
 </script>
-<script src="js/jquery.min.js"></script>
-<!-- <script src="js/console.log.js"></script>
-<script src="cordova.js"></script>-->
-<script type="text/javascript" src="js/framework7.min.js"></script>
-<!-- <script type="text/javascript" src="js/jquery.swipebox.js"></script> -->
-<!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> -->
-<!-- <script type="text/javascript" src="https://www.google.com/jsapi"></script> -->
-<script type="text/javascript" src="js/masonry.pkgd.min.js"></script>
-<!-- <script type="text/javascript" src="contactform/validator.js"></script> -->
-<!-- <script type="text/javascript" src="contactform/contact.js"></script> -->
-<script type="text/javascript" src="js/notification.js"></script>
-<script type="text/javascript" src="js/persian_number_to_english.js"></script>
-<script type="text/javascript" src="js/custom.js"></script>
-<script type="text/javascript" src="js/maxframes.js"></script>
-<script type="text/javascript" src="js/persian-date.min.js"></script>
-
 </body>
 </html>
