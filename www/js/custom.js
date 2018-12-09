@@ -117,9 +117,13 @@ function check_verify_number()
                 {
                     window.localStorage.setItem("is_login",1);
                     window.localStorage.setItem("auth_token",text.data.auth_token);
+                    //  window.localStorage.setItem("phone_number",driver_phone_number);
                     myApp.closeModal(".login-screen", false);
                     myApp.closeModal(".login-screen-verify-number", true);
-                    login_and_get_data();
+                    if(text.data.name == '' || text.data.last_name == '' )
+                        myApp.popup(".register-popup", true, true);
+                    else
+                        login_and_get_data();
                 }
                 else
                     myApp.alert(text.data,'توجه', function () {});
@@ -156,6 +160,10 @@ function login_and_get_data()
                 $$('#sidebar-driver-name').text(text.data.name);
                 $$('#sidebar-driver-car').text(text.data.car_type + ' ' + text.data.car_color + ' - ' + text.data.license_plate);
                 $$("#sidebar-driver-profile-pic").attr("src",text.data.profile_pic_url);
+                if(text.data.car_type== '' || text.data.license_plate =='' )
+                {
+                    $$('#sidebar-driver-complate-profile').text(text.data.name);
+                }
             }
             else
             {
@@ -690,51 +698,36 @@ function show_register_popup()
 }
 function do_register()
 {
-    var mobile_number = $$('#register_phone_number').val();
-    var mobile_RegExp =  /(\0)?9\d{9}/ ;
-
     var name = $$('#register_name').val();
-    //var national_id = $$('#register_national_id').val();
-    //var car_type_2 = $$('#register_car_type_2').val();
-   // var license_plate = $$("#register_license_plate").val();
-    console.log(car_type_2);
-
-    if(mobile_number=="" || !mobile_RegExp.test(mobile_number))
-        myApp.alert('لطفا شماره موبایل را با دقت وارد نمایید','توجه', function () {});
-    // else if(license_plate.length<8)
-    //     myApp.alert('لطفا پلاک خودرو را با دقت وارد نمایید','توجه', function () {});
-    else
-    {
-        myApp.showIndicator();
-        $.ajax({
-            url: server_url+'register',
-            type: "POST",
-            data: JSON.stringify
-            ({
-                'phone_number':mobile_number,
-                'name':name,
-                // 'national_code': national_id,
-                // 'car_type_2': car_type_2,
-                // 'license_plate':license_plate
-            }),
-            //async: true,
-            success : function(text)
+    var last_name = $$('#register_last_name').val();
+    myApp.showIndicator();
+    $.ajax({
+        url: server_url+'register',
+        type: "POST",
+        data: JSON.stringify
+        ({
+            'last_name': last_name,
+            'name':name,
+            'phone_number': window.localStorage.getItem("driver_phone_number")
+        }),
+        success : function(text)
+        {
+            myApp.hideIndicator();
+            myApp.alert(text.data,'توجه', function () {});
+            if(text.success == true)
             {
-                myApp.hideIndicator();
-                myApp.alert(text.data,'توجه', function () {});
-                if(text.success == true)
-                {
-                    myApp.closeModal(".register-popup", true);
-                    myApp.popup(".login-screen-verify-number", true, true);
-                    window.localStorage.setItem("driver_phone_number",mobile_number);
-                }
-            },
-            error: function(jqXHR, exception) {
-                myApp.hideIndicator();
-                myApp.alert('در پروسه اتصال به سرور مشکلی به وجود آماده است ، لطفا وضعیت اینترنت را بررسی نمایید.','توجه', function () {});
-            },
-        });
-    }
+                myApp.closeModal(".register-popup", true);
+                // myApp.popup(".login-screen-verify-number", true, true);
+                window.localStorage.setItem("driver_phone_number",mobile_number);
+                login_and_get_data();
+            }
+        },
+        error: function(jqXHR, exception) {
+            myApp.hideIndicator();
+            myApp.alert('در پروسه اتصال به سرور مشکلی به وجود آماده است ، لطفا وضعیت اینترنت را بررسی نمایید.','توجه', function () {});
+        },
+    });
+
 }
 
 function goToUpdate()
@@ -747,136 +740,133 @@ function showProfile()
 {
     var app_data = JSON.parse(window.localStorage.getItem('app_data'));
     console.log(app_data);
-    if(app_data['bank_name'] =='' || app_data['national_code'] || app_data['iban'] == '')
+    if(app_data['bank_name'] =='' || app_data['national_code']== '' || app_data['iban'] == '')
     {
         myApp.hideIndicator();
         mainView.router.loadPage('updateProfile.html');
     }
-        else
+    else
     {
-
-
-    $.ajax({
-        url: server_url+'showprofile',
-        type: "POST",
-        data: JSON.stringify
-        ({
-            'access_token': window.sessionStorage.getItem('access_token'),
-        }),
-        //async: true,
-        success : function(text)
-        {
-            myApp.hideIndicator();
-            mainView.router.loadPage('profile.html');
-            if(text.success == true)
+        $.ajax({
+            url: server_url+'showprofile',
+            type: "POST",
+            data: JSON.stringify
+            ({
+                'access_token': window.sessionStorage.getItem('access_token'),
+            }),
+            //async: true,
+            success : function(text)
             {
-                window.sessionStorage.setItem("access_token",text.data.access_token);
-                window.localStorage.setItem("app_data",JSON.stringify(text.data));
-               // mainView.router.loadPage(template_profile);
-              //  mainView.router.loadPage('profile.html');
-              //  mainView.router.load({content: text,});
-                //myApp.popup(".profile-popup", true, true);
+                myApp.hideIndicator();
+                mainView.router.loadPage('profile.html');
+                if(text.success == true)
+                {
+                    window.sessionStorage.setItem("access_token",text.data.access_token);
+                    window.localStorage.setItem("app_data",JSON.stringify(text.data));
+                    // mainView.router.loadPage(template_profile);
+                    //  mainView.router.loadPage('profile.html');
+                    //  mainView.router.load({content: text,});
+                    //myApp.popup(".profile-popup", true, true);
 
                     $$('#sidebar-driver-profile-name').text(text.data.name);
                     $$('#sidebar-driver-phone-number').text(text.data.phone_number);
                     $$('#sidebar-driver-national-code').text(text.data.national_code);
                     //$$('#sidebar-driver-iban-number').text(text.data.iban);
                     $$('#sidebar-driver-iban-number').val(text.data.iban);
-                    if (text.data.iban !== '')
-                        $("#driver-iban-button").hide();
                     $$('#sidebar-driver-bank-name').text(text.data.bank_name);
                     $$('#sidebar-driver-profile-car').text(text.data.car_type + ' ' + text.data.car_color + ' - ' + text.data.license_plate);
                     $$("#sidebar-driver-profile-img").attr("src", text.data.profile_pic_url);
                     // $$("#sidebar-driver-profile-qrcode_img").text(text.data.qrcode_img);
                     $$("#sidebar-driver-profile-qrcode_img").attr("src", text.data.qrcode_img);
 
-            }
-            else
-            {
-                var error = text.error;
-                if(error=="app_not_updated")
-                {
-                    $$('#force-update-message').text(text.data.message);
-                    myApp.popup(".force-update-popup", true, true);
-                    window.sessionStorage.setItem('update_url',text.data.update_url);
-                }
-                if(error=="user_banned" || error == "registration_not_verified")
-                {
-                    $$('#popup-message-text').text(text.data);
-                    myApp.popup(".message-popup", true, true);
                 }
                 else
                 {
-                    myApp.popup(".login-screen", true, true);
-                    convert_persian_digit_to_english();
+                    var error = text.error;
+                    if(error=="app_not_updated")
+                    {
+                        $$('#force-update-message').text(text.data.message);
+                        myApp.popup(".force-update-popup", true, true);
+                        window.sessionStorage.setItem('update_url',text.data.update_url);
+                    }
+                    if(error=="user_banned" || error == "registration_not_verified")
+                    {
+                        $$('#popup-message-text').text(text.data);
+                        myApp.popup(".message-popup", true, true);
+                    }
+                    else
+                    {
+                        myApp.popup(".login-screen", true, true);
+                        convert_persian_digit_to_english();
+                    }
+
                 }
+            },
+            error: function(jqXHR, exception) {
+                myApp.hideIndicator();
+                myApp.alert('در پروسه اتصال به سرور مشکلی به وجود آماده است ، لطفا وضعیت اینترنت را بررسی نمایید.','توجه', function () {});
+            },
+        });
 
-            }
-        },
-        error: function(jqXHR, exception) {
-            myApp.hideIndicator();
-            myApp.alert('در پروسه اتصال به سرور مشکلی به وجود آماده است ، لطفا وضعیت اینترنت را بررسی نمایید.','توجه', function () {});
-        },
-    });
-
-}
+    }
 
 }
 
 function do_update_profile()
 {
-    	event.preventDefault();
+    event.preventDefault();
 
-		// Grab the file from the input.
-		//var insurance = $$( '#insurance' )[0].files[0];
-		var avatar = $$( '#avatar' )[0].files[0];
-		var state = $$( '.state_list' ).val();
-		var city = $$( '.city_list' ).val();
-		var bank = $$( '.bank_list' ).val();
-		var iban = $$( '#sidebar-driver-iban-number' ).val();
-		var national_id = $$( '#register_national_id' ).val();
+    // Grab the file from the input.
+    //var insurance = $$( '#insurance' )[0].files[0];
+    var avatar = $$( '#avatar' )[0].files[0];
+    var state = $$( '.state_list' ).val();
+    var city = $$( '.city_list' ).val();
+    var bank = $$( '.bank_list' ).val();
+    var iban = $$( '#sidebar-driver-iban-number' ).val();
+    var national_id = $$( '#register_national_id' ).val();
 
-		//var Certificates = $$( '#Certificates' )[0].files[0];
-		var formData = new FormData();
-	    var	access_token= window.sessionStorage.getItem('access_token');
-		//formData.append( 'insurance', insurance );
-		formData.append( 'avatar', avatar );
-		//formData.append( 'Certificates', Certificates );
-		formData.append( 'access_token', access_token );
-		formData.append( 'state', state );
-		formData.append( 'city', city );
-		formData.append( 'bank', bank );
-		formData.append( 'iban', iban );
-		formData.append( 'national_id', national_id );
-          myApp.showIndicator();
-		// Fire the request.
-		jQuery.ajax( {
-			url: server_url+'updateprofile',
-			method: 'POST',
-			processData: false,
-			contentType: false,
-			beforeSend: function ( xhr ) {
-				xhr.setRequestHeader( 'X-WP-Nonce',server_url+'updateprofile' );
-			},
-			data: formData
-		} ).success( function ( response ) {
-		 myApp.hideIndicator();
-                myApp.alert(response.data,'توجه', function () {});
-                if(response.success == true)
-                {
-                 $$('#popup-message-text').text(response.data);
-                 //   myApp.popup(".message-popup", true, true);
-		} }).error( function( response ) {
-		 myApp.hideIndicator();
-		 if(response.success == false)
-                {
-                 $$('#popup-message-text').text(response.data);
-                 //   myApp.popup(".message-popup", true, true);
-		}
-		else
-              myApp.alert('در پروسه اتصال به سرور مشکلی به وجود آماده است ، لطفا وضعیت اینترنت را بررسی نمایید.','توجه', function () {});
-		});
-   
+    //var Certificates = $$( '#Certificates' )[0].files[0];
+    var formData = new FormData();
+    var	access_token= window.sessionStorage.getItem('access_token');
+    //formData.append( 'insurance', insurance );
+    formData.append( 'avatar', avatar );
+    //formData.append( 'Certificates', Certificates );
+    formData.append( 'access_token', access_token );
+    formData.append( 'state', state );
+    formData.append( 'city', city );
+    formData.append( 'bank', bank );
+    formData.append( 'iban', iban );
+    formData.append( 'national_id', national_id );
+    myApp.showIndicator();
+    // Fire the request.
+    jQuery.ajax( {
+        url: server_url+'updateprofile',
+        method: 'POST',
+        processData: false,
+        contentType: false,
+        beforeSend: function ( xhr ) {
+            xhr.setRequestHeader( 'X-WP-Nonce',server_url+'updateprofile' );
+        },
+        data: formData
+    } ).success( function ( response ) {
+        myApp.hideIndicator();
+        myApp.alert(response.data,'توجه', function () {});
+        if(response.success == true)
+        {
+
+            $$('#popup-message-text').text(response.data);
+            //   myApp.popup(".message-popup", true, true);
+        } }).error( function( response ) {
+        myApp.hideIndicator();
+        if(response.success == false)
+        {
+            $$('#popup-message-text').text(response.data);
+            //   myApp.popup(".message-popup", true, true);
+        }
+        else
+            myApp.alert('در پروسه اتصال به سرور مشکلی به وجود آماده است ، لطفا وضعیت اینترنت را بررسی نمایید.','توجه', function () {});
+    });
+
 }
 
 function showTaxiPardaz()
@@ -993,14 +983,14 @@ function getSate()
 
                     });
                 }
-              /*  myApp.virtualList('.state_list',
-                    {
-                        items:data,
-                        // Template 7 template to render each item
-                        template: '<option class="" value=" {{id}} ">{{title}}</option>',
+                /*  myApp.virtualList('.state_list',
+                 {
+                 items:data,
+                 // Template 7 template to render each item
+                 template: '<option class="" value=" {{id}} ">{{title}}</option>',
 
-                    });*/
-                    myApp.smartSelectAddOption('.state_list', list);
+                 });*/
+                myApp.smartSelectAddOption('.state_list', list);
 
             }
             else
@@ -1043,14 +1033,14 @@ function getCity()
 
                     });
                 }
-              /*  myApp.virtualList('.state_list',
-                    {
-                        items:data,
-                        // Template 7 template to render each item
-                        template: '<option class="" value=" {{id}} ">{{title}}</option>',
+                /*  myApp.virtualList('.state_list',
+                 {
+                 items:data,
+                 // Template 7 template to render each item
+                 template: '<option class="" value=" {{id}} ">{{title}}</option>',
 
-                    });*/
-                    myApp.smartSelectAddOption('.city_list', listCity);
+                 });*/
+                myApp.smartSelectAddOption('.city_list', listCity);
 
             }
             else
