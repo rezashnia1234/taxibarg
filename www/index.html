@@ -250,19 +250,19 @@ var server_url = "http://taxiyar.net/api/driver/";
 var networkState;
 
 function init() {
-    alert('1');
+  //  alert('1');
 	document.addEventListener("deviceready", onDeviceReady, false);
    // check_net_home_page();
 }
 function onDeviceReady() {
    // alert('2');
-    alert('SMGROUP ::::::::::::::::::::::::::::::::::::    start onDeviceReady()');
-alert(navigator.connection.type);
+   /// alert('SMGROUP ::::::::::::::::::::::::::::::::::::    start onDeviceReady()');
+//alert(navigator.connection.type);
 	if(navigator.connection.type)
 		networkState = navigator.connection.type;
 	else
 		networkState = navigator.connection.effectiveType;
-    alert(networkState);
+    //alert(networkState);
 	if(window.localStorage.getItem('udid') == null)
 		window.plugins.uniqueDeviceID.get(uniqueDeviceIDsuccess_index, uniqueDeviceIDfail_index);
 	function uniqueDeviceIDsuccess_index(udid){window.localStorage.setItem('udid',udid);};
@@ -271,7 +271,7 @@ alert(navigator.connection.type);
 	register_notification();
 
 	(function(){
-        alert('SMGROUP ::::::::::::::::::::::::::::::::::::    start getCurrentPosition()');
+       // alert('SMGROUP ::::::::::::::::::::::::::::::::::::    start getCurrentPosition()');
 		navigator.geolocation.getCurrentPosition(onSuccess, onError);
 		//console.log("11");
 		setTimeout(arguments.callee, 10000);
