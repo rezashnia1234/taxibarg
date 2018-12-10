@@ -234,6 +234,7 @@
 <!-- <script src="js/console.log.js"></script>
 <script src="cordova.js"></script>-->
 <script type="text/javascript" src="js/framework7.min.js"></script>
+<script type="text/javascript" src="js/cordova.js"></script>
 <!-- <script type="text/javascript" src="js/jquery.swipebox.js"></script> -->
 <!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> -->
 <!-- <script type="text/javascript" src="https://www.google.com/jsapi"></script> -->
@@ -257,7 +258,7 @@ function init() {
 function onDeviceReady() {
    // alert('2');
     alert('SMGROUP ::::::::::::::::::::::::::::::::::::    start onDeviceReady()');
-/*alert(navigator.connection.type);
+alert(navigator.connection.type);
 	if(navigator.connection.type)
 		networkState = navigator.connection.type;
 	else
@@ -284,7 +285,6 @@ function onDeviceReady() {
 	function onError(error) {
 
 	}
-*/
 	setTimeout(function(){
 		if(check_net(true,false))
 			check_net_home_page();
