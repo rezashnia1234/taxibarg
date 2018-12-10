@@ -1,78 +1,78 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <widget xmlns = "http://www.w3.org/ns/widgets"
-        xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "ir.smgroup.taxiyar"
-        version   = "1.1.0">
-		
-		
-    <name>تاکسی یار</name>
-    <description>ویژه ارائه رانندگان</description>
-    <author href="http://smgroup.ir" email="info@smgroup.ir">Sorush Mehr Rezvan</author>
-    <!--
-		ir.smgroup.saveimage
+		xmlns:gap = "http://phonegap.com/ns/1.0"
+		id        = "ir.smgroup.taxiyar"
+		version   = "1.1.0">
+
+
+	<name>تاکسی یار</name>
+	<description>ویژه ارائه رانندگان</description>
+	<author href="http://smgroup.ir" email="info@smgroup.ir">Sorush Mehr Rezvan</author>
+	<!--
+        ir.smgroup.saveimage
         If you do not want any permissions to be added to your app, add the
         following tag to your config.xml; you will still have the INTERNET
         permission on your app, which PhoneGap requires. 
     -->
-    <preference name="permissions"                value="none"/>
+	<preference name="permissions"                value="none"/>
 
-    <!-- Customize your app and platform with the preference element. -->
-    <!--<preference name="phonegap-version"           value='cli-5.4.1' />  -->        <!-- all: current version of PhoneGap -->
-    <!--<preference name="phonegap-version"           value='cli-6.5.1' />  -->        <!-- all: current version of PhoneGap -->
+	<!-- Customize your app and platform with the preference element. -->
+	<!--<preference name="phonegap-version"           value='cli-5.4.1' />  -->        <!-- all: current version of PhoneGap -->
+	<!--<preference name="phonegap-version"           value='cli-6.5.1' />  -->        <!-- all: current version of PhoneGap -->
 	<preference name='phonegap-version'			  value='cli-6.5.0' />
 	<preference name='pgb-builder-version'		  value='1' />
-    <preference name="orientation"                value="portrait" />        <!-- all: default means both landscape and portrait are enabled -->
-    <preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
-    <preference name="prerendered-icon"           value="true" />           <!-- ios: if icon is prerendered, iOS will not apply it's gloss to the app's icon on the user's home screen -->
-    <preference name="ios-statusbarstyle"         value="black-opaque" />   <!-- ios: black-translucent will appear black because the PhoneGap webview doesn't go beneath the status bar -->
-    <preference name="detect-data-types"          value="true" />           <!-- ios: controls whether data types (such as phone no. and dates) are automatically turned into links by the system -->
-    <preference name="exit-on-suspend"            value="false" />          <!-- ios: if set to true, app will terminate when home button is pressed -->
-    <preference name="auto-hide-splash-screen"    value="true" />           <!-- ios: if set to false, the splash screen must be hidden using a JavaScript API -->
-    <preference name="disable-cursor"             value="false" />          <!-- blackberry: prevents a mouse-icon/cursor from being displayed on the app -->
-    <preference name="android-minSdkVersion"      value="14" />             <!-- android: MIN SDK version supported on the target device. MAX version is blank by default. -->
-    <preference name="android-installLocation"    value="auto" />           <!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
+	<preference name="orientation"                value="portrait" />        <!-- all: default means both landscape and portrait are enabled -->
+	<preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
+	<preference name="prerendered-icon"           value="true" />           <!-- ios: if icon is prerendered, iOS will not apply it's gloss to the app's icon on the user's home screen -->
+	<preference name="ios-statusbarstyle"         value="black-opaque" />   <!-- ios: black-translucent will appear black because the PhoneGap webview doesn't go beneath the status bar -->
+	<preference name="detect-data-types"          value="true" />           <!-- ios: controls whether data types (such as phone no. and dates) are automatically turned into links by the system -->
+	<preference name="exit-on-suspend"            value="false" />          <!-- ios: if set to true, app will terminate when home button is pressed -->
+	<preference name="auto-hide-splash-screen"    value="true" />           <!-- ios: if set to false, the splash screen must be hidden using a JavaScript API -->
+	<preference name="disable-cursor"             value="false" />          <!-- blackberry: prevents a mouse-icon/cursor from being displayed on the app -->
+	<preference name="android-minSdkVersion"      value="14" />             <!-- android: MIN SDK version supported on the target device. MAX version is blank by default. -->
+	<preference name="android-installLocation"    value="auto" />           <!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
 	<preference name="SplashScreenDelay"		  value="4000"/>
 	<preference name="FadeSplashScreen"			  value="false" />
 	<preference name="ShowSplashScreenSpinner"	  value="false"/>
 	<preference name="AllowInlineMediaPlayback"	  value="true" />
-    <preference name="fullscreen"                 value="false" />           <!-- all: hides the status bar at the top of the screen -->
+	<preference name="fullscreen"                 value="false" />           <!-- all: hides the status bar at the top of the screen -->
 	<!-- <preference name="android-windowSoftInputMode" value="stateVisible|adjustResize" /> -->
 
 	<!-- ???????????????????????????????????????????????????????????????????????????????????? -->
 	<!-- ???????????????????????????????????????????????????????????????????????????????????? -->
 	<!-- ???????????????????????????????????????????????????????????????????????????????????? -->
 	<preference name="DisallowOverscroll" value="true"/>
-	
-	
-    <!-- Plugins -->
 
-    <!-- Core plugins -->
+
+	<!-- Plugins -->
+
+	<!-- Core plugins -->
 	<plugin name="cordova-plugin-whitelist" source="npm" />
 	<plugin spec="https://github.com/apache/cordova-plugin-battery-status.git" source="git" />
-    <!--<plugin spec="https://github.com/apache/cordova-plugin-media-capture.git" source="git" />-->
+	<!--<plugin spec="https://github.com/apache/cordova-plugin-media-capture.git" source="git" />-->
 	<plugin spec="https://github.com/apache/cordova-plugin-console.git" source="git" />
 	<plugin name="cordova-plugin-device" source="npm" />
 	<!--<plugin spec="https://github.com/apache/cordova-plugin-device-motion.git" source="git" />-->
-    <!--<plugin spec="https://github.com/apache/cordova-plugin-device-orientation.git" source="git" />-->
+	<!--<plugin spec="https://github.com/apache/cordova-plugin-device-orientation.git" source="git" />-->
 	<plugin name="cordova-plugin-dialogs" source="npm" />
 	<!-- <plugin name="cordova-plugin-file" source="npm" /> -->
-    <!-- <plugin name="cordova-plugin-file-transfer" source="npm" /> -->
-    <!--<plugin spec="https://github.com/fastrde/cordova-plugin-fastrde-downloader.git" source="git" />-->
+	<!-- <plugin name="cordova-plugin-file-transfer" source="npm" /> -->
+	<!--<plugin spec="https://github.com/fastrde/cordova-plugin-fastrde-downloader.git" source="git" />-->
 	<plugin name="cordova-plugin-geolocation" source="npm" />
 	<!--<plugin spec="https://github.com/apache/cordova-plugin-globalization.git" source="git" />-->
 	<plugin name="cordova-plugin-inappbrowser" source="npm"  /><!-- spec="1.7.0" -->
 	<plugin name="cordova-plugin-media" source="npm" />
 	<plugin name="cordova-plugin-network-information" source="npm" />
 	<plugin name="cordova-plugin-splashscreen" source="npm" />
-	
-	
 
-    <!-- Third party plugins -->
+
+
+	<!-- Third party plugins -->
 	<preference name="android-build-tool" value="gradle" />
 	<plugin name="phonegap-plugin-push" spec="~1.9.1" source="npm">
 		<param name="SENDER_ID" value="804625540618" />
 	</plugin>
-	
+
 	<!-- <plugin name="phonegap-plugin-barcodescanner" source="npm" /> -->
 	<!-- <plugin spec="https://github.com/Telerik-Verified-Plugins/BarcodeScanner.git" source="git" /> -->
 
@@ -91,16 +91,20 @@
 			<string>audio</string>
 		</array>
 	</gap:config-file>
-	
+
 	<!--<gap:plugin name="com.dawsonloudon.videoplayer" 	platform="android"	version="1.0.0" />-->
 	<!--<gap:plugin name="com.hutchind.cordova.plugins.streamingmedia"  source="plugins.cordova.io" />-->
 	<!-- <plugin spec="https://github.com/nchutchind/cordova-plugin-streaming-media.git" source="git" /> -->
 	<!-- <plugin spec="https://github.com/nchutchind/Vitamio-Cordova-Plugin.git" source="git" /> -->
+	<plugin name="cordova-android-support-gradle-release" platform="android" >
+		<variable name="ANDROID_SUPPORT_VERSION" value="26.0.0"/>
+	</plugin>
+	<plugin spec="https://github.com/Telerik-Verified-Plugins/Crosswalk.git" source="git" platform="android" />
 
 
-    <!-- Define app icon      -->
-    <icon src="images/splash/icon.png" />
-    <icon src="images/splash/ios.png" platform="ios" />
+	<!-- Define app icon      -->
+	<icon src="images/splash/icon.png" />
+	<icon src="images/splash/ios.png" platform="ios" />
 
 	<icon gap:platform="ios" height="60" width="60" src="images/splash/ios/icon-60.png" />
 	<icon gap:platform="ios" height="120" width="120" src="images/splash/ios/icon-60@2x.png" />
@@ -117,7 +121,7 @@
 	<icon gap:platform="ios" height="58" width="58" src="images/splash/ios/icon-small@2x.png" />
 	<icon gap:platform="ios" height="50" width="50" src="images/splash/ios/icon-50.png" />
 	<icon gap:platform="ios" height="100" width="100" src="images/splash/ios/icon-50@2x.png" />
-	
+
 	<icon gap:platform="ios" height="87" width="87" src="images/splash/ios/icon-29@3x.png" />
 	<icon gap:platform="ios" height="167" width="167" src="images/splash/ios/icon-167.png" />
 
@@ -129,7 +133,7 @@
 	<icon gap:platform="android" gap:qualifier="xxxhdpi" src="images/splash/android/icon-192-xxxhdpi.png" />
 
 
-    <!-- Define app splash screen for each platform. -->
+	<!-- Define app splash screen for each platform. -->
 	<gap:splash src="images/splash/screen-hdpi-landscape.png" />
 	<!--
 	<gap:splash src="img/splash/splash_bkg.png" gap:platform="android" gap:qualifier="port-xxhdpi" />
@@ -137,36 +141,36 @@
 	<gap:splash src="img/splash/splash_bkg.png" gap:platform="ios" width="1536" height="2048" />
 	<gap:splash src="img/splash/splash_bkg_landscape.png" gap:platform="ios" width="2048" height="1536" />
 	-->
-    <!-- Define app splash screen for each platform. -->
-    <gap:splash src="images/splash/screen-ldpi-landscape.png"		gap:platform="android" gap:qualifier="port-ldpi" />
-    <gap:splash src="images/splash/screen-mdpi-landscape.png"		gap:platform="android" gap:qualifier="port-mdpi" />
-    <gap:splash src="images/splash/screen-hdpi-landscape.png"		gap:platform="android" gap:qualifier="port-hdpi" />
-    <gap:splash src="images/splash/screen-xhdpi-landscape.png"		gap:platform="android" gap:qualifier="port-xhdpi" />
-    <gap:splash src="images/splash/screen-xxhdpi-landscape.png"		gap:platform="android" gap:qualifier="port-xxhdpi" />
-	
-    <gap:splash src="images/splash/por/screen-ldpi-landscape.png"		gap:platform="android" gap:qualifier="land-ldpi" />
-    <gap:splash src="images/splash/por/screen-mdpi-landscape.png"		gap:platform="android" gap:qualifier="land-mdpi" />
-    <gap:splash src="images/splash/por/screen-hdpi-landscape.png"		gap:platform="android" gap:qualifier="land-hdpi" />
-    <gap:splash src="images/splash/por/screen-xhdpi-landscape.png"		gap:platform="android" gap:qualifier="land-xhdpi" />
-    <gap:splash src="images/splash/por/screen-xxhdpi-landscape.png"		gap:platform="android" gap:qualifier="land-xxhdpi" />
+	<!-- Define app splash screen for each platform. -->
+	<gap:splash src="images/splash/screen-ldpi-landscape.png"		gap:platform="android" gap:qualifier="port-ldpi" />
+	<gap:splash src="images/splash/screen-mdpi-landscape.png"		gap:platform="android" gap:qualifier="port-mdpi" />
+	<gap:splash src="images/splash/screen-hdpi-landscape.png"		gap:platform="android" gap:qualifier="port-hdpi" />
+	<gap:splash src="images/splash/screen-xhdpi-landscape.png"		gap:platform="android" gap:qualifier="port-xhdpi" />
+	<gap:splash src="images/splash/screen-xxhdpi-landscape.png"		gap:platform="android" gap:qualifier="port-xxhdpi" />
 
-	
-    <gap:splash src="images/splash/screen-iphone-landscape.png"			gap:platform="ios"		width="320"		height="480" />
-    <gap:splash src="images/splash/screen-iphone-landscape-2x.png"		gap:platform="ios"		width="640"		height="960" />
-    <gap:splash src="images/splash/screen-iphone-landscape-568h-2x.png"	gap:platform="ios"		width="640"		height="1136" />
-    <gap:splash src="images/splash/screen-ipad-landscape.png"			gap:platform="ios"		width="768"		height="1024" />
-    <gap:splash src="images/splash/screen-ipad-landscape-2x.png"		gap:platform="ios"		width="1536"	height="2048" />
-	
-    <gap:splash src="images/splash/screen-800-736h@3x.png"			gap:platform="ios"		width="1242"	height="2208" />
-    <gap:splash src="images/splash/screen-800-667h@2x.png"			gap:platform="ios"		width="750"	height="1334" />
+	<gap:splash src="images/splash/por/screen-ldpi-landscape.png"		gap:platform="android" gap:qualifier="land-ldpi" />
+	<gap:splash src="images/splash/por/screen-mdpi-landscape.png"		gap:platform="android" gap:qualifier="land-mdpi" />
+	<gap:splash src="images/splash/por/screen-hdpi-landscape.png"		gap:platform="android" gap:qualifier="land-hdpi" />
+	<gap:splash src="images/splash/por/screen-xhdpi-landscape.png"		gap:platform="android" gap:qualifier="land-xhdpi" />
+	<gap:splash src="images/splash/por/screen-xxhdpi-landscape.png"		gap:platform="android" gap:qualifier="land-xxhdpi" />
 
 
+	<gap:splash src="images/splash/screen-iphone-landscape.png"			gap:platform="ios"		width="320"		height="480" />
+	<gap:splash src="images/splash/screen-iphone-landscape-2x.png"		gap:platform="ios"		width="640"		height="960" />
+	<gap:splash src="images/splash/screen-iphone-landscape-568h-2x.png"	gap:platform="ios"		width="640"		height="1136" />
+	<gap:splash src="images/splash/screen-ipad-landscape.png"			gap:platform="ios"		width="768"		height="1024" />
+	<gap:splash src="images/splash/screen-ipad-landscape-2x.png"		gap:platform="ios"		width="1536"	height="2048" />
 
-	
+	<gap:splash src="images/splash/screen-800-736h@3x.png"			gap:platform="ios"		width="1242"	height="2208" />
+	<gap:splash src="images/splash/screen-800-667h@2x.png"			gap:platform="ios"		width="750"	height="1334" />
+
+
+
+
 	<access origin="*"/> <!-- allow local pages -->
 	<allow-navigation href="*" />
 
-	
+
 
 </widget>
 
