@@ -122,7 +122,7 @@
 	<icon gap:platform="android" gap:qualifier="hdpi" src="images/splash/android/icon-72-hdpi.png" />
 	<icon gap:platform="android" gap:qualifier="xhdpi" src="images/splash/android/icon-96-xhdpi.png" />
 	<icon gap:platform="android" gap:qualifier="xxhdpi" src="images/splash/android/icon-144-xxhdpi.png" />
-	<icon gap:platform="android" gap:qualifier="xxxhdpi" src="images/splash/android/icon-192-xxxhdpi.png" />
+	<!-- <icon gap:platform="android" gap:qualifier="xxxhdpi" src="images/splash/android/icon-192-xxxhdpi.png" /> -->
 
 
 	<!-- Define app splash screen for each platform. -->
