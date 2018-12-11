@@ -105,8 +105,8 @@
 	<icon gap:platform="ios" height="152" width="152" src="images/splash/ios/icon-76@2x.png" />
 	<icon gap:platform="ios" height="40" width="40" src="images/splash/ios/icon-40.png" />
 	<icon gap:platform="ios" height="80" width="80" src="images/splash/ios/icon-40@2x.png" />
-	<icon gap:platform="ios" height="57" width="57" src="images/splash/ios/icon-57.png" />
-	<icon gap:platform="ios" height="114" width="114" src="images/splash/ios/icon-57@2x.png" />
+	<!-- <icon gap:platform="ios" height="57" width="57" src="images/splash/ios/icon-57.png" /> -->
+	<!-- <icon gap:platform="ios" height="114" width="114" src="images/splash/ios/icon-57@2x.png" /> -->
 	<icon gap:platform="ios" height="72" width="72" src="images/splash/ios/icon-72.png" />
 	<icon gap:platform="ios" height="144" width="144" src="images/splash/ios/icon-72@2x.png" />
 	<icon gap:platform="ios" height="29" width="29" src="images/splash/ios/icon-small.png" />
