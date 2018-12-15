@@ -72,6 +72,8 @@ Route::post('/authwithphonenumber', function (Request $request)
     $phone_number = $request->input("phone_number");
 
     $user = App\Driver::where('phone_number',$phone_number)->get();
+    if(isset($user->first()->phone_number))
+        $accountOpen = $user->first()->account_open;
 
     if(!isset($user->first()->phone_number))
     {
@@ -88,6 +90,7 @@ Route::post('/authwithphonenumber', function (Request $request)
 
         $new_driver = new Driver;
         $new_driver->name = '';
+        $new_driver->last_name = '';
         $new_driver->phone_number = $request->input('phone_number');
         $new_driver->registration_verified = true;
         $new_driver->account_open = true;
@@ -98,23 +101,23 @@ Route::post('/authwithphonenumber', function (Request $request)
         $new_driver->bank_name = '';
         $new_driver->profile_pic_url = '';
         $new_driver->save();
-        $user->first()->account_open = true ;
+        $accountOpen = true ;
 
     }
 
-    if ($user->first()->account_open == false) {
+    if ($accountOpen == false) {
         $arr = ["success" => false, "data" => 'حساب شما غیر فعال شده است.'];
         return response()->json($arr);
     }
 
     $digits = 5;
     $secutity_code = (string)(rand(pow(10, $digits - 1), pow(10, $digits) - 1));
-    my_send_sms('کد فعال سازی تاکسی یار شما:' . $secutity_code, $phone_number);
-
-
-    $user->first()->sms_security_code = $secutity_code;
-    $user->first()->save();
-
+    if(!empty($secutity_code))
+    {
+        my_send_sms('کد فعال سازی تاکسی یار شما:' . $secutity_code, $phone_number);
+        $user->first()->sms_security_code = $secutity_code;
+        $user->first()->save();
+    }
     $arr = ["success" => true, "data" => null];
     return response()->json($arr);
 
@@ -159,31 +162,44 @@ Route::post('/register',function (Request $request)
     $phone_number = $request->input('phone_number');
     $new_driver = App\Driver::where('phone_number',$phone_number)->get();
     //$new_driver = new Driver;
-    $new_driver->name = $request->input('name');
-    $new_driver->last_name = $request->input('last_name');
+    $new_driver->first()->name = $request->input('name');
+    $new_driver->first()->last_name = $request->input('last_name');
     //$new_driver->phone_number = $request->input('phone_number');
     //$new_driver->national_code = $request->input('national_code');
 //	$new_driver->car_type_2 = $request->input('car_type_2');
-    $new_driver->registration_verified = false;
-    $new_driver->account_open = true;
+    $new_driver->first()->registration_verified = true;
+    $new_driver->first()->account_open = true;
     /*these fields does not have default values*/
-    $new_driver->car_type = '';
-    $new_driver->car_color = '';
+    $new_driver->first()->car_type = '';
+    $new_driver->first()->car_color = '';
     if($request->has('license_plate'))
-        $new_driver->license_plate = $request->input('license_plate');
+        $new_driver->first()->license_plate = $request->input('license_plate');
     else
-        $new_driver->license_plate = '';
-    $new_driver->iban_number = '';
-    $new_driver->bank_name = '';
-    $new_driver->profile_pic_url = '';
+        $new_driver->first()->license_plate = '';
+    $new_driver->first()->iban_number = '';
+    $new_driver->first()->bank_name = '';
+    $new_driver->first()->profile_pic_url = '';
+    $new_driver->first()->sexuality = $request->input('register_sex');
+    $new_driver->first()->save();
 
-    $digits = 5;
-    $secutity_code = (string)(rand(pow(10, $digits-1), pow(10, $digits)-1));
-    my_send_sms('کد فعال سازی تاکسی یار شما:'.$secutity_code,$new_driver->phone_number);
-    $new_driver->sms_security_code = $secutity_code;
-    $new_driver->save();
-
-    $arr = ["success"=>true,"data"=>"کد فعال سازی برای شما پیامک خواهد شد."];
+    $arrList = ["list"=>[
+        "id"=> $new_driver->first()->id,
+        "access_token"=>$new_driver->first()->access_token,
+        "name"=> $new_driver->first()->name,
+        "last_name"=> $new_driver->first()->last_name,
+        "phone_number"=> $new_driver->first()->phone_number,
+        "profile_pic_url"=>URL::to('/'. $new_driver->first()->profile_pic_url),
+        "iban"=> $new_driver->first()->iban_number,
+        "car_type"=> $new_driver->first()->car_type,
+        "car_color"=> $new_driver->first()->car_color,
+        "license_plate"=> $new_driver->first()->license_plate,
+        'state'=>$new_driver->first()->state_id,
+        'city'=>$new_driver->first()->city_id,
+        'national_code'=>$new_driver->first()->national_code,
+        'bank_name'=>$new_driver->first()->bank_name,
+    ]];
+    $arr = ["success"=>true,'list'=>$arrList,"data"=> $request->input('name')." "." عزیز خوش آمدید. <br>جهت استفاده از امکانات پروفایل خود را تکمیل کنید."];
+    //$arr = ["success"=>true,"data"=> $request->input('name')." "." عزیز خوش آمدید./nجهت استفاده از امکانات پروفایل خود را تکمیل کنید."];
     return response()->json($arr);
 
 });
@@ -280,6 +296,7 @@ Route::post('/loginwithauthtoken', function (Request $request)
             "id"=>$user->first()->id,
             "access_token"=>$access_token,
             "name"=>$user->first()->name,
+            "last_name"=>$user->first()->last_name,
             "phone_number"=>$user->first()->phone_number,
             "profile_pic_url"=>URL::to('/'.$user->first()->profile_pic_url),
             "iban"=>$user->first()->iban_number,
@@ -291,7 +308,11 @@ Route::post('/loginwithauthtoken', function (Request $request)
             'support_phone'=>config('app.support_phone'),
             'driver_app_map_center'=>config('app.driver_app_map_center'),
             'useful_phone_numbers'=>json_decode(File::get(public_path().'/phones.json')),
-            "categories"=> Category::all()
+            "categories"=> Category::all(),
+            'state'=>$user->first()->state_id,
+            'city'=>$user->first()->city_id,
+            'national_code'=>$user->first()->national_code,
+            'bank_name'=>$user->first()->bank_name,
         ]];
         $providers = Provider::where('account_open','=',true)->get();
         $arr['data']['providers'] = [];
@@ -736,8 +757,11 @@ Route::post('/showprofile', function (Request $request)
             'support_phone'=>config('app.support_phone'),
             'driver_app_map_center'=>config('app.driver_app_map_center'),
             'useful_phone_numbers'=>json_decode(File::get(public_path().'/phones.json')),
-            "categories"=> Category::all()
+            "categories"=> Category::all(),
+            'state'=>$user->first()->state_id,
+            'city'=>$user->first()->city_id,
         ]];
+
         $providers = Provider::where('account_open','=',true)->get();
         $arr['data']['providers'] = [];
         foreach ($providers as $provider)
@@ -824,7 +848,7 @@ Route::post('/updateprofile', function (Request $request)
             'avatar'=>'required'
         ],
         [
-            'insurance.required'=>'لطفا عکس کاربری خود را انتخاب کنید.'
+            'avatar.required'=>'لطفا عکس کاربری خود را انتخاب کنید.'
         ]
     );
     if($validator->fails())
@@ -841,51 +865,181 @@ Route::post('/updateprofile', function (Request $request)
     $avatarUpload=false;
     $CertificatesUpload=false;
 
-    $insurance = $request->file('insurance');
-    $state = $request->file('state');
-    $city = $request->file('city');
-    $bank = $request->file('bank');
-    $iban = $request->file('iban');
-    $national_id = $request->file('national_id');
+    $avatar = $request->file('avatar');
+    $state = $request->input('state');
+    $city = $request->input('city');
+    $bank = $request->input('bank');
+    $iban = $request->input('iban');
+    $national_id = $request->input('national_id');
 
-    if ($request->hasFile('insurance')) {
+    if ($request->hasFile('avatar')) {
 
         $destinationPath = 'uploads/driver_profile_pics';
 
 
-        $insurance = $request->file('insurance');
+        /*$insurance = $request->file('insurance');
         if (!empty($insurance)) {
             $fname = str_random(12) . '.' . $insurance->getClientOriginalExtension();
             $insuranceIpload = $insurance->move($destinationPath, $fname);
             $finalInsurance = $destinationPath . '/' . $fname;
-        }
+        }*/
         $avatar = $request->file('avatar');
         if (!empty($avatar)) {
             $fnameAvatar = str_random(12) . '.' . $avatar->getClientOriginalExtension();
             $avatarUpload = $avatar->move($destinationPath, $fnameAvatar);
             $finalAvatar = $destinationPath . '/' . $fnameAvatar;
         }
-        $Certificates = $request->file('Certificates');
-        if (!empty($Certificates)) {
-            $fnameCertificates = str_random(12) . '.' . $Certificates->getClientOriginalExtension();
-            $CertificatesUpload =   $Certificates->move($destinationPath, $fnameCertificates);
-            $finalCertificates = $destinationPath . '/' . $fnameCertificates;
-        }
+        /* $Certificates = $request->file('Certificates');
+         if (!empty($Certificates)) {
+             $fnameCertificates = str_random(12) . '.' . $Certificates->getClientOriginalExtension();
+             $CertificatesUpload =   $Certificates->move($destinationPath, $fnameCertificates);
+             $finalCertificates = $destinationPath . '/' . $fnameCertificates;
+         }*/
     }
-    if( ($insuranceIpload == true) || ($avatarUpload == true) || ($CertificatesUpload == true ) )
+    //if( ($insuranceIpload == true) || ($avatarUpload == true) || ($CertificatesUpload == true ) )
+    if( $avatarUpload == true)
     {
         $driver->first()->profile_pic_url = $finalAvatar ;
-        $driver->first()->insurance_pic_url = $finalInsurance ;
-        $driver->first()->certificates_pic_url = $finalCertificates ;
-        $driver->iban_number = $iban;
-        $driver->bank_name = $bank;
-        $driver->national_code = $national_id ;
-        $driver->state_id = $state;
-        $driver->city_id = $city;
+        // $driver->first()->insurance_pic_url = $finalInsurance ;
+        // $driver->first()->certificates_pic_url = $finalCertificates ;
+        $driver->first()->iban_number = $iban;
+        $driver->first()->bank_name = $bank;
+        $driver->first()->national_code = $national_id ;
+        $driver->first()->state_id = $state;
+        $driver->first()->city_id = $city;
         $driver->first()->save();
 
+        $arrList = ["list"=>[
+            "id"=> $driver->first()->id,
+            "access_token"=>$driver->first()->access_token,
+            "name"=> $driver->first()->name,
+            "last_name"=> $driver->first()->last_name,
+            "phone_number"=> $driver->first()->phone_number,
+            "profile_pic_url"=>URL::to('/'. $driver->first()->profile_pic_url),
+            "iban"=> $driver->first()->iban_number,
+            "car_type"=> $driver->first()->car_type,
+            "car_color"=> $driver->first()->car_color,
+            "license_plate"=> $driver->first()->license_plate,
+            'bank_name'=>$driver->first()->bank_name,
+            'national_code'=>$driver->first()->national_code,
+            'state'=>$driver->first()->state_id,
+            'city'=>$driver->first()->city_id,
 
-        $arr = ["success"=>true,"data"=>"ارسال با موفقیت انجام شد."];
+        ]];
+        $arr = ["success"=>true,'list_data'=>$arrList,"data"=>"ارسال با موفقیت انجام شد."];
+        return response()->json($arr);
+    }
+
+    else
+    {
+        $arr = ["success"=>false,"data"=>"ارسال اطلاعات با موفقیت انجام نشد."];
+        return response()->json($arr);
+    }
+});
+Route::post('/specialprofile', function (Request $request)
+{
+    $validator = Validator::make($request->all(),
+        [
+            'access_token' => 'required',
+            'licensePlate'=>'required',
+            'carCardOne'=>'required',
+            'carCertifictOne'=>'required',
+        ],
+        [
+            'licensePlate.required'=>'شماره پلاک را کامل کنید.',
+            'carCardOne.required'=>'لطفا تصویر کارت خودرو را انتخاب کنید.',
+            'carCertifictOne.required'=>'لطفا تصویر گوای نامه خود را انتخاب کنید.',
+        ]
+    );
+    if($validator->fails())
+    {
+        $arr = ["success"=>false,"data"=>$validator->errors()->first()];
+        return response()->json($arr);
+    }
+
+
+    $access_token = $request->input("access_token");
+    $driver = App\Driver::where('access_token',$access_token)->get();
+
+    $carCardOneUpload =false;
+    $carCardTowUpload=false;
+    $carCertifictOneUpload=false;
+    $carCertifictTowUpload=false;
+
+
+    $carType = $request->input('carType');
+    $carColor = $request->input('carColor');
+    $licensePlate = $request->input('licensePlate');
+
+    $carCardOne = $request->file('carCardOne');
+    $carCardTow = $request->file('carCardTow');
+
+    $carCertifictOne = $request->file('carCertifictOne');
+    $carCertifictTow = $request->file('carCertifictTow');
+
+
+    if ($request->hasFile('carCardOne')) {
+
+        $destinationPath = 'uploads/driver_profile_pics';
+
+        $carCardOne = $request->file('carCardOne');
+        if (!empty($carCardOne)) {
+            $fnameCarCardOne = str_random(12) . '.' . $carCardOne->getClientOriginalExtension();
+            $carCardOneUpload = $carCardOne->move($destinationPath, $fnameCarCardOne);
+            $finalCarCardOne = $destinationPath . '/' . $fnameCarCardOne;
+        }
+
+        if (!empty($carCardTow)) {
+            $fnameCarCardTow = str_random(12) . '.' . $carCardTow->getClientOriginalExtension();
+            $carCardTowUpload = $carCardTow->move($destinationPath, $fnameCarCardTow);
+            $finalCarCardTow = $destinationPath . '/' . $fnameCarCardTow;
+        }
+        if (!empty($carCertifictOne)) {
+            $fnameCarCertifictOne = str_random(12) . '.' . $carCertifictOne->getClientOriginalExtension();
+            $carCertifictOneUpload = $carCertifictOne->move($destinationPath, $fnameCarCertifictOne);
+            $finalCarCertifictOne = $destinationPath . '/' . $fnameCarCertifictOne;
+        }
+        if (!empty($carCertifictTow)) {
+            $fnameCarCertifictTow = str_random(12) . '.' . $carCertifictTow->getClientOriginalExtension();
+            $carCertifictTowUpload = $carCertifictOne->move($destinationPath, $fnameCarCertifictTow);
+            $finalCarCertifictTow = $destinationPath . '/' . $fnameCarCertifictTow;
+        }
+
+
+    }
+    //if( ($insuranceIpload == true) || ($avatarUpload == true) || ($CertificatesUpload == true ) )
+    if( $carCardOneUpload == true)
+    {
+        $driver->first()->car_card_one = $carCardOneUpload ;
+        $driver->first()->car_card_tow = $carCardOneUpload ;
+        $driver->first()->car_certifict_one = $carCertifictOneUpload ;
+        $driver->first()->car_certifict_tow = $carCertifictTowUpload ;
+        // $driver->first()->insurance_pic_url = $finalInsurance ;
+        // $driver->first()->certificates_pic_url = $finalCertificates ;
+        $driver->first()->car_type = $carType;
+        $driver->first()->car_color = $carColor;
+        $driver->first()->license_plate = $licensePlate ;
+        $driver->first()->save();
+
+        $arrList = ["list"=>[
+            "id"=> $driver->first()->id,
+            "access_token"=>$driver->first()->access_token,
+            "name"=> $driver->first()->name,
+            "last_name"=> $driver->first()->last_name,
+            "phone_number"=> $driver->first()->phone_number,
+            "profile_pic_url"=>URL::to('/'. $driver->first()->profile_pic_url),
+            "iban"=> $driver->first()->iban_number,
+            "car_type"=> $driver->first()->car_type,
+            "car_color"=> $driver->first()->car_color,
+            "license_plate"=> $driver->first()->license_plate,
+            'bank_name'=>$driver->first()->bank_name,
+            'national_code'=>$driver->first()->national_code,
+            'state'=>$driver->first()->state_id,
+            'city'=>$driver->first()->city_id,
+
+        ]];
+        $msg = "تبریک !" .'<br>'. "شما کاربر ویژه شدید.";
+        $arr = ["success"=>true,'list_data'=>$arrList,"data"=>$msg];
         return response()->json($arr);
     }
 

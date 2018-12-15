@@ -92,7 +92,7 @@ function check_verify_number()
         return false;
 
     var verify_code = $$('#mobile_verify_code').val();
-    if(verify_code=="" || !jQuery.isNumeric(verify_code) || verify_code.length!=5)
+    if(verify_code == "" || !jQuery.isNumeric(verify_code) || verify_code.length!=5)
         myApp.alert('لطفا کد فعال سازی را با دقت وارد نمایید','توجه', function () {});
     else
     {
@@ -700,6 +700,7 @@ function do_register()
 {
     var name = $$('#register_name').val();
     var last_name = $$('#register_last_name').val();
+    var register_sex = $("input[name='register_sex']:checked").val();
     myApp.showIndicator();
     $.ajax({
         url: server_url+'register',
@@ -708,7 +709,8 @@ function do_register()
         ({
             'last_name': last_name,
             'name':name,
-            'phone_number': window.localStorage.getItem("driver_phone_number")
+            'phone_number': window.localStorage.getItem("driver_phone_number"),
+            'register_sex': register_sex
         }),
         success : function(text)
         {
@@ -739,11 +741,17 @@ function goToUpdate()
 function showProfile()
 {
     var app_data = JSON.parse(window.localStorage.getItem('app_data'));
-    console.log(app_data);
+    if(app_data['name'] == '' || app_data['last_name'] == '' )
+        myApp.popup(".register-popup", true, true);
     if(app_data['bank_name'] =='' || app_data['national_code']== '' || app_data['iban'] == '')
     {
         myApp.hideIndicator();
         mainView.router.loadPage('updateProfile.html');
+    }
+    if(app_data['license_plate'] != '' || app_data['car_type'] != '' || app_data['car_color'] != '')
+    {
+        myApp.hideIndicator();
+        mainView.router.loadPage('final_Profile.html');
     }
     else
     {
@@ -1050,5 +1058,87 @@ function getCity()
             myApp.hideIndicator();
             myApp.alert('در پروسه اتصال به سرور مشکلی به وجود آماده است ، لطفا وضعیت اینترنت را بررسی نمایید.','توجه', function () {});
         },
+    });
+}
+
+function do_special_user()
+{
+    var carType = $$( '#car_type' ).val();
+    var carColor = $$( '#car_color' ).val();
+    var licensePlate = $$( '#license_plate' ).val();
+    var carCardOne = $$( '#car_card_one' )[0].files[0];
+    var carCardTow = $$( '#car_card_tow' )[0].files[0];
+
+    var carCertifictOne = $$( '#certifict_one' )[0].files[0];
+    var carCertifictTow = $$( '#certifict_tow' )[0].files[0];
+
+    var formData = new FormData();
+    var	access_token= window.sessionStorage.getItem('access_token');
+
+
+    formData.append( 'access_token', access_token );
+    formData.append( 'car_type', carType );
+    formData.append( 'car_color', carColor );
+    formData.append( 'license_plate', licensePlate );
+
+    formData.append( 'carCardOne', carCardOne );
+    formData.append( 'carCardTow', carCardTow );
+
+    formData.append( 'carCertifictOne', carCertifictOne );
+    formData.append( 'carCertifictTow', carCertifictTow );
+    myApp.showIndicator();
+    jQuery.ajax( {
+        url: server_url+'specialprofile',
+        type: "POST",
+        processData: false,
+        contentType: false,
+        data:formData
+    } ).success(function(text)
+    {
+        // myApp.hideIndicator();
+        //  mainView.router.loadPage('profile.html');
+        myApp.hideIndicator();
+        //myApp.alert(response.data,'توجه', function () {});
+        if(text.success == true)
+        {
+            window.sessionStorage.setItem("access_token",text.data.access_token);
+            window.localStorage.setItem("app_data",JSON.stringify(text.data));
+
+            $$('#sidebar-driver-profile-name').text(text.data.name);
+            $$('#sidebar-driver-phone-number').text(text.data.phone_number);
+            $$('#sidebar-driver-national-code').text(text.data.national_code);
+            //$$('#sidebar-driver-iban-number').text(text.data.iban);
+            $$('#sidebar-driver-iban-number').val(text.data.iban);
+            $$('#sidebar-driver-bank-name').text(text.data.bank_name);
+            $$('#sidebar-driver-profile-car').text(text.data.car_type + ' ' + text.data.car_color + ' - ' + text.data.license_plate);
+            $$("#sidebar-driver-profile-img").attr("src", text.data.profile_pic_url);
+            // $$("#sidebar-driver-profile-qrcode_img").text(text.data.qrcode_img);
+            $$("#sidebar-driver-profile-qrcode_img").attr("src", text.data.qrcode_img);
+            myApp.alert(text.data,'توجه', function () {});
+
+        }
+        else
+        {
+            var error = text.error;
+            if(error=="app_not_updated")
+            {
+                $$('#force-update-message').text(text.data.message);
+                myApp.popup(".force-update-popup", true, true);
+                window.sessionStorage.setItem('update_url',text.data.update_url);
+            }
+            if(error=="user_banned" || error == "registration_not_verified")
+            {
+                myApp.alert(text.data,'توجه', function () {});
+            }
+            else
+            {
+                myApp.popup(".login-screen", true, true);
+                convert_persian_digit_to_english();
+            }
+
+        }
+    }).error(function(jqXHR, exception) {
+        myApp.hideIndicator();
+        myApp.alert('در پروسه اتصال به سرور مشکلی به وجود آماده است ، لطفا وضعیت اینترنت را بررسی نمایید.','توجه', function () {});
     });
 }
