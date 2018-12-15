@@ -751,7 +751,7 @@ function showProfile()
     if(app_data['license_plate'] != '' || app_data['car_type'] != '' || app_data['car_color'] != '')
     {
         myApp.hideIndicator();
-        mainView.router.loadPage('final_Profile.html');
+        mainView.router.loadPage('final_profile.html');
     }
     else
     {
