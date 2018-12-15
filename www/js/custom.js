@@ -751,6 +751,17 @@ function showProfile()
     if(app_data['license_plate'] != '' || app_data['car_type'] != '' || app_data['car_color'] != '')
     {
         myApp.hideIndicator();
+        $$('#sidebar-driver-profile-name').text(app_data['name']);
+        $$('#sidebar-driver-profile-lastname').text(app_data['last_name']);
+        $$('#sidebar-driver-phone-number').text(app_data['phone_number']);
+        $$('#sidebar-driver-national-code').text(app_data['national_code']);
+        $$('#sidebar-driver-iban-number').val(app_data['iban']);
+        $$('#sidebar-driver-bank-name').text(app_data['bank_name']);
+        $$('#car_type').val(app_data['car_type'] );
+        $$('#car_color').val(app_data['car_color'] );
+        $$('#license_plate').val(app_data['license_plate']);
+        $$("#sidebar-driver-profile-img").attr("src", app_data['profile_pic_url']);
+
         mainView.router.loadPage('final_profile.html');
     }
     else

@@ -899,7 +899,7 @@ myApp.onPageInit('updateProfile', function (page) {
 myApp.onPageInit('special_user', function (page) {
     var app_data = JSON.parse(window.localStorage.getItem('app_data'));
 });
-myApp.onPageInit('final_Profile', function (page) {
+myApp.onPageInit('final_profile', function (page) {
     var app_data = JSON.parse(window.localStorage.getItem('app_data'));
 
     $$('#sidebar-driver-profile-name').text(app_data['name']);
