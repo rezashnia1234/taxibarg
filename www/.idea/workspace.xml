@@ -21,8 +21,8 @@
       <file leaf-file-name="custom.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/custom.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="636">
-              <caret line="1150" column="10" lean-forward="true" selection-start-line="1150" selection-start-column="10" selection-end-line="1150" selection-end-column="10" />
+            <state relative-caret-position="738">
+              <caret line="1156" column="54" lean-forward="false" selection-start-line="1156" selection-start-column="54" selection-end-line="1156" selection-end-column="54" />
               <folding>
                 <element signature="n#!!block;n#getCity#0" expanded="false" />
               </folding>
@@ -357,12 +357,12 @@
       <workItem from="1544423382271" duration="9771000" />
       <workItem from="1544439123493" duration="3476000" />
       <workItem from="1544853417690" duration="17410000" />
-      <workItem from="1545038427072" duration="383000" />
+      <workItem from="1545038427072" duration="1826000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="146986000" />
+    <option name="totallyTimeSpent" value="148429000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="0" />
@@ -836,8 +836,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/custom.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="636">
-          <caret line="1150" column="10" lean-forward="true" selection-start-line="1150" selection-start-column="10" selection-end-line="1150" selection-end-column="10" />
+        <state relative-caret-position="738">
+          <caret line="1156" column="54" lean-forward="false" selection-start-line="1156" selection-start-column="54" selection-end-line="1156" selection-end-column="54" />
           <folding>
             <element signature="n#!!block;n#getCity#0" expanded="false" />
           </folding>
