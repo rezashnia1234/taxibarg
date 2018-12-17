@@ -1154,6 +1154,7 @@ function do_special_user()
     });
 }
 function logOutUser() {
-    window.localStorage.setItem("access_token", null);
+    window.localStorage.clear();
+   // window.localStorage.setItem("access_token", null);
     myApp.popup(".login-screen", true, true);
 }

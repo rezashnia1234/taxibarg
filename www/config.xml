@@ -88,10 +88,17 @@
 	<!--<gap:plugin name="com.hutchind.cordova.plugins.streamingmedia"  source="plugins.cordova.io" />-->
 	<!-- <plugin spec="https://github.com/nchutchind/cordova-plugin-streaming-media.git" source="git" /> -->
 	<!-- <plugin spec="https://github.com/nchutchind/Vitamio-Cordova-Plugin.git" source="git" /> -->
-	<plugin name="cordova-android-support-gradle-release" platform="android" >
-		<variable name="ANDROID_SUPPORT_VERSION" value="26.0.0"/>
-	</plugin>
-	<plugin spec="https://github.com/Telerik-Verified-Plugins/Crosswalk.git" source="git" platform="android" />
+
+
+
+	<!-- add web view x86 -->
+
+
+
+	<!--<plugin name="cordova-android-support-gradle-release" platform="android" >-->
+		<!--<variable name="ANDROID_SUPPORT_VERSION" value="26.0.0"/>-->
+	<!--</plugin>-->
+	<!--<plugin spec="https://github.com/Telerik-Verified-Plugins/Crosswalk.git" source="git" platform="android" />-->
 
 
 	<!-- Define app icon      -->
