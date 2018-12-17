@@ -1153,3 +1153,6 @@ function do_special_user()
         myApp.alert('در پروسه اتصال به سرور مشکلی به وجود آماده است ، لطفا وضعیت اینترنت را بررسی نمایید.','توجه', function () {});
     });
 }
+function logOutUser() {
+    var app_data ='';
+}
