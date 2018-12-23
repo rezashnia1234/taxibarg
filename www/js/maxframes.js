@@ -908,8 +908,8 @@ myApp.onPageInit('final_profile', function (page) {
     $$('#sidebar-driver-national-code').text(app_data['national_code']);
     $$('#sidebar-driver-iban-number').val(app_data['iban']);
     $$('#sidebar-driver-bank-name').text(app_data['bank_name']);
-    $$('#car_type').val(app_data['car_type'] );
-    $$('#car_color').val(app_data['car_color'] );
+    $$('#car_type').val(app_data['car_type']);
+    $$('#car_color').val(app_data['car_color']);
     $$('#license_plate').val(app_data['license_plate']);
     $$("#sidebar-driver-profile-img").attr("src", app_data['profile_pic_url']);
     // $$("#sidebar-driver-profile-qrcode_img").attr("src", text.data.qrcode_img);
