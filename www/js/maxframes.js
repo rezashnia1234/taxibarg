@@ -882,6 +882,9 @@ myApp.onPageInit('profile', function (page) {
     $$('#sidebar-driver-bank-name').val(app_data['bank_name']);
     // $$('#sidebar-driver-profile-car').val(text.data.car_type + ' ' + text.data.car_color + ' - ' + text.data.license_plate);
     $$("#sidebar-driver-profile-img").attr("src",app_data['profile_pic_url']);
+    $$('#car_type').val(app_data['car_type']);
+    $$('#car_color').val(app_data['car_color']);
+    $$('#license_plate').val(app_data['license_plate']);
     // $$("#sidebar-driver-profile-qrcode_img").text(text.data.qrcode_img);
     // $$("#sidebar-driver-profile-qrcode_img").attr("src", text.data.qrcode_img);
     //showProfile();
