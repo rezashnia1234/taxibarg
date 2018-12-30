@@ -200,7 +200,6 @@ function login_and_get_data()
 function check_net(show_alert,do_loop)
 {
      console.log(networkState);
-     alert(networkState);
     if (networkState == Connection.NONE) {
         if(show_alert)
         {

@@ -18,16 +18,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="custom.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="custom.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/custom.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4231">
-              <caret line="200" column="0" lean-forward="false" selection-start-line="200" selection-start-column="0" selection-end-line="200" selection-end-column="0" />
+            <state relative-caret-position="319">
+              <caret line="201" column="31" lean-forward="false" selection-start-line="201" selection-start-column="31" selection-end-line="201" selection-end-column="31" />
               <folding>
                 <element signature="n#!!block;n#check_mobile_number#0" expanded="false" />
                 <element signature="n#!!block;n#check_verify_number#0" expanded="false" />
                 <element signature="n#!!block;n#login_and_get_data#0" expanded="false" />
-                <element signature="n#!!block;n#check_net#0" expanded="false" />
                 <element signature="n#!!block;n#init_virtual_list_of_invoices#0" expanded="false" />
                 <element signature="n#!!block;n#init_virtual_list_of_notifications#0" expanded="false" />
               </folding>
@@ -38,8 +37,8 @@
       <file leaf-file-name="config.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2924">
-              <caret line="172" column="0" lean-forward="true" selection-start-line="172" selection-start-column="0" selection-end-line="172" selection-end-column="0" />
+            <state relative-caret-position="318">
+              <caret line="95" column="0" lean-forward="true" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -59,11 +58,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1957">
-              <caret line="325" column="0" lean-forward="true" selection-start-line="325" selection-start-column="0" selection-end-line="325" selection-end-column="0" />
+            <state relative-caret-position="750">
+              <caret line="320" column="48" lean-forward="true" selection-start-line="320" selection-start-column="48" selection-end-line="320" selection-end-column="48" />
               <folding>
                 <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -103,7 +102,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>.val</find>
       <find>name</find>
       <find>login_page_input_title</find>
       <find>nextlink</find>
@@ -133,6 +131,7 @@
       <find>Storage</find>
       <find>alert</find>
       <find>client_version</find>
+      <find>check_net</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -150,10 +149,10 @@
         <option value="$PROJECT_DIR$/special_user.html" />
         <option value="$PROJECT_DIR$/final_profile.html" />
         <option value="$PROJECT_DIR$/js/maxframes.js" />
-        <option value="$PROJECT_DIR$/config.xml" />
         <option value="$PROJECT_DIR$/js/jquery.min.js" />
-        <option value="$PROJECT_DIR$/js/custom.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/config.xml" />
+        <option value="$PROJECT_DIR$/js/custom.js" />
       </list>
     </option>
   </component>
@@ -334,12 +333,12 @@
       <workItem from="1545038427072" duration="3359000" />
       <workItem from="1545546271599" duration="5704000" />
       <workItem from="1546073502070" duration="1260000" />
-      <workItem from="1546152314220" duration="5903000" />
+      <workItem from="1546152314220" duration="6900000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="162829000" />
+    <option name="totallyTimeSpent" value="163826000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
@@ -386,7 +385,6 @@
             <element signature="n#!!block;n#check_mobile_number#0" expanded="false" />
             <element signature="n#!!block;n#check_verify_number#0" expanded="false" />
             <element signature="n#!!block;n#login_and_get_data#0" expanded="false" />
-            <element signature="n#!!block;n#check_net#0" expanded="false" />
             <element signature="n#!!block;n#init_virtual_list_of_invoices#0" expanded="false" />
             <element signature="n#!!block;n#init_virtual_list_of_notifications#0" expanded="false" />
           </folding>
@@ -467,7 +465,6 @@
             <element signature="n#!!block;n#check_mobile_number#0" expanded="false" />
             <element signature="n#!!block;n#check_verify_number#0" expanded="false" />
             <element signature="n#!!block;n#login_and_get_data#0" expanded="false" />
-            <element signature="n#!!block;n#check_net#0" expanded="false" />
             <element signature="n#!!block;n#init_virtual_list_of_invoices#0" expanded="false" />
             <element signature="n#!!block;n#init_virtual_list_of_notifications#0" expanded="false" />
           </folding>
@@ -548,7 +545,6 @@
             <element signature="n#!!block;n#check_mobile_number#0" expanded="false" />
             <element signature="n#!!block;n#check_verify_number#0" expanded="false" />
             <element signature="n#!!block;n#login_and_get_data#0" expanded="false" />
-            <element signature="n#!!block;n#check_net#0" expanded="false" />
             <element signature="n#!!block;n#init_virtual_list_of_invoices#0" expanded="false" />
             <element signature="n#!!block;n#init_virtual_list_of_notifications#0" expanded="false" />
           </folding>
@@ -629,7 +625,6 @@
             <element signature="n#!!block;n#check_mobile_number#0" expanded="false" />
             <element signature="n#!!block;n#check_verify_number#0" expanded="false" />
             <element signature="n#!!block;n#login_and_get_data#0" expanded="false" />
-            <element signature="n#!!block;n#check_net#0" expanded="false" />
             <element signature="n#!!block;n#init_virtual_list_of_invoices#0" expanded="false" />
             <element signature="n#!!block;n#init_virtual_list_of_notifications#0" expanded="false" />
           </folding>
@@ -838,14 +833,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2924">
-          <caret line="172" column="0" lean-forward="true" selection-start-line="172" selection-start-column="0" selection-end-line="172" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/maxframes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3047">
@@ -858,25 +845,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/custom.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4231">
-          <caret line="200" column="0" lean-forward="false" selection-start-line="200" selection-start-column="0" selection-end-line="200" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!block;n#check_mobile_number#0" expanded="false" />
-            <element signature="n#!!block;n#check_verify_number#0" expanded="false" />
-            <element signature="n#!!block;n#login_and_get_data#0" expanded="false" />
-            <element signature="n#!!block;n#check_net#0" expanded="false" />
-            <element signature="n#!!block;n#init_virtual_list_of_invoices#0" expanded="false" />
-            <element signature="n#!!block;n#init_virtual_list_of_notifications#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1957">
-          <caret line="325" column="0" lean-forward="true" selection-start-line="325" selection-start-column="0" selection-end-line="325" selection-end-column="0" />
+        <state relative-caret-position="750">
+          <caret line="320" column="48" lean-forward="true" selection-start-line="320" selection-start-column="48" selection-end-line="320" selection-end-column="48" />
           <folding>
             <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -900,6 +872,28 @@
             <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#li#2;n#ul#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#1;n#div#1;n#div#0;n#li#2;n#ul#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#li#3;n#ul#0;n#div#0;n#form#0;n#div#0;n#div#0;n#div#0;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="95" column="0" lean-forward="true" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/custom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="201" column="31" lean-forward="false" selection-start-line="201" selection-start-column="31" selection-end-line="201" selection-end-column="31" />
+          <folding>
+            <element signature="n#!!block;n#check_mobile_number#0" expanded="false" />
+            <element signature="n#!!block;n#check_verify_number#0" expanded="false" />
+            <element signature="n#!!block;n#login_and_get_data#0" expanded="false" />
+            <element signature="n#!!block;n#init_virtual_list_of_invoices#0" expanded="false" />
+            <element signature="n#!!block;n#init_virtual_list_of_notifications#0" expanded="false" />
           </folding>
         </state>
       </provider>
