@@ -251,12 +251,12 @@ var server_url = "http://taxiyar.net/api/driver/";
 var networkState;
 
 function init() {
-  //  alert('1');
+    alert('1');
 	document.addEventListener("deviceready", onDeviceReady, false);
    // check_net_home_page();
 }
 function onDeviceReady() {
-   // alert('2');
+    alert('2');
    /// alert('SMGROUP ::::::::::::::::::::::::::::::::::::    start onDeviceReady()');
 //alert(navigator.connection.type);
 	if(navigator.connection.type)
@@ -279,6 +279,7 @@ function onDeviceReady() {
 	})();
 
 	function onSuccess(position) {
+        alert('3');
 	  var position = {lat:  parseFloat(position.coords.latitude), lng: parseFloat(position.coords.longitude),time:new Date().getTime()/1000};
 	  window.localStorage.setItem('driver_location',JSON.stringify(position));
 	}

@@ -32,6 +32,7 @@ $( document ).ready(function(){
 
 function check_net_home_page()
 {
+    alert('5');
     // sessionStorage
     if(check_net(true,false))
     {
@@ -48,6 +49,7 @@ function check_net_home_page()
 
 function check_mobile_number()
 {
+    alert('6');
     if(!check_net(true,false))
         return false;
 
