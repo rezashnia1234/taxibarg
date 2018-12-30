@@ -8,7 +8,6 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="theme-color" content="#2196f3">
 <title>بسم الله الرحمن الرحیم</title>
-
 <!-- Font embedding link goes here -->
 <!-- <link href="http://fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet" type="text/css"> -->
 <!-- <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'> -->
@@ -32,6 +31,23 @@
   <div class="view navbar-fixed">
     <div class="pages ">
       <div data-page="panel-left" class="page sidemenu leftmenusmall gradient">
+		<!--
+        <div class="navbar header userprofile">
+          <div class="list-block media-list ">
+            <ul>
+              <li class="item-content">
+                <div class="item-media"><img src="img/pic1.png" width="44"/></div>
+                <div class="item-inner">
+                  <div class="item-title-row">
+                    <div class="item-title">Max Smith</div>
+                  </div>
+                  <div class="item-subtitle">New Jursey</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+		-->
         <div class="page-content">
           <div stype="text-align:center">
             <img id="sidebar-driver-profile-pic" src="" style="display:block;margin:0 auto;whith:100px;height:100px;border-radius:50%">
@@ -40,17 +56,12 @@
           <div style="color:white;text-align:center" id="sidebar-driver-car"></div>
           <hr>
           <ul class="menu">
-				<!--<li><a href="map.html" class="item-link close-panel"><i class="fa fa-map"></i><span>نقشه</span></a></li>-->
+				<li><a href="map.html" class="item-link close-panel"><i class="fa fa-map"></i><span>نقشه</span></a></li>
 				<li><a href="taxi_yar.html" class="item-link close-panel"><i class="fa fa-shopping-cart"></i><span>تاکسی برگ</span></a></li>
-				<li><a href="#"  onclick="showTaxiPardaz()" class="item-link close-panel"><i class="fa fa-credit-card-alt"></i><span>تاکسی پرداز</span></a></li>
-				<!--<li><a href="emergency.html" class="item-link close-panel"><i class="fa fa-phone-square"></i><span>لیست تماس</span></a></li>-->
-				<!--<li><a href="#" onclick="myApp.alert('این بخش از نرم افزار در بروزرسانی های آتی فعال خواهد شد.','توجه', function () {});" class="item-link close-panel"><i class="fa fa-check-square-o"></i><span>لیست کارها</span></a></li>-->
+				<li><a href="#" onclick="myApp.alert('این بخش از نرم افزار در بروزرسانی های آتی فعال خواهد شد.','توجه', function () {});" class="item-link close-panel"><i class="fa fa-credit-card-alt"></i><span>تاکسی پرداز</span></a></li>
+				<li><a href="emergency.html" class="item-link close-panel"><i class="fa fa-phone-square"></i><span>لیست تماس</span></a></li>
+				<li><a href="#" onclick="myApp.alert('این بخش از نرم افزار در بروزرسانی های آتی فعال خواهد شد.','توجه', function () {});" class="item-link close-panel"><i class="fa fa-check-square-o"></i><span>لیست کارها</span></a></li>
 				<li><a href="support.html" class="item-link close-panel"><i class="fa fa-question-circle"></i><span>پشتیبانی تاکسی یار</span></a></li>
-				<li><a href="#" onclick="showProfile()" class="item-link close-panel"><i class="fa fa-user"></i><span>پروفایل</span></a></li>
-            <li><a href="#" onclick="$$('#taxi_yar_home_navbar .center').html('پرداخت ها');$$('#taxi_yar_home_page-content').css('background-color','#eeeeee');init_virtual_list_of_payments();" class="tab-link"><i class="fa fa-money"></i><span class="tabbar-label">پرداخت ها</span></a></li>
-            <li><a href="#" onclick="$$('#taxi_yar_home_navbar .center').html('اعلان ها');$$('#taxi_yar_home_page-content').css('background-color','#eeeeee');init_virtual_list_of_notifications();" class="tab-link"><i class="fa fa-bell"></i><span class="tabbar-label">اعلان ها</span ></a></li>
-            <li><a href="#" onclick="logOutUser()" class="item-link close-panel"><i class="fa fa-user"></i><span class="tabbar-label">خروج از حساب کاربری</span ></a></li>
-            <li><a href="#"  class="item-link close-panel"><i class="fa fa-file"></i><span class="tabbar-label"> نسخه 1.1</span ></a></li>
           </ul>
         </div>
       </div>
@@ -58,7 +69,6 @@
   </div>
 </div>
 <div class="views" >
-  <div class="page">
 	<div class="view view-main">
 		<div class="pages navbar-fixed">
 			<div data-page="index" class="page gradient">
@@ -76,7 +86,6 @@
 			</div>
 		</div>
 	</div>
-  </div>
 </div>
 
 <div class="login-screen">
@@ -93,7 +102,7 @@
                 <div class="item-inner">
                   <div class="item-title label login_page_input_title">شماره موبایل</div>
                   <div class="item-input">
-                    <input type="number" name="login_page_mobile" placeholder="09-- --- ----" pattern="\d*" class="login_page_mobile" id="login_page_mobile" style="letter-spacing: 3px;background-color: rgba(256,256,256,0.1);">
+                    <input type="text" name="login_page_mobile" placeholder="0915 --- ----" pattern="\d*" class="login_page_mobile" id="login_page_mobile" style="letter-spacing: 3px;background-color: rgba(256,256,256,0.1);">
                   </div>
                 </div>
               </li>
@@ -101,7 +110,7 @@
           </div>
           <div class="content-block"><a href="#" onclick="check_mobile_number();" class="button button-big button-raised">ورود</a></div>
         </form>
-        <!--<div class="content-block"><a href="#" onclick="show_register_popup();" id="resend_verify_code">ثبت نام</a></div>-->
+        <div class="content-block"><a href="#" onclick="show_register_popup();" id="resend_verify_code">ثبت نام</a></div>
       </div>
     </div>
   </div>
@@ -121,7 +130,7 @@
                 <div class="item-inner">
                   <div class="item-title label login_page_input_title">کد فعال سازی</div>
                   <div class="item-input">
-                    <input type="number" name="mobile_verify_code" id="mobile_verify_code" pattern="\d*" placeholder="-----" class="login_page_mobile" style="letter-spacing: 4px;text-align:center !important;background-color: rgba(256,256,256,0.1);">
+                    <input type="text" name="mobile_verify_code" id="mobile_verify_code" pattern="\d*" placeholder="-----" class="login_page_mobile" style="letter-spacing: 4px;text-align:center !important;background-color: rgba(256,256,256,0.1);">
                   </div>
                 </div>
 
@@ -185,7 +194,7 @@
             <ul>
               <li class="item-content">
                 <div class="item-inner">
-                  <div class="item-title label login_page_input_title">نام</div>
+                  <div class="item-title label login_page_input_title">نام و نام خانوادگی</div>
                   <div class="item-input">
                     <input type="text" name="register_name" id="register_name" placeholder="" class="" style="text-align:center !important;background-color: rgba(256,256,256,0.1);">
                   </div>
@@ -193,30 +202,39 @@
               </li>
               <li class="item-content">
                 <div class="item-inner">
-                  <div class="item-title label login_page_input_title">نام خانوادگی</div>
+                  <div class="item-title label login_page_input_title">شماره تلفن</div>
                   <div class="item-input">
-                    <input type="text" name="register_last_name" id="register_last_name" placeholder="" pattern="\d*" class="login_page_mobile"style="letter-spacing: 3px;background-color: rgba(256,256,256,0.1);">
+                    <input type="text" name="register_phone_number" id="register_phone_number" placeholder="0915 --- ----" pattern="\d*" class="login_page_mobile"style="letter-spacing: 3px;background-color: rgba(256,256,256,0.1);">
                   </div>
                 </div>
               </li>
               <li class="item-content">
                 <div class="item-inner">
-                  <div class="item-title label login_page_input_title">جنسیت</div>
+                  <div class="item-title label login_page_input_title">کد ملی</div>
                   <div class="item-input">
-                    <input type="radio" name="register_sex" id="register_sex_man" value="1"  class="login_page_mobile"style="letter-spacing: 3px;background-color: rgba(256,256,256,0.1);"><div class="label_checkbox">مرد</div>
-                    <input type="radio" name="register_sex" id="register_sex_woman" value="0"  class="login_page_mobile"style="letter-spacing: 3px;background-color: rgba(256,256,256,0.1);"><div class="label_checkbox">زن</div>
+                    <input type="text" name="register_national_id" id="register_national_id" placeholder="--- ------ -" pattern="\d*" class="login_page_mobile"  style="text-align:center;letter-spacing: 3px;background-color: rgba(256,256,256,0.1);">
                   </div>
                 </div>
               </li>
               <li class="item-content">
-              <div class="item-inner">
-                <div class="item-input">
-                  <input type="checkbox" name="register_phone_number_rull" id="register_sex_rull" value="1"  class="login_page_mobile"style="letter-spacing: 3px;background-color: rgba(256,256,256,0.1);"><div class="label_checkbox_rull">با قوانین تاکسی یار موافق ام</div>
-                  <div class="content-block"><a href="#" onclick="do_register();" class="button-rull">مطالعه قوانین</a></div>
+                <div class="item-inner">
+                  <div class="item-title label login_page_input_title">نوع خودرو</div>
+                  <div class="item-input">
+                  <select style="color:white;background-color: rgba(256,256,256,0.1);" id="register_car_type_2">
+                    <option value="private">شخصی</option>
+                    <option value="taxi">تاکسی</option>
+                  </select>
+                  </div>
                 </div>
-              </div>
-            </li>
-
+              </li>
+              <li class="item-content">
+                <div class="item-inner">
+                  <div class="item-title label login_page_input_title">پلاک خودرو</div>
+                  <div class="item-input">
+                    <input type="text" name="register_license_plate" id="register_license_plate" placeholder="ایران -- --- - --" pattern="\d*" class="" style="text-align:center !important;background-color: rgba(256,256,256,0.1);">
+                  </div>
+                </div>
+              </li>
             </ul>
           </div>
           <div class="content-block"><a href="#" onclick="do_register();" class="button button-big button-raised">ثبت نام</a></div>
@@ -226,66 +244,46 @@
   </div>
 </div>
 
-<!--</div>-->
-
 <!-- JS link goes here -->
 
-
-<script src="js/jquery.min.js"></script>
-<!-- <script src="js/console.log.js"></script>
-<script src="cordova.js"></script>-->
-<script type="text/javascript" src="js/framework7.min.js"></script>
-<!-- <script type="text/javascript" src="js/jquery.swipebox.js"></script> -->
-<!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> -->
-<!-- <script type="text/javascript" src="https://www.google.com/jsapi"></script> -->
-<script type="text/javascript" src="js/masonry.pkgd.min.js"></script>
-<!-- <script type="text/javascript" src="contactform/validator.js"></script> -->
-<!-- <script type="text/javascript" src="contactform/contact.js"></script> -->
-<script type="text/javascript" src="js/notification.js"></script>
-<script type="text/javascript" src="js/persian_number_to_english.js"></script>
-<script type="text/javascript" src="js/custom.js"></script>
-<script type="text/javascript" src="js/maxframes.js"></script>
-<script type="text/javascript" src="js/persian-date.min.js"></script>
 <script>
 var server_url = "http://taxiyar.net/api/driver/";
 var networkState;
 
 function init() {
-    alert('1');
 	document.addEventListener("deviceready", onDeviceReady, false);
-   // check_net_home_page();
 }
 function onDeviceReady() {
-    alert('2');
-   /// alert('SMGROUP ::::::::::::::::::::::::::::::::::::    start onDeviceReady()');
-//alert(navigator.connection.type);
+	console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    start onDeviceReady()');
+
 	if(navigator.connection.type)
 		networkState = navigator.connection.type;
 	else
 		networkState = navigator.connection.effectiveType;
-    //alert(networkState);
+
 	if(window.localStorage.getItem('udid') == null)
 		window.plugins.uniqueDeviceID.get(uniqueDeviceIDsuccess_index, uniqueDeviceIDfail_index);
 	function uniqueDeviceIDsuccess_index(udid){window.localStorage.setItem('udid',udid);};
 	function uniqueDeviceIDfail_index(udid){};
 
 	register_notification();
-
+	/*
+	*/
 	(function(){
-       // alert('SMGROUP ::::::::::::::::::::::::::::::::::::    start getCurrentPosition()');
+		console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    start getCurrentPosition()');
 		navigator.geolocation.getCurrentPosition(onSuccess, onError);
 		//console.log("11");
 		setTimeout(arguments.callee, 10000);
 	})();
 
 	function onSuccess(position) {
-        alert('3');
 	  var position = {lat:  parseFloat(position.coords.latitude), lng: parseFloat(position.coords.longitude),time:new Date().getTime()/1000};
 	  window.localStorage.setItem('driver_location',JSON.stringify(position));
 	}
 	function onError(error) {
 
 	}
+
 	setTimeout(function(){
 		if(check_net(true,false))
 			check_net_home_page();
@@ -322,5 +320,21 @@ setTimeout(function(){
 	}
 }, 2500);
 </script>
+<script src="js/jquery.min.js"></script>
+<!-- <script src="js/console.log.js"></script> -->
+<script src="cordova.js"></script>
+<script type="text/javascript" src="js/framework7.min.js"></script>
+<!-- <script type="text/javascript" src="js/jquery.swipebox.js"></script> -->
+<!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> -->
+<!-- <script type="text/javascript" src="https://www.google.com/jsapi"></script> -->
+<script type="text/javascript" src="js/masonry.pkgd.min.js"></script>
+<!-- <script type="text/javascript" src="contactform/validator.js"></script> -->
+<!-- <script type="text/javascript" src="contactform/contact.js"></script> -->
+<script type="text/javascript" src="js/notification.js"></script>
+<script type="text/javascript" src="js/persian_number_to_english.js"></script>
+<script type="text/javascript" src="js/custom.js"></script>
+<script type="text/javascript" src="js/maxframes.js"></script>
+<script type="text/javascript" src="js/persian-date.min.js"></script>
+
 </body>
 </html>
