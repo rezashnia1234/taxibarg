@@ -1,0 +1,101 @@
+<div data-page="updateProfile" class="page"  >
+    <div class="navbar header ">
+        <div class="navbar-inner">
+            <div class="left"><a href="landing.html" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+            <div class="center ">
+                <div class="logo ">برگشت</div>
+            </div>
+        </div>
+    </div>
+            <div class="page-content hide-bars-on-scroll">
+                <form style="margin-top: 50px;" method="post" enctype="multipart/form-data"  >
+                    <div class="list-block inputs-list">
+                        <ul>
+                              <li class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">شماره همراه</div>
+                                    <div class="item-input">
+                                        <input type="text" name="register_phone_number" id="register_phone_number" placeholder="" readonly="readonly" class="" style="text-align:center !important;background-color: rgba(256,256,256,0.1);">
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            <li class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">استان</div>
+                                    <div class="item-input" id="state_list">
+                                      <select class="state_list" onchange="getCity();"></select> 
+                                    </div>
+                                </div>
+                            </li>
+                              <li class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">شهر</div>
+                                    <div class="item-input item-input-field not-empty-city" id="city_list">
+                                           <select class="city_list"></select>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">نام بانک</div>
+                                    <div class="item-input" id="bank_list">
+                                        <select class="bank_list">
+                                            <option value="ملت">ملت</option>
+                                            <option value="ملی">ملی</option>
+                                            <option value="صادرات">صادرات</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">شماره شبا</div>
+                                    <div class="item-input">
+                                        <input type="text" name="sidebar-driver-iban-number" id="sidebar-driver-iban-number" placeholder="IR"  class="" style="text-align:center !important;background-color: rgba(256,256,256,0.1);">
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">کد ملی</div>
+                                    <div class="item-input">
+                                        <input type="number" name="register_national_id" id="register_national_id"
+                                               placeholder="--- ------ -" pattern="\d*" class="login_page_mobile"
+                                               style="text-align:center;letter-spacing: 3px;background-color: rgba(256,256,256,0.1);">
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">تصویر کارت ملی</div>
+                                    <div class="item-input">
+                                        <input type="file" name="avatar" id="avatar"  class="button button-big button-fill" accept="image/png, image/jpeg" >
+                                    </div>
+                                </div>
+                            </li>
+                            <!--<li class="item-content">-->
+                                <!--<div class="item-inner">-->
+                                    <!--<div class="item-title label">تصویر گواهینامه</div>-->
+                                    <!--<div class="item-input">-->
+                                        <!--<input type="file" name="Certificates" id="Certificates"  class="button button-big button-fill" >-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</li>-->
+                            <!--<li class="item-content">-->
+                                <!--<div class="item-inner">-->
+                                    <!--<div class="item-title label">تصویر بیمه نامه</div>-->
+                                    <!--<div class="item-input">-->
+                                        <!--<input type="file" name="insurance" id="insurance" placeholder=""  class="button button-big button-fill" >-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</li>-->
+
+
+                        </ul>
+                    </div>
+                    <div class="content-block"><a href="#" onclick="do_update_profile();" class="button button-big button-raised">ثبت </a></div>
+                </form>
+            </div>
+
+</div>

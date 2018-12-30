@@ -9,6 +9,7 @@
 	</div>
 
 	<div class="page-content sidemenu gradient hide-bars-on-scroll"  >
+		<div id="sidebar-driver-complate-profile"></div>
 		<div id="map_bg">
 			<img src="img/logo_text.png" id="logo_text" />
 			<img src="img/map.png" id="map_bg2" />
@@ -16,11 +17,14 @@
 		<!--
 		-->
 		<ul class="menu" id="landing_menu" style="position:  absolute;left:  0;right:  0;width:  100%;bottom: 0;z-index: 5;padding-bottom:15px;">
-			<li><a href="map.html" class="item-link close-panel"><i class="fa fa-map"></i><span>نقشه</span></a></li>
+			<!--<li><a href="map.html" class="item-link close-panel"><i class="fa fa-map"></i><span>نقشه</span></a></li>-->
 			<li><a href="taxi_yar.html" class="item-link close-panel"><i class="fa fa-shopping-cart"></i><span>تاکسی برگ</span></a></li>
-			<li><a href="#" onclick="myApp.alert('این بخش از نرم افزار در بروزرسانی های آتی فعال خواهد شد.','توجه', function () {});" class="item-link close-panel"><i class="fa fa-credit-card-alt"></i><span>تاکسی پرداز</span></a></li>
-			<li><a href="emergency.html" class="item-link close-panel"><i class="fa fa-phone-square"></i><span>لیست تماس</span></a></li>
-			<li><a href="#" onclick="myApp.alert('این بخش از نرم افزار در بروزرسانی های آتی فعال خواهد شد.','توجه', function () {});" class="item-link close-panel"><i class="fa fa-check-square-o"></i><span>لیست کارها</span></a></li>
+			<li><a href="#" onclick="showTaxiPardaz();" class="item-link close-panel"><i class="fa fa-credit-card-alt"></i><span>تاکسی پرداز</span></a></li>
+			<li><a href="#" onclick="showProfile()" class="item-link close-panel"><i class="fa fa-user"></i><span>پروفایل</span></a></li>
+			<li><a href="#tab1" onclick="$$('#taxi_yar_home_navbar .center').html('پرداخت ها');$$('#taxi_yar_home_page-content').css('background-color','#eeeeee');init_virtual_list_of_payments();" class="tab-link"><i class="fa fa-money"></i><span class="tabbar-label">پرداخت ها</span></a></li>
+			<li><a href="#tab3" onclick="$$('#taxi_yar_home_navbar .center').html('اعلان ها');$$('#taxi_yar_home_page-content').css('background-color','#eeeeee');init_virtual_list_of_notifications();" class="tab-link"><i class="fa fa-bell"></i><span class="tabbar-label">اعلان ها</span ></a></li>
+			<!--<li><a href="emergency.html" class="item-link close-panel"><i class="fa fa-phone-square"></i><span>لیست تماس</span></a></li>-->
+			<!--<li><a href="#" onclick="myApp.alert('این بخش از نرم افزار در بروزرسانی های آتی فعال خواهد شد.','توجه', function () {});" class="item-link close-panel"><i class="fa fa-check-square-o"></i><span>لیست کارها</span></a></li>-->
 			<li><a href="support.html" class="item-link close-panel"><i class="fa fa-question-circle"></i><span>پشتیبانی تاکسی یار</span></a></li>
 		</ul>
 	</div>
