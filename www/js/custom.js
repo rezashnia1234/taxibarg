@@ -28,8 +28,6 @@ var client_version = 0.91;
 
 $( document ).ready(function(){
 });
-
-
 function check_net_home_page()
 {
     alert('5');
