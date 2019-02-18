@@ -28,8 +28,6 @@ var client_version = 0.91;
 
 $( document ).ready(function(){
 });
-
-
 function check_net_home_page()
 {
     // sessionStorage
@@ -199,7 +197,7 @@ function login_and_get_data()
 
 function check_net(show_alert,do_loop)
 {
-    // console.log(networkState);
+     console.log(networkState);
     if (networkState == Connection.NONE) {
         if(show_alert)
         {
@@ -741,7 +739,6 @@ function goToUpdate()
 function showProfile()
 {
     var app_data = JSON.parse(window.localStorage.getItem('app_data'));
-    console.log(app_data);
     if(app_data['name'] == '' || app_data['last_name'] == '' )
         myApp.popup(".register-popup", true, true);
     if(app_data['bank_name'] =='' || app_data['national_code']== '' || app_data['iban'] == '')
@@ -751,18 +748,17 @@ function showProfile()
     }
     if(app_data['license_plate'] != '' || app_data['car_type'] != '' || app_data['car_color'] != '')
     {
-
         myApp.hideIndicator();
-        /* $$('#sidebar-driver-profile-name').text(app_data['name']);
-         $$('#sidebar-driver-profile-lastname').text(app_data['last_name']);
-         $$('#sidebar-driver-phone-number').text(app_data['phone_number']);
-         $$('#sidebar-driver-national-code').text(app_data['national_code']);
-         $$('#sidebar-driver-iban-number').val(app_data['iban']);
-         $$('#sidebar-driver-bank-name').text(app_data['bank_name']);
-         $$('#car_type').val(app_data['car_type']);
-         $$('#car_color').val(app_data['car_color']);
-         $$('#license_plate').val(app_data['license_plate']);
-         $$("#sidebar-driver-profile-img").attr("src", app_data['profile_pic_url']);*/
+       /* $$('#sidebar-driver-profile-name').text(app_data['name']);
+        $$('#sidebar-driver-profile-lastname').text(app_data['last_name']);
+        $$('#sidebar-driver-phone-number').text(app_data['phone_number']);
+        $$('#sidebar-driver-national-code').text(app_data['national_code']);
+        $$('#sidebar-driver-iban-number').val(app_data['iban']);
+        $$('#sidebar-driver-bank-name').text(app_data['bank_name']);
+        $$('#car_type').val(app_data['car_type'] );
+        $$('#car_color').val(app_data['car_color'] );
+        $$('#license_plate').val(app_data['license_plate']);
+        $$("#sidebar-driver-profile-img").attr("src", app_data['profile_pic_url']);*/
 
         mainView.router.loadPage('final_profile.html');
     }
@@ -1155,7 +1151,11 @@ function do_special_user()
         myApp.alert('در پروسه اتصال به سرور مشکلی به وجود آماده است ، لطفا وضعیت اینترنت را بررسی نمایید.','توجه', function () {});
     });
 }
-
+function logOutUser() {
+    window.localStorage.clear();
+   // window.localStorage.setItem("access_token", null);
+    myApp.popup(".login-screen", true, true);
+}
 function showPardakht()
 {
     var app_data = JSON.parse(window.localStorage.getItem('app_data'));
