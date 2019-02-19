@@ -1156,3 +1156,55 @@ function logOutUser() {
    // window.localStorage.setItem("access_token", null);
     myApp.popup(".login-screen", true, true);
 }
+function showPardakht()
+{
+    var app_data = JSON.parse(window.localStorage.getItem('app_data'));
+
+    $.ajax({
+        url: server_url+'showpardakht',
+        type: "POST",
+        data: JSON.stringify
+        ({
+            'access_token': window.sessionStorage.getItem('access_token'),
+        }),
+        success : function(text)
+        {
+            var content_html='' ;
+            myApp.hideIndicator();
+            mainView.router.loadPage('pardakht.html');
+            if(text.success == true)
+            {
+                window.sessionStorage.setItem("access_token",text.data.access_token);
+                window.localStorage.setItem("app_data",JSON.stringify(text.data));
+                //content_html ='<table><tr><th>موبایل</th><th>مبلغ</th><th>شماره پرداخت</th><th>شماره مرجع</th><th>تاریخ پرداخت</th><th>وضعیت پرداخت</th></tr>';
+                for (var i = 0; i < text.data.length; i++)
+                {
+
+                    content_html += '<div class="pardakht-customer"><table class="table-customer"><tr>';
+                    content_html += '<td><span class="content-pardakht">مبلغ پرداختی مسافر</span><br>'+ text.data[i].price+' ریال</td>';
+                    content_html += '<td><span>شماره تراکنش</span><br>'+ text.data[i].shomare_pardakht +'</td>';
+                    content_html += '<td style="width: 2px;">'+ text.data[i].date_pardakht +'</td>';
+                    content_html += '<td class="content-status-pardakht" style="width: 7px;">تسویه نشده</td>';
+                    content_html += '</table></div>';
+
+                }
+                //content_html += '</table>';
+                $$('#list-block').html(content_html);
+
+            }
+            else
+            {
+                content_html += '<span>موردی یافت نشد</span>';
+                $$('#list-block').html(content_html);
+
+            }
+        },
+        error: function(jqXHR, exception) {
+            myApp.hideIndicator();
+            myApp.alert('در پروسه اتصال به سرور مشکلی به وجود آماده است ، لطفا وضعیت اینترنت را بررسی نمایید.','توجه', function () {});
+        },
+    });
+
+
+
+}
