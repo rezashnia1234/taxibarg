@@ -236,11 +236,11 @@
     var networkState;
 
     function init() {
-        alert('1');
+//        alert('1');
         document.addEventListener("deviceready", onDeviceReady, false);
     }
     function onDeviceReady() {
-        alert('2');
+//        alert('2');
         console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    start onDeviceReady()');
 
         if(navigator.connection.type)
@@ -278,11 +278,11 @@
         //myApp.init();
     }
     setTimeout(function(){
-        alert('cordova');
-//        if(!window.cordova)
-        if(window.cordova)
+//        alert('cordova');
+        if(!window.cordova)
+//        if(window.cordova)
         {
-            alert(window.cordova);
+//            alert(window.cordova);
             if(navigator.connection.type)
                 networkState = navigator.connection.type;
             else

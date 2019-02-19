@@ -30,7 +30,7 @@ $( document ).ready(function(){
 });
 function check_net_home_page()
 {
-    alert('login');
+    // alert('login');
     // sessionStorage
     if(check_net(true,false))
     {
@@ -95,9 +95,6 @@ function check_verify_number()
         myApp.alert('لطفا کد فعال سازی را با دقت وارد نمایید','توجه', function () {});
     else
     {
-        alert(device.platform);
-        alert(window.localStorage.getItem("notification_id"));
-        alert(window.localStorage.getItem("udid"));
         myApp.showIndicator();
         // myApp.showPreloader('در حال اتصال به سرور');
         $.ajax({
@@ -201,7 +198,7 @@ function login_and_get_data()
 
 function check_net(show_alert,do_loop)
 {
-    alert('check net');
+    // alert('check net');
     console.log(networkState);
     if (networkState == Connection.NONE) {
         if(show_alert)

@@ -917,3 +917,7 @@ myApp.onPageInit('final_profile', function (page) {
     $$("#sidebar-driver-profile-img").attr("src", app_data['profile_pic_url']);
     // $$("#sidebar-driver-profile-qrcode_img").attr("src", text.data.qrcode_img);
 });
+
+myApp.onPageInit('pardakht', function (page) {
+    showPardakht();
+});
