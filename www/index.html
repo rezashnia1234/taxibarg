@@ -279,9 +279,10 @@
     }
     setTimeout(function(){
         alert('cordova');
-        if(!window.cordova)
+//        if(!window.cordova)
+        if(window.cordova)
         {
-            alert('cordova!');
+            alert(window.cordova);
             if(navigator.connection.type)
                 networkState = navigator.connection.type;
             else
