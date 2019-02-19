@@ -2400,3 +2400,28 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#795548', end
 ::-webkit-scrollbar-thumb:window-inactive {
  background: rgba(255,0,0,0.4);
 }
+/* PARDAKHT*/
+#list-block
+{
+	margin-top: 82px;
+}
+.table-customer tr td
+{
+	border:none !important;
+}
+.pardakht-customer
+{
+	background-color: #ffff;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	color: #000;
+	font-size: 9pt;
+}
+.content-pardakht
+{
+	font-size: 6pt;
+}
+.content-status-pardakht
+{
+	color:#FF9046
+}
