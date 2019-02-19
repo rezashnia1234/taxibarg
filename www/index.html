@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="theme-color" content="#2196f3">
-  <title>بسم الله الرحمن الرحیم</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="theme-color" content="#2196f3">
+<title>بسم الله الرحمن الرحیم</title>
 
-  <!-- Font embedding link goes here -->
-  <!-- <link href="http://fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet" type="text/css"> -->
-  <!-- <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'> -->
+<!-- Font embedding link goes here -->
+<!-- <link href="http://fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet" type="text/css"> -->
+<!-- <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'> -->
 
-  <!-- CSS link goes here -->
-  <link rel="stylesheet" href="css/framework7.material.css">
-  <link rel="stylesheet" href="css/framework7.material.colors.css">
-  <link rel="stylesheet" href="css/framework7.material.rtl.css">
-  <link rel="stylesheet" href="css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/font-awesome.min.css">
-  <!-- <link rel="stylesheet" href="css/swipebox.min.css"> -->
-  <link rel="stylesheet" href="css/maxframes.css">
-  <link rel="stylesheet" href="css/roboto.css">
-  <link rel="stylesheet" href="css/fontiran.css">
-  <link rel="stylesheet" href="css/custom.css">
+<!-- CSS link goes here -->
+<link rel="stylesheet" href="css/framework7.material.css">
+<link rel="stylesheet" href="css/framework7.material.colors.css">
+<link rel="stylesheet" href="css/framework7.material.rtl.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<!-- <link rel="stylesheet" href="css/swipebox.min.css"> -->
+<link rel="stylesheet" href="css/maxframes.css">
+<link rel="stylesheet" href="css/roboto.css">
+<link rel="stylesheet" href="css/fontiran.css">
+<link rel="stylesheet" href="css/custom.css">
 </head>
 <body class="theme-pink" onload="init();">
 <!-- <div class="statusbar-overlay"></div> -->
@@ -40,14 +40,14 @@
           <div style="color:white;text-align:center" id="sidebar-driver-car"></div>
           <hr>
           <ul class="menu">
-            <!--<li><a href="map.html" class="item-link close-panel"><i class="fa fa-map"></i><span>نقشه</span></a></li>-->
-            <li><a href="taxi_yar.html" class="item-link close-panel"><i class="fa fa-shopping-cart"></i><span>تاکسی برگ</span></a></li>
-            <li><a href="#"  onclick="showTaxiPardaz()" class="item-link close-panel"><i class="fa fa-credit-card-alt"></i><span>تاکسی پرداز</span></a></li>
-            <!--<li><a href="emergency.html" class="item-link close-panel"><i class="fa fa-phone-square"></i><span>لیست تماس</span></a></li>-->
-            <!--<li><a href="#" onclick="myApp.alert('این بخش از نرم افزار در بروزرسانی های آتی فعال خواهد شد.','توجه', function () {});" class="item-link close-panel"><i class="fa fa-check-square-o"></i><span>لیست کارها</span></a></li>-->
-            <li><a href="support.html" class="item-link close-panel"><i class="fa fa-question-circle"></i><span>پشتیبانی تاکسی یار</span></a></li>
-            <li><a href="#" onclick="showProfile()" class="item-link close-panel"><i class="fa fa-user"></i><span>پروفایل</span></a></li>
-            <li><a href="#" onclick="showPardakht();" class="tab-link"><i class="fa fa-money"></i><span class="tabbar-label">پرداخت ها</span></a></li>
+				<!--<li><a href="map.html" class="item-link close-panel"><i class="fa fa-map"></i><span>نقشه</span></a></li>-->
+				<li><a href="taxi_yar.html" class="item-link close-panel"><i class="fa fa-shopping-cart"></i><span>تاکسی برگ</span></a></li>
+				<li><a href="#"  onclick="showTaxiPardaz()" class="item-link close-panel"><i class="fa fa-credit-card-alt"></i><span>تاکسی پرداز</span></a></li>
+				<!--<li><a href="emergency.html" class="item-link close-panel"><i class="fa fa-phone-square"></i><span>لیست تماس</span></a></li>-->
+				<!--<li><a href="#" onclick="myApp.alert('این بخش از نرم افزار در بروزرسانی های آتی فعال خواهد شد.','توجه', function () {});" class="item-link close-panel"><i class="fa fa-check-square-o"></i><span>لیست کارها</span></a></li>-->
+				<li><a href="support.html" class="item-link close-panel"><i class="fa fa-question-circle"></i><span>پشتیبانی تاکسی یار</span></a></li>
+				<li><a href="#" onclick="showProfile()" class="item-link close-panel"><i class="fa fa-user"></i><span>پروفایل</span></a></li>
+            <li><a href="#" onclick="$$('#taxi_yar_home_navbar .center').html('پرداخت ها');$$('#taxi_yar_home_page-content').css('background-color','#eeeeee');init_virtual_list_of_payments();" class="tab-link"><i class="fa fa-money"></i><span class="tabbar-label">پرداخت ها</span></a></li>
             <li><a href="#" onclick="$$('#taxi_yar_home_navbar .center').html('اعلان ها');$$('#taxi_yar_home_page-content').css('background-color','#eeeeee');init_virtual_list_of_notifications();" class="tab-link"><i class="fa fa-bell"></i><span class="tabbar-label">اعلان ها</span ></a></li>
             <li><a href="#" onclick="logOutUser()" class="item-link close-panel"><i class="fa fa-user"></i><span class="tabbar-label">خروج از حساب کاربری</span ></a></li>
             <li><a href="#"  class="item-link close-panel"><i class="fa fa-file"></i><span class="tabbar-label"> نسخه 1.1</span ></a></li>
@@ -59,23 +59,23 @@
 </div>
 <div class="views" >
   <div class="page">
-    <div class="view view-main">
-      <div class="pages navbar-fixed">
-        <div data-page="index" class="page gradient">
-          <div class="page-content landingpage">
-            <div class="logo main col12"> <img src="img/icon.png" alt=""> </div>
+	<div class="view view-main">
+		<div class="pages navbar-fixed">
+			<div data-page="index" class="page gradient">
+				<div class="page-content landingpage">
+					<div class="logo main col12"> <img src="img/icon.png" alt=""> </div>
 
 
-            <!-- <a href="#" class="open-panel">start navigating</a>  -->
-            <!-- <a href="#" data-popup=".login-screen" class="open-popup">login-screen</a> -->
+					<!-- <a href="#" class="open-panel">start navigating</a>  -->
+					<!-- <a href="#" data-popup=".login-screen" class="open-popup">login-screen</a> -->
 
-            <!-- <img src="img/restaurant0.jpg" alt="" class="landingimg"> -->
-            <a href="#" onclick="check_net_home_page();" class="nextlink"><span class="fa fa-refresh "></span></a>
-            <a href="#" onclick="check_net_home_page();" class="nextlink_text">بررسی مجدد</a>
-          </div>
-        </div>
-      </div>
-    </div>
+					<!-- <img src="img/restaurant0.jpg" alt="" class="landingimg"> -->
+					<a href="#" onclick="check_net_home_page();" class="nextlink"><span class="fa fa-refresh "></span></a>
+					<a href="#" onclick="check_net_home_page();" class="nextlink_text">بررسی مجدد</a>
+				</div>
+			</div>
+		</div>
+	</div>
   </div>
 </div>
 
@@ -209,13 +209,13 @@
                 </div>
               </li>
               <li class="item-content">
-                <div class="item-inner">
-                  <div class="item-input">
-                    <input type="checkbox" name="register_phone_number_rull" id="register_sex_rull" value="1"  class="login_page_mobile"style="letter-spacing: 3px;background-color: rgba(256,256,256,0.1);"><div class="label_checkbox_rull">با قوانین تاکسی یار موافق ام</div>
-                    <div class="content-block"><a href="#" onclick="do_register();" class="button-rull">مطالعه قوانین</a></div>
-                  </div>
+              <div class="item-inner">
+                <div class="item-input">
+                  <input type="checkbox" name="register_phone_number_rull" id="register_sex_rull" value="1"  class="login_page_mobile"style="letter-spacing: 3px;background-color: rgba(256,256,256,0.1);"><div class="label_checkbox_rull">با قوانین تاکسی یار موافق ام</div>
+                  <div class="content-block"><a href="#" onclick="do_register();" class="button-rull">مطالعه قوانین</a></div>
                 </div>
-              </li>
+              </div>
+            </li>
 
             </ul>
           </div>

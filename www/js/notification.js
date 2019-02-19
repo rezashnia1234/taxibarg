@@ -59,7 +59,6 @@ function register_notification_home() {
 }
 
 function register_notification() {
-	alert('reg_notif');
 	var networkState = navigator.connection.type;
 	if (networkState == Connection.NONE) {
 	

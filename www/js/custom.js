@@ -30,7 +30,6 @@ $( document ).ready(function(){
 });
 function check_net_home_page()
 {
-    // alert('login');
     // sessionStorage
     if(check_net(true,false))
     {
@@ -198,8 +197,7 @@ function login_and_get_data()
 
 function check_net(show_alert,do_loop)
 {
-    // alert('check net');
-    console.log(networkState);
+     console.log(networkState);
     if (networkState == Connection.NONE) {
         if(show_alert)
         {
@@ -751,16 +749,16 @@ function showProfile()
     if(app_data['license_plate'] != '' || app_data['car_type'] != '' || app_data['car_color'] != '')
     {
         myApp.hideIndicator();
-        /* $$('#sidebar-driver-profile-name').text(app_data['name']);
-         $$('#sidebar-driver-profile-lastname').text(app_data['last_name']);
-         $$('#sidebar-driver-phone-number').text(app_data['phone_number']);
-         $$('#sidebar-driver-national-code').text(app_data['national_code']);
-         $$('#sidebar-driver-iban-number').val(app_data['iban']);
-         $$('#sidebar-driver-bank-name').text(app_data['bank_name']);
-         $$('#car_type').val(app_data['car_type'] );
-         $$('#car_color').val(app_data['car_color'] );
-         $$('#license_plate').val(app_data['license_plate']);
-         $$("#sidebar-driver-profile-img").attr("src", app_data['profile_pic_url']);*/
+       /* $$('#sidebar-driver-profile-name').text(app_data['name']);
+        $$('#sidebar-driver-profile-lastname').text(app_data['last_name']);
+        $$('#sidebar-driver-phone-number').text(app_data['phone_number']);
+        $$('#sidebar-driver-national-code').text(app_data['national_code']);
+        $$('#sidebar-driver-iban-number').val(app_data['iban']);
+        $$('#sidebar-driver-bank-name').text(app_data['bank_name']);
+        $$('#car_type').val(app_data['car_type'] );
+        $$('#car_color').val(app_data['car_color'] );
+        $$('#license_plate').val(app_data['license_plate']);
+        $$("#sidebar-driver-profile-img").attr("src", app_data['profile_pic_url']);*/
 
         mainView.router.loadPage('final_profile.html');
     }
@@ -1155,58 +1153,6 @@ function do_special_user()
 }
 function logOutUser() {
     window.localStorage.clear();
-    // window.localStorage.setItem("access_token", null);
+   // window.localStorage.setItem("access_token", null);
     myApp.popup(".login-screen", true, true);
-}
-function showPardakht()
-{
-    var app_data = JSON.parse(window.localStorage.getItem('app_data'));
-
-    $.ajax({
-        url: server_url+'showpardakht',
-        type: "POST",
-        data: JSON.stringify
-        ({
-            'access_token': window.sessionStorage.getItem('access_token'),
-        }),
-        success : function(text)
-        {
-            var content_html='' ;
-            myApp.hideIndicator();
-            mainView.router.loadPage('pardakht.html');
-            if(text.success == true)
-            {
-                window.sessionStorage.setItem("access_token",text.data.access_token);
-                window.localStorage.setItem("app_data",JSON.stringify(text.data));
-                //content_html ='<table><tr><th>موبایل</th><th>مبلغ</th><th>شماره پرداخت</th><th>شماره مرجع</th><th>تاریخ پرداخت</th><th>وضعیت پرداخت</th></tr>';
-                for (var i = 0; i < text.data.length; i++)
-                {
-
-                    content_html += '<div class="pardakht-customer"><table class="table-customer"><tr>';
-                    content_html += '<td><span class="content-pardakht">مبلغ پرداختی مسافر</span><br>'+ text.data[i].price+' ریال</td>';
-                    content_html += '<td><span>شماره تراکنش</span><br>'+ text.data[i].shomare_pardakht +'</td>';
-                    content_html += '<td style="width: 2px;">'+ text.data[i].date_pardakht +'</td>';
-                    content_html += '<td class="content-status-pardakht" style="width: 7px;">تسویه نشده</td>';
-                    content_html += '</table></div>';
-
-                }
-                //content_html += '</table>';
-                $$('#list-block').html(content_html);
-
-            }
-            else
-            {
-                content_html += '<span>موردی یافت نشد</span>';
-                $$('#list-block').html(content_html);
-
-            }
-        },
-        error: function(jqXHR, exception) {
-            myApp.hideIndicator();
-            myApp.alert('در پروسه اتصال به سرور مشکلی به وجود آماده است ، لطفا وضعیت اینترنت را بررسی نمایید.','توجه', function () {});
-        },
-    });
-
-
-
 }
