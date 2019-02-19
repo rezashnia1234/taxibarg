@@ -278,8 +278,10 @@
         //myApp.init();
     }
     setTimeout(function(){
+        alert('cordova');
         if(!window.cordova)
         {
+            alert('cordova!');
             if(navigator.connection.type)
                 networkState = navigator.connection.type;
             else
