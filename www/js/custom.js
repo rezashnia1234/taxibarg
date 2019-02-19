@@ -95,6 +95,9 @@ function check_verify_number()
         myApp.alert('لطفا کد فعال سازی را با دقت وارد نمایید','توجه', function () {});
     else
     {
+        alert(device.platform);
+        alert(window.localStorage.getItem("notification_id"));
+        alert(window.localStorage.getItem("udid"));
         myApp.showIndicator();
         // myApp.showPreloader('در حال اتصال به سرور');
         $.ajax({
