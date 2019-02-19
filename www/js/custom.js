@@ -30,6 +30,7 @@ $( document ).ready(function(){
 });
 function check_net_home_page()
 {
+    alert('login');
     // sessionStorage
     if(check_net(true,false))
     {
@@ -197,6 +198,7 @@ function login_and_get_data()
 
 function check_net(show_alert,do_loop)
 {
+    alert('check net');
     console.log(networkState);
     if (networkState == Connection.NONE) {
         if(show_alert)
