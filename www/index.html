@@ -236,9 +236,11 @@
     var networkState;
 
     function init() {
+        alert('1');
         document.addEventListener("deviceready", onDeviceReady, false);
     }
     function onDeviceReady() {
+        alert('2');
         console.log('SMGROUP ::::::::::::::::::::::::::::::::::::    start onDeviceReady()');
 
         if(navigator.connection.type)
