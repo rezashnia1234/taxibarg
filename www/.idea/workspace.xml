@@ -121,17 +121,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="maxframes.css" pinned="false" current-in-tab="false">
+      <file leaf-file-name="maxframes.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/css/maxframes.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="2401" column="1" lean-forward="true" selection-start-line="2401" selection-start-column="1" selection-end-line="2401" selection-end-column="1" />
+            <state relative-caret-position="559">
+              <caret line="2415" column="24" lean-forward="true" selection-start-line="2415" selection-start-column="24" selection-end-line="2415" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pardakht.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pardakht.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pardakht.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
@@ -203,9 +203,9 @@
         <option value="$PROJECT_DIR$/js/custom.js" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/maxframes.js" />
-        <option value="$PROJECT_DIR$/css/maxframes.css" />
         <option value="$PROJECT_DIR$/landing.html" />
         <option value="$PROJECT_DIR$/pardakht.html" />
+        <option value="$PROJECT_DIR$/css/maxframes.css" />
       </list>
     </option>
   </component>
@@ -390,12 +390,12 @@
       <workItem from="1546247842318" duration="42000" />
       <workItem from="1550488843620" duration="2671000" />
       <workItem from="1550557043340" duration="6407000" />
-      <workItem from="1550568704191" duration="4064000" />
+      <workItem from="1550568704191" duration="4456000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="178892000" />
+    <option name="totallyTimeSpent" value="179284000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
@@ -847,14 +847,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/maxframes.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="2401" column="1" lean-forward="true" selection-start-line="2401" selection-start-column="1" selection-end-line="2401" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="460">
@@ -910,6 +902,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="24" lean-forward="false" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/maxframes.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="559">
+          <caret line="2415" column="24" lean-forward="true" selection-start-line="2415" selection-start-column="24" selection-end-line="2415" selection-end-column="24" />
           <folding />
         </state>
       </provider>
