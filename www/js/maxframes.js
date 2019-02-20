@@ -918,5 +918,29 @@ myApp.onPageInit('final_profile', function (page) {
     // $$("#sidebar-driver-profile-qrcode_img").attr("src", text.data.qrcode_img);
 });
 myApp.onPageInit('pardakht', function (page) {
-    showPardakht();
+    var app_data = JSON.parse(window.localStorage.getItem('app_data'));
+    if(app_data)
+    {
+
+        for (var i = 0; i < app_data.length; i++)
+        {
+
+            content_html += '<div class="pardakht-customer"><table class="table-customer"><tr>';
+            content_html += '<td><span class="content-pardakht">مبلغ پرداختی مسافر</span><br>'+ app_data[i].price+' ریال</td>';
+            content_html += '<td><span>شماره تراکنش</span><br>'+ app_data[i].shomare_pardakht +'</td>';
+            content_html += '<td style="width: 2px;">'+ app_data[i].date_pardakht +'</td>';
+            content_html += '<td class="content-status-pardakht" style="width: 7px;">تسویه نشده</td>';
+            content_html += '</table></div>';
+
+        }
+        //content_html += '</table>';
+        $$('#list-block').html(content_html);
+
+    }
+    else
+    {
+        content_html += '<span>موردی یافت نشد</span>';
+        $$('#list-block').html(content_html);
+
+    }
 });
