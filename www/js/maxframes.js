@@ -918,6 +918,7 @@ myApp.onPageInit('final_profile', function (page) {
     // $$("#sidebar-driver-profile-qrcode_img").attr("src", text.data.qrcode_img);
 });
 myApp.onPageInit('pardakht', function (page) {
+    var content_html='' ;
     var app_data = JSON.parse(window.localStorage.getItem('app_data'));
     if(app_data)
     {

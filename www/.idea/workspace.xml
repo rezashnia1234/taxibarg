@@ -21,8 +21,8 @@
       <file leaf-file-name="custom.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/custom.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="718">
-              <caret line="1199" column="13" lean-forward="true" selection-start-line="1174" selection-start-column="10" selection-end-line="1199" selection-end-column="13" />
+            <state relative-caret-position="242">
+              <caret line="1171" column="33" lean-forward="true" selection-start-line="1171" selection-start-column="12" selection-end-line="1171" selection-end-column="33" />
               <folding>
                 <marker date="1550572936666" expanded="true" signature="43292:43303" ph="..." />
                 <marker date="1550572936666" expanded="true" signature="43425:43436" ph="..." />
@@ -77,14 +77,14 @@
       <file leaf-file-name="maxframes.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/maxframes.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="928" column="124" lean-forward="true" selection-start-line="928" selection-start-column="124" selection-end-line="928" selection-end-column="124" />
+            <state relative-caret-position="361">
+              <caret line="920" column="25" lean-forward="false" selection-start-line="920" selection-start-column="25" selection-end-line="920" selection-end-column="25" />
               <folding>
-                <marker date="1550657359944" expanded="true" signature="1555:1595" ph="..." />
-                <marker date="1550657359944" expanded="true" signature="2775:2815" ph="..." />
-                <marker date="1550657359944" expanded="true" signature="10487:10494" ph="×" />
-                <marker date="1550657359944" expanded="true" signature="29186:29197" ph="..." />
-                <marker date="1550657359944" expanded="true" signature="29310:29321" ph="..." />
+                <marker date="1550657734879" expanded="true" signature="1555:1595" ph="..." />
+                <marker date="1550657734879" expanded="true" signature="2775:2815" ph="..." />
+                <marker date="1550657734879" expanded="true" signature="10487:10494" ph="×" />
+                <marker date="1550657734879" expanded="true" signature="29212:29223" ph="..." />
+                <marker date="1550657734879" expanded="true" signature="29336:29347" ph="..." />
               </folding>
             </state>
           </provider>
@@ -381,15 +381,15 @@
       <workItem from="1550557043340" duration="6407000" />
       <workItem from="1550568704191" duration="4873000" />
       <workItem from="1550649936180" duration="167000" />
-      <workItem from="1550653162320" duration="803000" />
+      <workItem from="1550653162320" duration="1181000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="180671000" />
+    <option name="totallyTimeSpent" value="181049000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1026" extended-state="7" />
+    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16369048" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -869,8 +869,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/custom.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="718">
-          <caret line="1199" column="13" lean-forward="true" selection-start-line="1174" selection-start-column="10" selection-end-line="1199" selection-end-column="13" />
+        <state relative-caret-position="242">
+          <caret line="1171" column="33" lean-forward="true" selection-start-line="1171" selection-start-column="12" selection-end-line="1171" selection-end-column="33" />
           <folding>
             <marker date="1550572936666" expanded="true" signature="43292:43303" ph="..." />
             <marker date="1550572936666" expanded="true" signature="43425:43436" ph="..." />
@@ -880,14 +880,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/maxframes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="928" column="124" lean-forward="true" selection-start-line="928" selection-start-column="124" selection-end-line="928" selection-end-column="124" />
+        <state relative-caret-position="361">
+          <caret line="920" column="25" lean-forward="false" selection-start-line="920" selection-start-column="25" selection-end-line="920" selection-end-column="25" />
           <folding>
-            <marker date="1550657359944" expanded="true" signature="1555:1595" ph="..." />
-            <marker date="1550657359944" expanded="true" signature="2775:2815" ph="..." />
-            <marker date="1550657359944" expanded="true" signature="10487:10494" ph="×" />
-            <marker date="1550657359944" expanded="true" signature="29186:29197" ph="..." />
-            <marker date="1550657359944" expanded="true" signature="29310:29321" ph="..." />
+            <marker date="1550657734879" expanded="true" signature="1555:1595" ph="..." />
+            <marker date="1550657734879" expanded="true" signature="2775:2815" ph="..." />
+            <marker date="1550657734879" expanded="true" signature="10487:10494" ph="×" />
+            <marker date="1550657734879" expanded="true" signature="29212:29223" ph="..." />
+            <marker date="1550657734879" expanded="true" signature="29336:29347" ph="..." />
           </folding>
         </state>
       </provider>
